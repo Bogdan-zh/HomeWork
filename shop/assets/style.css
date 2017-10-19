@@ -4,6 +4,8 @@
     body {
         font-family: Tahoma;
         margin: 0;
+
+        background-color: #f9f9f9;
     }
     header, footer {
         background-color: #000;
@@ -41,6 +43,9 @@
         border-radius: 3px;
         min-width: 300px;
         align-self: flex-start;
+
+        background-color: white;
+        margin-right: 15px;
     }
     .aside h3 {
         //background-color: #C9E7FC;
@@ -68,6 +73,8 @@
         flex-wrap: wrap;
         justify-content: center;
         align-self: stretch;
+
+        background-color: white;
     }
     .container h2 {
         //width: 100%;
@@ -77,8 +84,11 @@
         text-align: center;
     }
     .box {
-        border: 1px solid black;
-        padding: 20px 25px;
+        background-color: white;
+        color: black;
+        //border: 1px solid black;
+        border: 1px solid #E4E5E5;
+        padding: 20px;
         display: flex;
         position: relative;
         flex-direction: column;
@@ -88,11 +98,26 @@
         flex-basis: 200px;
         margin: 0 7px 30px;
     }
+    .box:hover {
+        //box-shadow: 0px 0px 30px -3px rgba(50, 50, 50, 0.3);
+
+        box-shadow: 5px 5px 0px 0px #e7e7e7; 
+
+    }
+
     .box > a {
         //color: #7DC0FF;
         color: black;
         margin: 10px 0;
+        text-decoration: none;
     }
+
+    .box > a:hover {
+        text-decoration: underline;
+        color: #3E77B2;
+    }
+
+
 
     .stock{
         margin-top: auto;
