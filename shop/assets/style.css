@@ -99,9 +99,9 @@
         margin: 0 10px 30px;
     }
     .box:hover {
-        //box-shadow: 0px 0px 30px -3px rgba(50, 50, 50, 0.3);
+        box-shadow: 0px 0px 30px -3px rgba(50, 50, 50, 0.3);
 
-        box-shadow: 5px 5px 0px 0px #e7e7e7; 
+        //box-shadow: 5px 5px 0px 0px #e7e7e7; 
 
     }
 
@@ -190,3 +190,67 @@
         width: 40px;
         height: 20px;
     }
+
+
+
+
+
+/*-----------настройка выпадающего меню---------*/
+
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+nav > ul {
+    margin-top: 20px;
+    width: 100%;
+}
+
+nav li {
+    text-decoration: none;
+    //text-transform: uppercase;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #E4E5E5;
+    position: relative;
+    //background: white;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    //white-space: nowrap;
+}
+
+nav li a {
+    display: inline-block;
+    color: #000;
+    //white-space: nowrap;
+}
+
+nav > ul ul{
+    position: absolute;
+    //z-index: 999;
+    //left: -9999px; /* Скрываем за экраном, когда не нужно (данный метод лучше, чем display:none;) */
+    //opacity: 0; /* Устанавливаем начальное состояние прозрачности */
+    display: none;
+}
+
+nav > ul li:hover > ul{ /* Выводим выпадающий пункт при наведении курсора */
+    left: 100%; /* Приносим его обратно на экран, когда нужно */
+    //top: 10px;
+    top: -1px;
+    //opacity: 1; /* Делаем непрозрачным */
+    display: block;
+}
+
+nav li:hover > a { /* Изменяем некоторые стили верхнего уровня при выводе выпадающего пункта */
+    //font-size: 1.05em;
+    color: white;
+}
+
+nav li:hover { /* Устанавливаем стили для выпадающих пунктов, когда курсор наводится на конкретный пункт */
+    //background: rgba(213,241,255,1);
+    background-color: black;
+}
