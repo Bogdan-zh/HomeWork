@@ -1,0 +1,54 @@
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+	.left, .right {
+		float: left;
+		width: 50%;
+		min-height: 100vh;
+		border: 10px solid black;
+		padding: 50px;
+	}
+	.container {
+		border: 2px solid black;
+		padding: 30px;
+	}
+	.right .container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.container h2 {
+		width: 100%;
+		text-align: center;
+		margin: 20px 0 30px;
+	}
+	.left .container form {
+		padding: 10px;
+		border: 2px solid black;
+		width: 100%;
+		margin: 0 auto 10px;
+	}
+	.left .container .fileok {
+		color: green;
+	}
+	.left .container .fileerror {
+		color: red;
+	}
+	.left .container form input[type="submit"] {
+		float: right;
+		width: 150px;
+	}
+	.right .container img {
+		width: 135px;
+		margin: 5px;
+	}
+	.right .container a {
+		font-size: 0;
+	}
+
+	.names {
+		width: 100%;
+	}
