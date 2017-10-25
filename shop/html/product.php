@@ -9,7 +9,7 @@
                 <div>
                     <img class="product-image kek" src="http://placekitten.com/200/250">
                     <div class="product-buy kek">
-                        Количество: <input type="number" name="amount" value="1">
+                        Количество: <input type="number" name="amount" value="1" min="1">
                         <button>Купить</button>
                     </div>
                 </div>
@@ -20,12 +20,11 @@
                     <p class="product-description_description">Описание товара: <span><?php echo $product->description ?></span></p>
                     <p class="product-description_stock">На складе: <span><?php echo $product->variant->stock ?> </span>штук</p>
                 </div>
-
+               
             </div>
         </div>
     <?php endif; ?>
 <?php endforeach; ?>
-
         
         
 

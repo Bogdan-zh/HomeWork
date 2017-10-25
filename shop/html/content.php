@@ -8,14 +8,14 @@ if(isset($_GET['route'])) {
 
 if ($route) {
     switch($route) {
-        case 'page';
-            include 'html/page.php';
-            break;
-        case 'product';
-            include 'html/product.php';
+        case 'page':
+        case 'product':
+        case 'registration':
+        case 'login':
+            include "html/$route.php";
             break;
         default:
-            include 'html/main.php';
+            include "html/$route.php";
             break;
     }
 }

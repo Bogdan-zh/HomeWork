@@ -106,16 +106,17 @@ $cat = GetCategoriesTree($categories);
 
 // вывод на экран меню с подкатегориями
 function getCategories($categories) {
-  echo "<ul>";
-  foreach ($categories as $category) {
-    if($category->visible) {
-      echo "<li><a href=\"$category->url\"> $category->name </a></li>";
-      if(!empty($category->subcategories)) {
-        getCategories($category->subcategories); 
-      }
+    echo "<ul>";
+        foreach ($categories as $category) {
+            if($category->visible) {
+                echo "<li><a href=\"$category->url\"> $category->name </a>";
+                    if(!empty($category->subcategories)) {
+                    getCategories($category->subcategories); 
+              }
+            echo "</li>";
+        }
     }
-  }
-  echo "</ul>";
+    echo "</ul>";
 }
 
 //getCategories($categories);
@@ -124,21 +125,43 @@ function getCategories($categories) {
 
 //  Вывод меню, true = меню вертикальное, false = меню горизонтальное
 function MainMenu($pages, $type = true) {
-  if(is_array($pages)) {
-    foreach ($pages as $page){ 
-      if(($page->visible) && ($page->menu_id == 1)) {
-        if ($type) {
-          echo ('<a href=' . $page->url . '>' . $page->name . '</a><br>');
-        } else {
-          echo ('<a href=' . $page->url . '>' . $page->name . '</a>' . " ");
+    if(is_array($pages)) {
+        foreach ($pages as $page){ 
+            if(($page->visible) && ($page->menu_id == 1)) {
+                if ($type) {
+                    echo ('<a href=' . $page->url . '>' . $page->name . '</a><br>');
+                } else {
+                    echo ('<a href=' . $page->url . '>' . $page->name . '</a>' . " ");
+                }
+            }
         }
-      }
     }
+}
+
+/*--------------------------------------------------------------------*/
+
+//создает пенкты меню для входа в регитрацию или авторизацию
+function makeForm($on = true) {
+  if($on) {
+    echo "<div class=\"isForm\">
+            <a href=\"?route=registration\">Регистрация</a>
+            <a href=\"?route=login\">Вход</a>
+          </div>";
   }
 }
+
+
+/*--------------------------------------------------------------------*/
+
 
 /*--------------------------------------------------------------------*/
 
 
 
+
+
+
+
+
+/*--------------------------------------------------------------------*/
 ?>

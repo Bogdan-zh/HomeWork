@@ -3,6 +3,7 @@
 <?php echo $page->description; ?>
 
 <!-- вывод ВСЕХ товаров -->
+
 <?php foreach ($products as $product): ?> 
     <?php if ($product->visible): ?> 
         <div class="box">

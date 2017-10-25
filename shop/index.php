@@ -14,6 +14,7 @@
             <div class="wrap">
                 <div class="menu">
                     <?php makeMenu($pages); ?>
+                    <?php makeForm($on = true); ?>
                 </div>
             </div>
         </header>
@@ -42,4 +43,6 @@
 
 </body>
 
+
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </html>

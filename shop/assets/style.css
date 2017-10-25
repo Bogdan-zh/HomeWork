@@ -27,10 +27,15 @@
         max-width: 1170px;
         display: flex;
     }
+    .menu {
+        margin: 0 auto;
+        display: flex;
+        flex-grow: 1;
+        max-width: 1170px;
+    }
     .menu a {
         display: inline-block;
         padding: 15px; 
-        //color: #2F7DBA;
         color: white; 
         text-decoration: none;
     }
@@ -43,12 +48,11 @@
         border-radius: 3px;
         min-width: 300px;
         align-self: flex-start;
-
+        
         background-color: white;
         margin-right: 15px;
     }
     .aside h3 {
-        //background-color: #C9E7FC;
         background-color: black;
         color: white;
         line-height: 50px;
@@ -67,13 +71,13 @@
     .container {
         padding: 30px;
         width: 870px;
+        //min-height: 280px;
         border: 1px solid #E4E5E5;
         border-radius: 3px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        align-self: stretch;
-
+        //align-self: flex-start;
         background-color: white;
     }
     .container h2 {
@@ -191,6 +195,41 @@
         height: 20px;
     }
 
+    .isForm {
+        margin-left: auto;
+    }
+
+
+    .registration, .login {
+        border: 1px solid black;
+        padding: 50px;
+        align-self: flex-start;
+    }
+    .registration form, .login form {
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+
+    }
+    .registration h2, .login h2 {
+        margin: 0 auto 20px;
+        text-align: center;
+    }
+
+    .registration input[type='text'], .registration input[type='password'], .registration input[type='submit'], .login input[type='text'], .login input[type='password'], .login input[type='submit'] {
+        width: 100%;
+        margin: 10px auto;
+        height: 30px;
+        font-size: 20px;
+    }
+
+    .registration input[type='submit'], .login input[type='submit'] {
+        margin-top: 20px;
+        background-color: black;
+        color: white;
+        border: none;
+        height: 35px;
+    }
 
 
 
