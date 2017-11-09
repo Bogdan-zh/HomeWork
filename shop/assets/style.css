@@ -27,6 +27,25 @@
         max-width: 1170px;
         display: flex;
     }
+    .top-menu {
+        background-color: #aeaeae;
+        height: 35px;
+        line-height: 35px;
+    }
+    .top-menu_wrap {
+        max-width: 1170px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .top-menu_wrap a {
+        margin: 0 15px;
+        color: black;
+        text-decoration: none;
+    }
+    .top-menu_wrap a:hover {
+        text-decoration: underline;
+    }
     .menu {
         margin: 0 auto;
         display: flex;
@@ -77,14 +96,23 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        //align-self: flex-start;
+        align-self: flex-start;
         background-color: white;
+        //align-items: flex-start;
     }
     .container h2 {
         //width: 100%;
         margin: 40px;
     }
     .container h1 {
+        width: 100%;
+        text-align: center;
+    }
+    .container > div {
+        width: 100%;
+    }
+    .container > div > h1 {
+        width: 100%;
         text-align: center;
     }
     .box {
@@ -99,6 +127,7 @@
         align-items: center;
         justify-content: space-between;
         text-align: center;
+        text-decoration: none;
         flex-basis: 200px;
         margin: 0 10px 30px;
     }
@@ -106,22 +135,7 @@
         box-shadow: 0px 0px 30px -3px rgba(50, 50, 50, 0.3);
 
         //box-shadow: 5px 5px 0px 0px #e7e7e7; 
-
     }
-
-    .box > a {
-        //color: #7DC0FF;
-        color: black;
-        margin: 10px 0;
-        text-decoration: none;
-    }
-
-    .box > a:hover {
-        text-decoration: underline;
-        color: #3E77B2;
-    }
-
-
 
     .stock{
         margin-top: auto;
@@ -183,7 +197,7 @@
         margin: 15px auto;
         width: 136px;
     }
-    .product-buy button {
+    .product-buy .button {
         width: 135px;
         height: 40px;
         font-size: 1.3em;
@@ -199,16 +213,13 @@
         margin-left: auto;
     }
 
-
-    .registration, .login {
-        border: 1px solid black;
-        padding: 50px;
-        align-self: flex-start;
-    }
     .registration form, .login form {
-        width: 250px;
-        display: flex;
-        flex-direction: column;
+        width: 350px;
+        //display: flex;
+        //flex-direction: column;
+        margin: 0 auto;
+        border: 1px solid black;
+        padding: 30px 50px;
 
     }
     .registration h2, .login h2 {
@@ -216,26 +227,87 @@
         text-align: center;
     }
 
-    .registration input[type='text'], .registration input[type='password'], .registration input[type='submit'], .login input[type='text'], .login input[type='password'], .login input[type='submit'] {
+    .reg {
         width: 100%;
-        margin: 10px auto;
+        margin: 20px auto 0;
         height: 30px;
         font-size: 20px;
     }
 
+    /*.login .reg {
+        margin: 0 auto 20px;
+    }*/
+
     .registration input[type='submit'], .login input[type='submit'] {
+        width: 100%;
         margin-top: 20px;
         background-color: black;
         color: white;
         border: none;
         height: 35px;
+        font-weight: bold;
+        font-size: 16px;
     }
 
+    table, td  {
+        border: 1px solid black;
+        padding: 10px;
+        border-collapse: collapse;
+    }
+
+    .wishlistForm {
+        text-align: center;
+    }
+
+    .clear_wishlist {
+        width: 100%;
+        text-align: center;
+        margin: 0 0 30px;
+    }
+    
+    .clear_wishlist input {
+        height: 40px;
+        width: 130px;
+        border: none;
+        font-weight: bold;
+    }
+
+    .cart input[type="submit"] {
+        width: 120px;
+        height: 40px;
+        font-weight: bold;
+        font-size: 18px;
+        border: none;
+        margin-top: 10px;
+    }
+    .cart {
+        //width: 760px;
+    }
+    .cart table td:nth-child(2) {
+        min-width: 350px;
+    }
+    .cart table td:nth-child(4) input[type="number"] {
+        width: 50px;
+    }
+
+    .cart_inputs {
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+.loginn:focus:invalid, .namee:focus:invalid, .emaill:focus:invalid, .passwordd:focus:invalid {
+    border: 2px solid red ;
+    outline: none;
+}
+
+.loginn:valid, .namee:valid, .emaill:valid, .passwordd:valid {
+    border: 2px solid green;
+}
 
 
 
 /*-----------настройка выпадающего меню---------*/
-
 
 ul, li {
   list-style: none;
@@ -251,26 +323,22 @@ nav > ul {
 
 nav li {
     text-decoration: none;
-    //text-transform: uppercase;
     cursor: pointer;
     padding: 10px;
     border: 1px solid #E4E5E5;
     position: relative;
-    //background: white;
     background-color: #f9f9f9;
     min-width: 200px;
-    //white-space: nowrap;
 }
 
 nav li a {
     display: inline-block;
     color: #000;
-    //white-space: nowrap;
 }
 
 nav > ul ul{
     position: absolute;
-    //z-index: 999;
+    z-index: 999;
     //left: -9999px; /* Скрываем за экраном, когда не нужно (данный метод лучше, чем display:none;) */
     //opacity: 0; /* Устанавливаем начальное состояние прозрачности */
     display: none;
@@ -278,14 +346,11 @@ nav > ul ul{
 
 nav > ul li:hover > ul{ /* Выводим выпадающий пункт при наведении курсора */
     left: 100%; /* Приносим его обратно на экран, когда нужно */
-    //top: 10px;
     top: -1px;
-    //opacity: 1; /* Делаем непрозрачным */
     display: block;
 }
 
 nav li:hover > a { /* Изменяем некоторые стили верхнего уровня при выводе выпадающего пункта */
-    //font-size: 1.05em;
     color: white;
 }
 

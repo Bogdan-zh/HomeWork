@@ -12,6 +12,8 @@ if ($route) {
         case 'product':
         case 'registration':
         case 'login':
+        case 'cart':
+        case 'wishlist':
             include "html/$route.php";
             break;
         default:

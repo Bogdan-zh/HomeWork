@@ -1,4 +1,3 @@
-
 <?php
 
 $data_pages = 'a:11:{i:1;O:8:"stdClass":11:{s:2:"id";s:1:"1";s:3:"url";s:0:"";s:7:"menu_id";s:1:"1";s:8:"position";s:1:"1";s:7:"visible";s:1:"1";s:11:"last_modify";s:19:"2017-04-24 17:33:08";s:4:"name";s:14:"Главная";s:10:"meta_title";s:21:"Хиты продаж";s:13:"meta_keywords";s:21:"Хиты продаж";s:16:"meta_description";s:880:"Этот магазин является демонстрацией скрипта интернет-магазина  Okay . Все материалы на этом сайте присутствуют исключительно в демострационных целях. asaDASD ASDЭтот магазин является демонстрацией скрипта интернет-магазина  Okay . Все материалы на этом сайте присутствуют исключительно в демострационных целях. asaDASD ASD 
@@ -34,8 +33,4 @@ $data_pages = 'a:11:{i:1;O:8:"stdClass":11:{s:2:"id";s:1:"1";s:3:"url";s:0:"";s:
 <p>Телефон 777-15-51</p>
 ";}i:10;O:8:"stdClass":11:{s:2:"id";s:2:"10";s:3:"url";s:10:"discounted";s:7:"menu_id";s:1:"2";s:8:"position";s:2:"10";s:7:"visible";s:1:"1";s:11:"last_modify";s:19:"2017-04-11 12:46:43";s:4:"name";s:31:"Акционные товары";s:10:"meta_title";s:31:"Акционные товары";s:13:"meta_keywords";s:31:"Акционные товары";s:16:"meta_description";s:0:"";s:11:"description";s:0:"";}i:11;O:8:"stdClass":11:{s:2:"id";s:2:"11";s:3:"url";s:11:"bestsellers";s:7:"menu_id";s:1:"2";s:8:"position";s:2:"11";s:7:"visible";s:1:"1";s:11:"last_modify";s:19:"2017-04-11 12:46:43";s:4:"name";s:21:"Хиты продаж";s:10:"meta_title";s:21:"Хиты продаж";s:13:"meta_keywords";s:21:"Хиты продаж";s:16:"meta_description";s:0:"";s:11:"description";s:0:"";}i:12;O:8:"stdClass":11:{s:2:"id";s:2:"12";s:3:"url";s:4:"news";s:7:"menu_id";s:1:"1";s:8:"position";s:2:"12";s:7:"visible";s:1:"1";s:11:"last_modify";s:19:"2017-04-11 15:54:12";s:4:"name";s:14:"Новости";s:10:"meta_title";s:14:"Новости";s:13:"meta_keywords";s:14:"Новости";s:16:"meta_description";s:0:"";s:11:"description";s:0:"";}}';
 
-//$pages = unserialize($data_pages);
-
-// на случай если нужно посмотреть весь массив
-//print_r($pages); 
 ?>

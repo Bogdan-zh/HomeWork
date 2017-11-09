@@ -1,3 +1,4 @@
+<?php include 'html/headers.php'; ?>
 <?php require_once 'functions/functions.php'; ?>
 <!DOCTYPE html>
 <html>
@@ -10,20 +11,31 @@
 <body>
 
     <div class="qwerty">
+        <div class="top-menu">
+            <div class="top-menu_wrap">
+                <a href="?route=registration">Регистрация</a>/
+                <a href="?route=login">Вход</a>
+            </div>
+        </div>
         <header>
             <div class="wrap">
                 <div class="menu">
                     <?php makeMenu($pages); ?>
-                    <?php makeForm($on = true); ?>
+                    <div class="isForm">
+                        <a href="?route=wishlist">Избранное (<?php wishlist_count(); ?>)</a>
+                        <a href="?route=cart">Корзина (<?php cart_count(); ?>) </a>
+                    </div>
                 </div>
+
             </div>
         </header>
+            
         <main>
             <div class="wrap">
                 <div class="aside">
                     <h3>Категории</h3>
                     <nav>
-                        <?php getCategories($cat); ?>
+                        <?php $cat = GetCategoriesTree($categories); getCategories($cat); ?>
                     </nav>
                 </div>
                 <div class="container">
@@ -31,6 +43,14 @@
                 </div>
             </div>
         </main>
+        <div style="text-align: center; margin: 10px;">
+                <?php 
+                if(isset($_COOKIE['last_visited'])) {
+                    echo $last_vis_echo."<br>"; 
+                }
+                echo $last_time."<br>"; 
+                ?>
+            </div>
         <footer>
             <div class="wrap">
                 <div class="menu">
