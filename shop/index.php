@@ -22,6 +22,7 @@
                 <div class="menu">
                     <?php makeMenu($pages); ?>
                     <div class="isForm">
+                        <a href="?route=links">Преобразователь ссылок</a>
                         <a href="?route=wishlist">Избранное (<?php wishlist_count(); ?>)</a>
                         <a href="?route=cart">Корзина (<?php cart_count(); ?>) </a>
                     </div>

@@ -1,6 +1,5 @@
 <?php $product = getProduct($products, $_GET['id']) ?>
 
-
 <?php foreach ($products as $product): ?> 
     <?php if ($product->visible && $_GET['id'] == $product->id): ?> 
         <div class="product">
@@ -29,11 +28,3 @@
         </div>
     <?php endif; ?>
 <?php endforeach; ?>
-<?php 
-// echo "<pre>";
-// print_r($_SESSION); 
-// echo "</pre>";
-?>
-        
-        
-

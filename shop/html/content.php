@@ -14,6 +14,7 @@ if ($route) {
         case 'login':
         case 'cart':
         case 'wishlist':
+        case 'links':
             include "html/$route.php";
             break;
         default:
