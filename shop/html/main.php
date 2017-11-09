@@ -1,6 +1,5 @@
 <?php $page = getPage($pages, 1); ?>
 <h1>Главная</h1>
-<?php echo $page->description; ?>
 
 <!-- вывод ВСЕХ товаров -->
 
@@ -17,3 +16,5 @@
         
     <?php endif; ?>
 <?php endforeach; ?>
+
+<?php echo $page->description; ?>
