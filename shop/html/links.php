@@ -3,7 +3,7 @@
 
 if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['send_url'])) {
     $url = trim(strtolower(translit($_POST['url'])));
-    $link_res = preg_replace('/(^[\s\-|\/]+)|([\s\-|\/]+$)/u', '', $url);
+    $link_res = preg_replace('/[\s\-|\/]+/u', '', $url);
 }
 
  ?>
