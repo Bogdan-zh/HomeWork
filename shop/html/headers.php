@@ -31,7 +31,7 @@ if(isset($_POST['clear_cart'])) {
 
 if(isset($_POST['buy'])) {
     setcookie('cart', $_COOKIE['cart'], time() - 86400*30);
-    header("Location: http://shop/?route=order");
+    header("Location: ?route=order");
 }
 
  ?>
