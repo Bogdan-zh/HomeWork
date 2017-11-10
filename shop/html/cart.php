@@ -1,6 +1,9 @@
 <?php 
     $getCart = getCart($products); 
-    buy($products);
+    if($_POST['buy']) {
+        buy($products);
+    }
+    
 ?>
 <?php if(is_array($getCart['products'])): ?>
     <h2 style="width: 100%; text-align: center;">Корзина</h2>

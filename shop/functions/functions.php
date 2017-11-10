@@ -262,31 +262,29 @@ function refreshCard($id, $amount) {
     header("Location:".$_SERVER['HTTP_REFERER']);
 }
 
-// $refresh = unserialize($_COOKIE['cart']);
-// print_r($refresh);
-
 /*--------------------------------------------------------------------*/
 
 // оформление заказа, покупка
 
 function buy($products) {
-    if(isset($_POST['buy'])) {
-        $cart_item = $_POST['cart_item'];
-        foreach ($cart_item as $id => $amount) {
-            if (!empty($id) && !empty($amount)) {
-                $product = getProduct($products, $id);
-                $name[] = $product->name;
-                $price[] = $product->variant->price;
-                $total[] = $product->variant->price * $amount;
+    $cart_item = $_POST['cart_item'];
+    foreach ($cart_item as $id => $amount) {
+        if (!empty($id) && !empty($amount)) {
+            $product = getProduct($products, $id);
+            $name[] = $product->name;
+            $price[] = $product->variant->price;
+            $total[] = $product->variant->price * $amount;
 
-                $separated_total = array_sum($total);
-                $separated_name = implode("<hr>", $name);
-                $separated_price = implode("<hr>", $price);
+            $separated_total = array_sum($total);
+            $separated_name = implode("<hr>", $name);
+            $separated_price = implode("<hr>", $price);
 
-                $date = date("d-m-Y H:i:s");
-                file_put_contents("files/cart.txt", "$date-|-$separated_name-|-Кол-во: $amount шт-|-Цена за штуку: $separated_price грн-|-Общая стоимость: $separated_total грн\n", FILE_APPEND);
-
+            $date = date("d-m-Y H:i:s");
+            if(!is_dir("files/")) {
+                mkdir("files/");
             }
+            file_put_contents("files/cart.txt", "$date-|-$separated_name-|-Кол-во: $amount шт-|-Цена за штуку: $separated_price грн-|-Общая стоимость: $separated_total грн\n", FILE_APPEND);
+
         }
     }
 }

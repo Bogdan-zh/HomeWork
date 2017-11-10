@@ -3,14 +3,14 @@
 
 if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['send_url'])) {
     $url = trim(strtolower(translit($_POST['url'])));
-    $link_res = preg_replace('/(^[ \-|\/]+)|([ \-|\/]+$)/u', '', $url);
+    $link_res = preg_replace('/(^[\s\-|\/]+)|([\s\-|\/]+$)/u', '', $url);
 }
 
  ?>
  <h2>Преобразователь ссылок</h2>
  <div class="product_links">
     <form method="post">
-        <input class="reg" type="url" name="url" placeholder="Введите ссылку"><br>
+        <input class="reg" type="text" name="url" placeholder="Введите ссылку"><br>
         <input type="submit" name="send_url" value="Преобразовать">
 
         <?php if (!empty($_POST['url'])): ?>
