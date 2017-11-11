@@ -1,9 +1,9 @@
-<?php $getCart = getCart($products); ?>
+<?php $order = getOrder($products); ?>
 
 <h2 style="width: 100%; text-align: center;">Ваш заказ оформлен!</h2>
 
-<!-- <?php if(is_array($getCart['products'])): ?>
-    <form method="post" class="cart">
+<?php if(is_array($order['products'])): ?>
+    
         <table>
             <tr>
                 <td>#</td>
@@ -16,7 +16,7 @@
             <?php
             $i = 1; 
 
-            foreach ($getCart['products'] as $item):  ?>
+            foreach ($order['products'] as $item):  ?>
             <tr>
                 <td><?php echo $i++; ?></td>
                 <td><?php echo $item->name ?></td>
@@ -30,24 +30,24 @@
             <td colspan="5" align="right"><?php echo "Общая цена: ".$getCart['total']." грн"; ?></td>
         </tr>
     </table>
-</form>
-<?php endif; ?> -->
+
+<?php endif; ?>
 
 <?php 
 
 //echo "<pre>";
-$qwe = file("files/cart.txt");
-$end = end($qwe);
-$myexp = explode("-|-", $end);
+// $qwe = file("files/cart.txt");
+// $end = end($qwe);
+// $myexp = explode("-|-", $end);
 //print_r($myexp);
 //echo "</pre>";
 
  ?>
-
+<!-- 
  <table>
     <tr>
         <?php foreach($myexp as $value): ?>
             <td><?php echo $value; ?></td>
         <?php endforeach; ?>
     </tr>
- </table>
+ </table> -->

@@ -27,6 +27,7 @@
                 <td><?php echo $item->variant->price . " грн" ?></td>
                 <td><input type="number" min="0" name="cart_item[<?php echo $item->id ?>]" value="<?php echo $item->cart_amount ?>"></td>
                 <td><?php echo $item->variant->price * $item->cart_amount  . " грн" ?></td>
+                <td><button class="delete_cart" type="submit" name="delete" value="<?php echo $item->id ?>">Х</button></td>
             </tr>
             
         <?php endforeach; ?>

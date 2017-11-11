@@ -206,9 +206,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['wishlist'])) {
 function addFavor($id) {
     if(isset($_COOKIE['wishlist'])){
         $wishlist = unserialize($_COOKIE['wishlist']);
-        $wishlist[$id] = $amount;
+        $wishlist[$id] = $id;
     } else {
-        $wishlist[$id] = $amount;
+        $wishlist[$id] = $id;
     }
     setcookie('wishlist',serialize($wishlist), time() + 86400*30);
     header("Location:".$_SERVER['HTTP_REFERER']);
@@ -245,13 +245,17 @@ function wishlist_count() {
 // обновляем форму с заказом
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['refresh'])) {
+
     foreach ($_POST['cart_item'] as $id => $amount) {
         if (!empty($id) && !empty($amount)) {
             $id = trim(strip_tags($id));
             $amount = trim(strip_tags($amount));
-            refreshCard($id, $amount);
+            $refresh[$id] = $amount;
         }
     }
+     setcookie('cart', serialize($refresh), time() + 86400*30);
+     header("Location:".$_SERVER['HTTP_REFERER']);
+    //refreshCard($id, $amount);
 }
 
 function refreshCard($id, $amount) {
@@ -261,6 +265,7 @@ function refreshCard($id, $amount) {
     setcookie('cart', serialize($refresh), time() + 86400*30);
     header("Location:".$_SERVER['HTTP_REFERER']);
 }
+
 
 /*--------------------------------------------------------------------*/
 
@@ -284,11 +289,31 @@ function buy($products) {
                 mkdir("files/");
             }
             file_put_contents("files/cart.txt", "$date-|-$separated_name-|-Кол-во: $amount шт-|-Цена за штуку: $separated_price грн-|-Общая стоимость: $separated_total грн\n", FILE_APPEND);
+            $_SESSION['order'] = $_POST['cart_item'];
 
         }
     }
 }
 
+
+function getOrder($products) {
+
+        $cart_items['total'] = 0;
+        $cart_items['amount'] = 0;
+
+    if(isset($_SESSION['order'])) {
+        $order = $_SESSION['order'];
+        foreach ($order as $id => $amount) {
+            $product = getProduct($products, $id);
+            $product->cart_amount = $amount;
+            $cart_items['products'][] = $product;
+            $cart_items['total'] += $product->variant->price * $amount;
+            $cart_items['amount'] += $amount;
+
+        }
+        return $cart_items;
+    }
+}
 
 /*--------------------------------------------------------------------*/
 

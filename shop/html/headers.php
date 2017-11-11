@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
+session_start();
 // Последняя посещенная страница
 if(isset($_SERVER['HTTP_REFERER'])) {
     $cookie_vis_value = $_SERVER['HTTP_REFERER'];
@@ -29,10 +30,22 @@ if(isset($_POST['clear_cart'])) {
     header("Location:".$_SERVER['HTTP_REFERER']);
 }
 
+if(isset($_POST['delete'])) {
+//delete product in cart
+    $id = $_POST['delete'];
+    $refresh = unserialize($_COOKIE['cart']);
+    unset($refresh[$id]);
+    setcookie('cart', serialize($refresh), time() + 86400*30);
+    header("Location:".$_SERVER['HTTP_REFERER']);
+}
+
 if(isset($_POST['buy'])) {
     setcookie('cart', $_COOKIE['cart'], time() - 86400*30);
     $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST']."/?route=order";
     header("Location: $url");
 }
 
+// echo "<pre>";
+// print_r($_SERVER);
+// echo "</pre>";
  ?>
