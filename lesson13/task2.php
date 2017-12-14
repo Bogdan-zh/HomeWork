@@ -9,7 +9,11 @@ class Worker
 
     public function setName($name)
     {
-        $name = !empty($name) ? $this->name = $name : 0;
+        if(!empty($name)) {
+            $this->name = $name;
+        } else {
+            return false;
+        }
     }
 
     public function getName()
@@ -19,7 +23,15 @@ class Worker
 
     public function setAge($age)
     {
-        $age = !empty($age) ? $this->checkAge($age) ? $this->age = $age : 0 : 0;
+        if(!empty($age)) {
+            if($this->checkAge($age)) {
+                $this->age = $age;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     public function getAge()
@@ -29,7 +41,11 @@ class Worker
 
     public function setSalary($salary)
     {
-        $salary = !empty($salary) ? $this->salary = $salary : 0;
+        if(!empty($salary)) {
+            $this->salary = $salary;
+        } else {
+            return false;
+        }
     }
 
     public function getSalary()
@@ -39,7 +55,15 @@ class Worker
 
     private function checkAge($age)
     {
-        $age = !empty($age) ? ($age >= 1 && $age <=100) ? $this->age = $age : 0 : 0;
+        if(!empty($age)) {
+            if($age >= 1 && $age <=100) {
+                $this->age = $age;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 }
 
@@ -59,4 +83,4 @@ echo '<br>';
 echo 'Сумма возрастов Ивана и Васи: ' . ($firstWorker->getAge() + $secondWorker->getAge());
 echo '<br>';
 
- ?>
+?>
