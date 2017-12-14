@@ -2,10 +2,10 @@
 
 class Cookie
 {
-    public function setCookie($name, $value)
+    public function setCookie($name, $value, $time)
     {
         if(!empty($name) && !empty($value)) {
-            setcookie($name, $value, time() + 3600*24*30);
+            setcookie($name, $value, time() + $time);
         } else {
             return false;
         }
