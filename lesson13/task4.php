@@ -8,7 +8,11 @@ class User
 
     public function setName($name)
     {
-        $name = !empty($name) ? $this->name = $name : 0;
+        if(!empty($name)) {
+            $this->name = $name;
+        } else {
+            return false;
+        }
     }
 
     public function getName()
@@ -18,7 +22,11 @@ class User
 
     public function setAge($age)
     {
-        $age = !empty($age) ? $this->age = $age : 0;
+        if(!empty($age)) {
+            $this->age = $age;
+        } else {
+            return false;
+        }
     }
 
 
@@ -39,7 +47,11 @@ class Worker extends User
 
     public function setSalary($salary)
     {
-        $salary = !empty($salary) ? $this->salary = $salary : 0;
+        if(!empty($salary)) {
+            $this->salary = $salary;
+        } else {
+            return false;
+        }
     }
 }
 
