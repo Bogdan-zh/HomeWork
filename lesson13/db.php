@@ -2,45 +2,33 @@
 
 class Db
 {
-    public $host = 'localhost';
-    public $login = 'root';
-    public $pass = '';
-    public $db_name = 'myCMS';
+    private $host = 'localhost';
+    private $login = 'root';
+    private $pass = '';
+    private $database = 'homework10';
+    private $mysqli;
 
     public function __construct()
     {
-        if(!empty($this->host) && !empty($this->login) && !empty($this->db_name)) {
-
-            $this->link = mysqli_connect($this->host, $this->login, $this->pass, $this->db_name);
-
-            if (!$this->link) {
-                echo "Error: Unable to connect to MySQL." . PHP_EOL;
-                echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-                echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-                exit;
-            }
-            return $this->link;
-        } else {
-            return false;
-        }
+        $this->mysqli = new mysqli($this->host, $this->login, $this->pass, $this->database);
     }
 
     public function __destruct()
     {
-        mysqli_close($this->link);
+        $this->mysqli->close();
     }
 
-    public function query($link, $query) // передает SQL запрос, и получаем обьект
+    public function query($query) // передает SQL запрос, и получаем обьект
     {
-        if(isset($link) && !empty($query)) {
-            $result = mysqli_query($this->link, $query);
+        if(!empty($query)) {
+            $result = mysqli_query($this->mysqli, $query);
             return $result;
         } else {
             return false;
         }
     }
 
-    public function getData($result) // передаем в метод результат после SQL запроса, получаем массив из передаваемого обьекта
+    public function getData($result)
     {
         if(!empty($result)) {
             $array = array();
@@ -51,70 +39,72 @@ class Db
         } 
     }
 
-    public function deleteData($link, $table, $area, $value)
+    public function deleteData($table, $area, $value)
     {
-        $this->query($this->link, "DELETE FROM $table WHERE $area=$value"); 
+        $this->query("DELETE FROM $table WHERE $area=$value"); 
     }
 
-    public function updateData($link, $table, $area, $newValue, $areaWhere, $value)
+    public function updateData($table, $area, $newValue, $areaWhere, $value)
     {
-        $this->query($this->link, "UPDATE $table SET $area='$newValue' WHERE $areaWhere='$value'");
+        $this->query("UPDATE $table SET $area='$newValue' WHERE $areaWhere='$value'");
     }
 
-    public function countData($link, $table, $area)
+    public function countData($table) 
     {
-        if(!empty($link) && !empty($area) && !empty($table)) {
-            $res = $this->query($this->link, "SELECT COUNT('$area') FROM $table");
+        if(!empty($table)) {
+            $res = $this->query("SELECT COUNT('id') FROM $table");
             $arr = mysqli_fetch_assoc($res);
-            return $arr["COUNT('$area')"];
+            if($arr["COUNT('id')"] == 0) {
+                return 0;
+            } else {
+                return $arr["COUNT('id')"];
+            }
         } else {
             return false;
         }
     }
 
-    public function clearTable($link, $table)
+    public function clearTable($table) // очистка одной таблицы в БД
     {
-        if(!empty($link) && !empty($tableName)) {
-            $this->query($this->link, "TRUNCATE TABLE $table"); 
+        if(!empty($table)) {
+            $this->query("TRUNCATE TABLE $table"); 
         } else {
             return false;
         }
     }
 
-    public function clearAllTables($link)
+    public function clearAllTables() // очистка всех таблиц в БД
     {
-        if(!empty($link)) {
-            $sql = "SHOW TABLES FROM $this->db_name";
-            $result = mysqli_query($this->link, $sql);
-            $row = $this->getData($result);
-            foreach($row as $r) {
-                $myrow[] = $r["Tables_in_$this->db_name"];
+        $result = $this->query("SHOW TABLES FROM $this->database");
+        $row = $this->getData($result);
+        foreach($row as $r) {
+            $myrow[] = $r["Tables_in_$this->database"];
 
-                foreach($myrow as $table) {
-                    $this->query($this->link, "TRUNCATE TABLE $table");
-                }
+            foreach($myrow as $table) {
+                $this->query("TRUNCATE TABLE $table");
             }
         }
     }
-
 }
 
 $db = new Db();
 
 
 
-
 // тестовые команды
 
 //echo "<pre>";
-//$result = $db->query($db->link, "SELECT id, login, name FROM users");
+
+//$result = $db->query("SELECT id, login, name FROM users");
+//var_dump($result);
 //print_r($db->getData($result));
-//print_r($db->countData($db->link, 'users', 'id'));
+//print_r($db->countData('users'));
+
 //echo "</pre>";
 
-//$db->updateData($db->link, 'users', 'login', 'azazazaza', 'id', '1' );
-//$db->deleteData($db->link, 'users', 'id', '1');
-//$db->clearTable($db->link, 'users');
-//$db->clearAllTables($db->link); 
+//$db->updateData('users', 'login', 'azazazaza', 'id', '1' );
+//$db->deleteData('users', 'id', '1');
+//$db->clearTable('users');
+//$db->clearAllTables(); 
 
  ?>
