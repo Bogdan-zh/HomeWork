@@ -23,7 +23,7 @@ class Cookie
     public function delCookie($name)
     {
         if(!empty($name) && isset($_COOKIE["$name"])) {
-            setcookie($name, '', time() - 3600*24*30);
+            setcookie($name, '');
         } else {
             return false;
         }
