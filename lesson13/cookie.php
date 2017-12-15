@@ -4,7 +4,7 @@ class Cookie
 {
     public function setCookie($name, $value, $time)
     {
-        if(!empty($name) && !empty($value)) {
+        if(!empty($name) && !empty($value) && !empty($time)) {
             setcookie($name, $value, time() + $time);
         } else {
             return false;
