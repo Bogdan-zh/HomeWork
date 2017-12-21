@@ -27,8 +27,10 @@ class Route
             '/contact'   => 'Contact',
             '/404'       => 'Err404',
         );
+
+        $var = $uri['path'];
        
-        if($uri['path'] == '/'.$url[1] || $uri['path'] == '/') {
+        if($uri['path'] == '/'.$url[1] && $uri['path'] == '/' || array_key_exists($var, $uri_array)) {
 
             if(file_exists($controllers_dir.$uri_array[$uri['path']] . '.php')) {
                 require $controllers_dir.$uri_array[$uri['path']] . '.php'; //controllers/Main.php
