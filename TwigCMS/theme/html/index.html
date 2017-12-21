@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <link href="theme/assets/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="theme/assets/css/flat-ui.css" rel="stylesheet">
+</head>
+<body class="page-home layout-default">
+    <header class="header-navbar clearfix">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+
+                <div class="collapse navbar-collapse navbar-main-collapse">
+                    <a class="navbar-brand" href="/">TwigCMS</a>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="/" class="">
+                                Главная
+                            </a>
+                        </li>
+                        <li class=" ">
+                            <a href="/admin/" class="">
+                                Админка
+                            </a>
+                        </li>
+                        <li class=" ">
+                            <a href="/products" class="">
+                                Catalog
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <div id="layout-content">
+        <section class="home-title">
+            <div class="container">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </section>
+    </div>
+</body>
+</html>
