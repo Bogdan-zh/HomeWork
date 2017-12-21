@@ -28,8 +28,7 @@ class Route
             '/404'       => 'Err404',
         );
        
-
-        if($uri['path'] == '/'.$url[1] || $uri['path'] == '/') {
+        if($uri['path'] == '/'.$url[1] && $uri['path'] == '/') {
 
             if(file_exists($controllers_dir.$uri_array[$uri['path']] . '.php')) {
                 require $controllers_dir.$uri_array[$uri['path']] . '.php'; //controllers/Main.php
@@ -55,7 +54,7 @@ class Route
         $uri = parse_url($_SERVER['REQUEST_URI']);
         $url = explode('/', $uri['path']); 
 
-        if($url[1] == '404' || $uri['path'] != '') {
+        if($url[1] == '404' && $uri['path'] != '') {
 
             if(file_exists($controllers_dir.'Err404.php')) {
                 require $controllers_dir.'Err404.php';
