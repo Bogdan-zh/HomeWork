@@ -10,6 +10,9 @@ class Route
 
         $url = explode('/', $uri['path']); 
 
+        unset($url[0]);
+        $ar[] = $url[1];
+
         // echo "<pre>"; // раскомментировать по необходимости
         // print_r($uri);
         // print_r($url);
@@ -27,30 +30,27 @@ class Route
             '/contact'   => 'Contact',
             '/404'       => 'Err404',
         );
-        // foreach ($uri_array as $key => $value) {
+       
 
-        //     if($uri['path'] == $key || $uri['path'] == '/') {
+        if($uri['path'] == '/'.$url[1] || $uri['path'] == '/') {
 
-                if(file_exists($controllers_dir.$uri_array[$uri['path']] . '.php')) {
-                    require $controllers_dir.$uri_array[$uri['path']] . '.php'; //controllers/Main.php
-                    $controller = new $uri_array[$uri['path']](); // new Main();
+            if(file_exists($controllers_dir.$uri_array[$uri['path']] . '.php')) {
+                require $controllers_dir.$uri_array[$uri['path']] . '.php'; //controllers/Main.php
+                $controller = new $uri_array[$uri['path']](); // new Main();
 
-                    if(method_exists($controller,'fetch')) {
-                        print $controller->fetch();
-                    } else {
-                        Route::error404();
-                    }
+                if(method_exists($controller,'fetch')) {
+                    print $controller->fetch();
                 } else {
                     Route::error404();
                 }
+            } else {
+                Route::error404();
+            }
 
-            } 
-    //         else {
-    //             Route::error404();
-    //         }
-
-    //     }
-    // }
+        } else {
+            Route::error404();
+        }
+    }
 
     public static function error404()
     {
