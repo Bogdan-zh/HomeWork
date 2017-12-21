@@ -55,28 +55,14 @@ class Route
         $uri = parse_url($_SERVER['REQUEST_URI']);
         $url = explode('/', $uri['path']); 
 
-        $uri_array = array(
-            '/'          => 'Main',
-            '/products'  => 'Catalog',
-            '/register'  => 'Register',
-            '/login'     => 'Login',
-            '/user'      => 'User',
-            '/cart'      => 'Cart',
-            '/order'     => 'Order',
-            '/about'     => 'About',
-            '/contact'   => 'Contact',
-        );
-        foreach ($uri_array as $key => $value) {
+        if($url[1] == '404' || $uri['path'] != '') {
 
-            if($url[1] == '404' || $url[1] != $key) {
+            if(file_exists($controllers_dir.'Err404.php')) {
+                require $controllers_dir.'Err404.php';
+                $controller = new Err404();
 
-                if(file_exists($controllers_dir.'Err404.php')) {
-                    require $controllers_dir.'Err404.php';
-                    $controller = new Err404();
-
-                    if(method_exists($controller,'fetch')) {
-                        print $controller->fetch();
-                    }
+                if(method_exists($controller,'fetch')) {
+                    print $controller->fetch();
                 }
             }
         }

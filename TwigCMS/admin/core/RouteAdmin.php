@@ -45,22 +45,14 @@ class Route
         $uri = parse_url($_SERVER['REQUEST_URI']);
         $url = explode('/', $uri['path']); 
 
-        $uri_array = array(
-            '/admin/' => 'MainAdmin',
-            '/admin/products/' => 'CatalogAdmin',
-            '/admin/product/' => 'ProductAdmin',
-        );
-        foreach ($uri_array as $key => $value) {
+        if($url[1].'/'.$url[2] == 'admin/404' || $uri['path'] != '') {
 
-            if($url[1].'/'.$url[2] == 'admin/404' || $uri['path'] != $key) {
+            if(file_exists($controllers_dir.'Err404Admin.php')) {
+                require $controllers_dir.'Err404Admin.php';
+                $controller = new Err404();
 
-                if(file_exists($controllers_dir.'Err404Admin.php')) {
-                    require $controllers_dir.'Err404Admin.php';
-                    $controller = new Err404();
-
-                    if(method_exists($controller,'fetch')) {
-                        print $controller->fetch();
-                    }
+                if(method_exists($controller,'fetch')) {
+                    print $controller->fetch();
                 }
             }
         }
