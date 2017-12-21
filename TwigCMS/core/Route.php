@@ -9,9 +9,7 @@ class Route
         $uri = parse_url($_SERVER['REQUEST_URI']);
 
         $url = explode('/', $uri['path']); 
-
-        unset($url[0]);
-
+        
         // echo "<pre>"; // раскомментировать по необходимости
         // print_r($uri);
         // print_r($url);

@@ -34,7 +34,8 @@ class Route
             } else {
                 Route::error404();
             }
-
+        } else {
+            Route::error404();
         }
     }
 
@@ -51,7 +52,7 @@ class Route
         );
         foreach ($uri_array as $key => $value) {
 
-            if($url[1] == '404' || $url[1] != $key) {
+            if($url[1].'/'.$url[2] == 'admin/404' || $uri['path'] != $key) {
 
                 if(file_exists($controllers_dir.'Err404Admin.php')) {
                     require $controllers_dir.'Err404Admin.php';
