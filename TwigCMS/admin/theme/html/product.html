@@ -2,9 +2,16 @@
 
 
 {% block content %}
+<style>
+    .addproduct {
+        width: 600px;
+        margin: 0 auto;
+    }
+</style>
+
 <h1>{{ name }}</h1>
 <div class="col-lg-12">
-    <form method="post">
+    <form class="addproduct" method="post">
         <input type="hidden" name="id" value="{{ product.id }}">
         <div class="form-group">
             <label>Название</label>
