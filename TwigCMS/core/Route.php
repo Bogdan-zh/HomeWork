@@ -11,7 +11,6 @@ class Route
         $url = explode('/', $uri['path']); 
 
         unset($url[0]);
-        $ar[] = $url[1];
 
         // echo "<pre>"; // раскомментировать по необходимости
         // print_r($uri);
