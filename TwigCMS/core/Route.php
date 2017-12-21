@@ -30,7 +30,7 @@ class Route
 
         $var = $uri['path'];
        
-        if($uri['path'] == '/'.$url[1] && $uri['path'] == '/' || array_key_exists($var, $uri_array)) {
+        if(array_key_exists($var, $uri_array)) {
 
             if(file_exists($controllers_dir.$uri_array[$uri['path']] . '.php')) {
                 require $controllers_dir.$uri_array[$uri['path']] . '.php'; //controllers/Main.php
