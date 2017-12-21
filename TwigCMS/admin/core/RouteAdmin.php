@@ -20,7 +20,9 @@ class Route
             '/admin/product/' => 'ProductAdmin',
         );
 
-        if($uri['path'] == '/'.$url[1].'/' || $uri['path'] == '/admin/'.$url[2].'/') {
+        $var = $uri['path'];
+
+        if(array_key_exists($var, $uri_array)) {
 
             if(file_exists($controllers_dir.$uri_array[$uri['path']] . '.php')) {
                 require $controllers_dir.$uri_array[$uri['path']] . '.php'; //controllers/Main.php
