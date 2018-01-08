@@ -19,7 +19,7 @@ class Images
         $res = $result->fetch_assoc();
         $old_image = $res['image'];
         
-        if(file_exists('../uploads/'.$old_image) && $old_image != 'noimage.png') {
+        if(isset($old_image) && file_exists('../uploads/'.$old_image) && $old_image != 'noimage.png') {
             unlink('../uploads/'.$old_image);
         }
 
