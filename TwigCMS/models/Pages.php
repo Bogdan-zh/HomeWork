@@ -1,17 +1,17 @@
 <?php
-class Products extends Database
+class Pages extends Database
 {
-    /*public function __construct()
+	/*public function __construct()
     {
         parent::__construct();
     }*/
 
-    public function addProduct($product)
+    public function addPage($page)
     {
-        if(empty($product)) {
+        if(empty($page)) {
             return false;
         }
-        foreach ($product as $column => $val) {
+        foreach ($page as $column => $val) {
             $columns[] = $column;
             $values[] = "'".$val."'";
         }
@@ -19,39 +19,38 @@ class Products extends Database
         $colum_sql = implode(',',$columns);
         $val_sql = implode(',',$values);
 
-        $query = "INSERT INTO products ($colum_sql) VALUES ($val_sql)";
-        //echo $query;
+        $query = "INSERT INTO pages ($colum_sql) VALUES ($val_sql)";
+        
         $this->query($query);
         return $this->resId();
     }
 
-    public function getProduct($id)
+    public function getPage($id, $type = 'id')
     {
         if(empty($id)) {
             return false;
         }
-        $query = "SELECT id, name, price, amount, description, url, visible, bestseller, image FROM products WHERE id = $id LIMIT 1";
+        $query = "SELECT id, name, description, url, visible FROM pages WHERE $type = $id LIMIT 1";
         $this->query($query);
         return $this->result();
     }
-    public function getProducts()
+    public function getPages()
     {
-
-        $query = "SELECT id, name, price, amount, description, url, visible, bestseller, image FROM products";
+        $query = "SELECT id,name, description, url, visible FROM pages";
         $this->query($query);
         return $this->results();
     }
 
-    public function updateProduct($id, $product)
+    public function updatePage($id, $page)
     {
         if(empty($id)) {
             return false;
         }
-        foreach ($product as $column => $val) {
+        foreach ($page as $column => $val) {
             $columns[] = $column."="."'".$val."'";
         }
         $colum_sql = implode(',',$columns);
-        $query = "UPDATE products SET $colum_sql WHERE id=$id";
+        $query = "UPDATE pages SET $colum_sql WHERE id=$id";
         $this->query($query);
         return $id;
     }

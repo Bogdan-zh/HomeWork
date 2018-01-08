@@ -8,64 +8,65 @@ class Route
 
         $uri = parse_url($_SERVER['REQUEST_URI']);
 
-        $url = explode('/', $uri['path']); 
-        
-        // echo "<pre>"; // раскомментировать по необходимости
-        // print_r($uri);
-        // print_r($url);
+        $parts = explode('/', $uri['path']);
+        // echo "<pre>";
+        // print_r($parts);
         // echo "</pre>";
-        
+
+        // служебные ссылки
         $uri_array = array(
-            '/'          => 'Main',
-            '/products'  => 'Catalog',
-            '/register'  => 'Register',
-            '/login'     => 'Login',
-            '/user'      => 'User',
-            '/cart'      => 'Cart',
-            '/order'     => 'Order',
-            '/about'     => 'About',
-            '/contact'   => 'Contact',
-            '/404'       => 'Err404',
+            '' => 'Main',
+            'catalog' => 'Catalog',
+            'product' => 'Product',
+            'cart' => 'Cart',
+            'order' => 'Order',
+            'contact' => 'Contact',
+            '404' => 'Error404',
+            'login' => 'Login',
+            'register' => 'Register',
+
         );
 
-        $var = $uri['path'];
-       
-        if(array_key_exists($var, $uri_array)) {
+        if(!empty($parts)) {
 
-            if(file_exists($controllers_dir.$uri_array[$uri['path']] . '.php')) {
-                require $controllers_dir.$uri_array[$uri['path']] . '.php'; //controllers/Main.php
-                $controller = new $uri_array[$uri['path']](); // new Main();
+            if(isset($uri_array[$parts[1]])) {
+                // это служебная ссылка
 
-                if(method_exists($controller,'fetch')) {
-                    print $controller->fetch();
-                } else {
-                    Route::error404();
+                if(file_exists($controllers_dir.$uri_array[$parts[1]] . '.php')) {
+                    require $controllers_dir.$uri_array[$parts[1]] . '.php'; //controllers/Main.php
+                    $controller = new $uri_array[$parts[1]](); // new Main();
+
+                    if(method_exists($controller,'fetch')) {
+                        print $controller->fetch();
+                    } else {
+                        Route::error404();
+                    }
                 }
-            } else {
-                Route::error404();
-            }
 
-        } else {
-            Route::error404();
+            } else {
+                if(file_exists($controllers_dir.'Page.php')) {
+                    require $controllers_dir.'Page.php'; //controllers/Main.php
+                    $controller = new Page(); // new Main();
+
+                    if(method_exists($controller,'fetch')) {
+                        print $controller->fetch();
+                    } else {
+                        Route::error404();
+                    }
+                }
+            }
         }
     }
 
+
     public static function error404()
     {
-        $controllers_dir = 'controllers/';
-        $uri = parse_url($_SERVER['REQUEST_URI']);
-        $url = explode('/', $uri['path']); 
-
-        if($url[1] == '404' && $uri['path'] != '') {
-
-            if(file_exists($controllers_dir.'Err404.php')) {
-                require $controllers_dir.'Err404.php';
-                $controller = new Err404();
-
-                if(method_exists($controller,'fetch')) {
-                    print $controller->fetch();
-                }
-            }
+        header("http/1.0 404 not found");
+        require 'controllers/Error404.php';
+        $controler = new Error404();
+        if (method_exists($controler, 'fetch'))
+        {
+            print $controler->fetch();
         }
     }
 }

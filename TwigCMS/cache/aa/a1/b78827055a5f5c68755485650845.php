@@ -31,12 +31,7 @@ class __TwigTemplate_aaa1b78827055a5f5c68755485650845 extends Twig_Template
         echo "\t<h1 style=\"text-align: center;\">";
         echo twig_escape_filter($this->env, (isset($context["title"]) ? $context["title"] : null), "html", null, true);
         echo "</h1>
-\t<style>
-\t\t.login-form {
-\t\t\tmargin: 0 auto;
-\t\t\twidth: 500px;
-\t\t}
-\t</style>
+
 \t<div class=\"login-form\">
 \t\t<div class=\"form-group\">
 \t\t\t<input class=\"form-control login-field\" value=\"\" placeholder=\"Enter your name\" id=\"login-name\" type=\"text\">

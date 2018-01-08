@@ -28,50 +28,132 @@ class __TwigTemplate_a45abed27b4bf41c05eb31f143be9c89 extends Twig_Template
     public function block_content($context, array $blocks = array())
     {
         // line 5
-        echo "<h1>";
-        echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : null), "html", null, true);
+        echo "<h1 style=\"text-align: center;\">";
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "name"), "html", null, true);
         echo "</h1>
-<div class=\"col-lg-12\">
-    <form method=\"post\">
+<div class=\"single_item\">
+
+    <form method=\"post\" enctype=\"multipart/form-data\">
         <input type=\"hidden\" name=\"id\" value=\"";
-        // line 8
+        // line 9
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "id"), "html", null, true);
         echo "\">
         <div class=\"form-group\">
             <label>Название</label>
             <input class=\"form-control\" type=\"text\" name=\"name\" value=\"";
-        // line 11
+        // line 12
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "name"), "html", null, true);
-        echo "\">
+        echo "\" required>
         </div>
         <div class=\"form-group\">
             <label>URL</label>
             <input class=\"form-control\" type=\"text\" name=\"url\" value=\"";
-        // line 15
+        // line 16
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "url"), "html", null, true);
         echo "\">
         </div>
         <div class=\"form-group\">
-            <label>Видимость</label>
-            <input class=\"form-control\" type=\"checkbox\" name=\"visible\" value=\"";
-        // line 19
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "visible"), "html", null, true);
+            <label>Цена</label>
+            <input class=\"form-control\" type=\"text\" name=\"price\" value=\"";
+        // line 20
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "price"), "html", null, true);
         echo "\">
         </div>
         <div class=\"form-group\">
-            <label>Картинка</label>
-            <input class=\"form-control\" type=\"file\" name=\"image\" value=\"\">
+            <label>Количество</label>
+            <input class=\"form-control\" type=\"text\" name=\"amount\" value=\"";
+        // line 24
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "amount"), "html", null, true);
+        echo "\">
+        </div>
+        <div class=\"form-group\">
+            <label>Видимость </label>
+
+            ";
+        // line 29
+        if (($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "visible") == 1)) {
+            // line 30
+            echo "            <input data-toggle=\"toggle\" type=\"checkbox\" value=\"1\" name=\"visible\" checked>
+            ";
+        } else {
+            // line 32
+            echo "            <input data-toggle=\"toggle\" type=\"checkbox\" value=\"1\" name=\"visible\">
+            ";
+        }
+        // line 34
+        echo "
+        </div>
+        <div class=\"form-group\">
+            <label>Хиты продаж </label>
+
+            ";
+        // line 39
+        if (($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "bestseller") == 1)) {
+            // line 40
+            echo "            <input data-toggle=\"toggle\" name=\"bestseller\" type=\"checkbox\" value=\"1\" checked>
+            ";
+        } else {
+            // line 42
+            echo "            <input data-toggle=\"toggle\" name=\"bestseller\" type=\"checkbox\" value=\"1\">
+            ";
+        }
+        // line 44
+        echo "
+        </div>
+        <div class=\"form-group\">
+            <label>Картинка</label><br>
+            
+            ";
+        // line 49
+        if ((!$this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image", array(), "any", true, true))) {
+            // line 50
+            echo "                <img class=\"avatar_in_product\" src=\"../../../uploads/noimage.png\" alt=\"\" width=\"200\">
+            ";
+        } else {
+            // line 52
+            echo "                <img class=\"avatar_in_product\" src=\"../../../uploads/";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image"), "html", null, true);
+            echo "\" alt=\"\" width=\"200\">
+            ";
+        }
+        // line 54
+        echo "            
+            <input class=\"form-control\" type=\"file\" name=\"files[]\" value=\"\">
+            <input class=\"btn btn-lg btn-danger\" style=\"margin-top: 10px;\" type=\"submit\" name=\"del\" value=\"Удалить картинку\">
         </div>
         <div class=\"form-group\">
             <label>Описание</label>
             <textarea class=\"form-control\" name=\"description\">";
-        // line 27
+        // line 60
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "description"), "html", null, true);
         echo "</textarea>
         </div>
-
-        <input type=\"submit\" name=\"save\" value=\"Сохранить\">
+        <div class=\"form-group\">
+            <label>Категория: </label> <!-- ПОКА НЕ РАБОТАЕТ  -->
+            <select>
+                ";
+        // line 65
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) ? $context["categories"] : null));
+        foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
+            // line 66
+            echo "                    <option name=\"category\" value=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "name"), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "name"), "html", null, true);
+            echo "</option>
+                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
+        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        // line 68
+        echo "            </select>
+        </div>
+        
+        <input type=\"submit\" name=\"save\" value=\"Сохранить\" class=\"btn btn-block btn-lg btn-primary\">
     </form>
+
 </div>
 ";
     }
@@ -88,6 +170,6 @@ class __TwigTemplate_a45abed27b4bf41c05eb31f143be9c89 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  69 => 27,  58 => 19,  51 => 15,  44 => 11,  38 => 8,  31 => 5,  28 => 4,);
+        return array (  151 => 68,  140 => 66,  136 => 65,  128 => 60,  120 => 54,  114 => 52,  110 => 50,  108 => 49,  101 => 44,  97 => 42,  93 => 40,  91 => 39,  84 => 34,  80 => 32,  76 => 30,  74 => 29,  66 => 24,  59 => 20,  52 => 16,  45 => 12,  39 => 9,  31 => 5,  28 => 4,);
     }
 }

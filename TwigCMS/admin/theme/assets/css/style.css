@@ -1,0 +1,126 @@
+.products td, .categories td, .pages td {
+	vertical-align: middle !important;
+}
+
+.avatar_in_product {
+	margin-bottom: 10px;
+}
+
+.checkbox {
+	width: 15px;
+	height: 15px;
+	outline: none;
+}
+
+.table td:first-child {
+	width: 35px;
+}
+
+.select {
+	display: flex;
+	justify-content: space-between;
+}
+
+.home-title {
+	display: flex;
+}
+
+.aside {
+	width: 200px;
+	height: calc(100vh - 50px);
+	background-color: #2B303B;
+	position: fixed;
+	color: white;
+	font-weight: 700px;
+}
+
+.contain {
+	margin-left: 200px;
+	flex-grow: 1;
+	padding: 0 35px 30px;
+}
+
+.aside ul {
+	padding: 0;
+}
+
+.aside ul li {
+	list-style: none;
+}
+
+.aside ul li a {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: 13px 20px;
+	color: white;
+	font-size: 16px;
+}
+
+.aside ul li a:hover {
+	background-color: #313641;
+}
+
+.navbar {
+	background-color: #272B35;
+}
+
+.go_to_site {
+	border-radius: 2px;
+	background-color: #6D5CAE;
+}
+
+.containe {
+	padding: 0 70px;
+}
+
+.obertka {
+	border-radius: 3px;
+	margin-top: 20px;
+	padding: 0 20px;
+	background-color: #F7F7F9;
+	border: 1px solid #CCCCCC;
+}
+
+.obertka .table th {
+	border: none;
+}
+
+.add_something {
+	background-color: #1ABC9C;
+	border-radius: 6px;
+	padding: 10px 13px;
+	color: white;
+}
+.add_something:before {
+	content: "+ ";
+}
+
+
+.add_something:hover {
+	color: white;
+	background-color: #22C4A4;
+}
+
+.avatars {
+	margin-right: 5px;
+	width: 40px;
+}
+
+.hidden_del {
+	display: none;
+}
+
+.label_for_hidden_del {
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	font-size: 20px;
+	color: grey;
+	font-weight: bold;
+}
+
+.label_for_hidden_del:hover {
+	color: red;
+}

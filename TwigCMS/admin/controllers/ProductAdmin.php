@@ -3,37 +3,60 @@ class ProductAdmin extends CoreAdmin
 {
     public function fetch()
     {
-        $products = new Products();
-        $request = new Request();
+        $products = new Products(); // подключаем модель Товары
+        $request = new Request();  // подключаем модель Запрос
+        $database = new Database();
         ////////////////////////////
         $product = new stdClass();
 
+        $categories = new Categories();
+        $all_categories = $categories->getCategories();
+
         if($request->method() == 'POST') {
-            $product->name = $request->post('name');
-            $product->description = $request->post('description');
-            $product->visible = $request->post('visible','integer');
-            $product->image = $request->post('image');
-            if(empty($request->post('url'))) {
-                $product->url = CoreAdmin::translit($request->post('name'));
-            } else {
-                $product->url = $request->post('url');
+            if($request->post('name')) {
+                $product->name = $request->post('name');
+                $product->price = $request->post('price');
+                $product->amount = $request->post('amount');
+                $product->description = $request->post('description');
+                $product->visible = $request->post('visible','integer');
+                $product->bestseller = $request->post('bestseller','integer');
+
+                if(empty($request->post('url'))) {
+                    $product->url = CoreAdmin::translit($request->post('name'));
+                } else {
+                    $product->url = $request->post('url');
+                }
+
+                if($request->post('id','integer')) {
+                    $id = $products->updateProduct($request->post('id','integer'),$product);
+
+                } else {
+                    //Добавление товара
+                    $id = $products->addProduct($product);
+                }
+
+                Images::uploadImage($id, 'products'); // загружается картинка товара
+
+                if($request->post('del')) { // удаляем картинку товара
+                    Images::delImages($id, 'products');
+                }
+
+                $product = $products->getProduct($id);
+            } else { 
+                echo 'Введите название товара';
             }
-
-            if($request->post('id','integer')) {
-                $id = $products->updateProduct($request->post('id','integer'),$product);
-
-            } else {
-                //Добавление товара
-                $id = $products->addProduct($product);
-            }
-
-            $product = $products->getProduct($id);
+            //echo "<meta http-equiv=\"refresh\" content=\"0;#\">";
+        } elseif($request->get('id', 'integer')) {
+            $product = $products->getProduct($request->get('id', 'integer'));
         }
 
         $array_vars = array(
             'product' => $product,
+            'categories' => $all_categories,
         );
 
         return $this->view->render('product.html',$array_vars);
     }
+
+
 }

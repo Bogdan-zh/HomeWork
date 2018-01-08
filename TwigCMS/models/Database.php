@@ -26,7 +26,9 @@ class Database
         if (empty($query))
         {
             return false;
-        } else {
+        }
+        else
+        {
             return $this->res = $this->mysqli->query($query);
         }
     }

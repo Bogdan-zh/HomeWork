@@ -42,7 +42,7 @@ class __TwigTemplate_3f56a422c1f4ee0f3e80b7fe229347f6 extends Twig_Template
     public function block_sidebar($context, array $blocks = array())
     {
         // line 13
-        echo "<h1>Sidebar</h1>
+        echo "<h1>Sidebasdasdads334534ar</h1>
 
 ";
     }

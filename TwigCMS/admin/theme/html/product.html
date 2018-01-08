@@ -2,39 +2,74 @@
 
 
 {% block content %}
-<style>
-    .addproduct {
-        width: 600px;
-        margin: 0 auto;
-    }
-</style>
+<h1 style="text-align: center;">{{ product.name }}</h1>
+<div class="single_item">
 
-<h1>{{ name }}</h1>
-<div class="col-lg-12">
-    <form class="addproduct" method="post">
+    <form method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="{{ product.id }}">
         <div class="form-group">
             <label>Название</label>
-            <input class="form-control" type="text" name="name" value="{{ product.name }}">
+            <input class="form-control" type="text" name="name" value="{{ product.name }}" required>
         </div>
         <div class="form-group">
             <label>URL</label>
             <input class="form-control" type="text" name="url" value="{{ product.url }}">
         </div>
         <div class="form-group">
-            <label>Видимость</label>
-            <input class="form-control" type="checkbox" name="visible" value="{{ product.visible }}">
+            <label>Цена</label>
+            <input class="form-control" type="text" name="price" value="{{ product.price }}">
         </div>
         <div class="form-group">
-            <label>Картинка</label>
-            <input class="form-control" type="file" name="image" value="">
+            <label>Количество</label>
+            <input class="form-control" type="text" name="amount" value="{{ product.amount }}">
+        </div>
+        <div class="form-group">
+            <label>Видимость </label>
+
+            {% if product.visible == 1 %}
+            <input data-toggle="toggle" type="checkbox" value="1" name="visible" checked>
+            {% else %}
+            <input data-toggle="toggle" type="checkbox" value="1" name="visible">
+            {% endif %}
+
+        </div>
+        <div class="form-group">
+            <label>Хиты продаж </label>
+
+            {% if product.bestseller == 1 %}
+            <input data-toggle="toggle" name="bestseller" type="checkbox" value="1" checked>
+            {% else %}
+            <input data-toggle="toggle" name="bestseller" type="checkbox" value="1">
+            {% endif %}
+
+        </div>
+        <div class="form-group">
+            <label>Картинка</label><br>
+            
+            {% if product.image is not defined %}
+                <img class="avatar_in_product" src="../../../uploads/noimage.png" alt="" width="200">
+            {% else %}
+                <img class="avatar_in_product" src="../../../uploads/{{ product.image }}" alt="" width="200">
+            {% endif %}
+            
+            <input class="form-control" type="file" name="files[]" value="">
+            <input class="btn btn-lg btn-danger" style="margin-top: 10px;" type="submit" name="del" value="Удалить картинку">
         </div>
         <div class="form-group">
             <label>Описание</label>
             <textarea class="form-control" name="description">{{ product.description }}</textarea>
         </div>
-
-        <input type="submit" name="save" value="Сохранить">
+        <div class="form-group">
+            <label>Категория: </label> <!-- ПОКА НЕ РАБОТАЕТ  -->
+            <select>
+                {% for category in categories %}
+                    <option name="category" value="{{ category.name }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <input type="submit" name="save" value="Сохранить" class="btn btn-block btn-lg btn-primary">
     </form>
+
 </div>
 {% endblock %}

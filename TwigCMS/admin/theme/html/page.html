@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+<h1 style="text-align: center;">{{ page.name }}</h1>
+<div class="">
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{ page.id }}">
+        <div class="form-group">
+            <label>Название</label>
+            <input class="form-control" type="text" name="name" value="{{ page.name }}" required>
+        </div>
+        <div class="form-group">
+            <label>URL</label>
+            <input class="form-control" type="text" name="url" value="{{ page.url }}">
+        </div>
+        <div class="form-group">
+            <label>Отображать в меню</label>
+
+            {% if page.visible == 1 %}
+            <input data-toggle="toggle" type="checkbox" value="1" name="visible" checked>
+            {% else %}
+            <input data-toggle="toggle" type="checkbox" value="1" name="visible">
+            {% endif %}
+
+        </div>
+        <div class="form-group">
+            <label>Описание</label>
+            <textarea class="form-control" name="description">{{ page.description }}</textarea>
+        </div>
+
+        <input class="btn btn-block btn-lg btn-primary" type="submit" name="save" value="Сохранить">
+    </form>
+</div>
+{% endblock %}
