@@ -3,11 +3,11 @@ class Main extends Core
 {
     public function fetch()
     {
-    	$categories = new Categories();
-		$all_categories = $categories->getCategories();
+        $categories = new Categories();
+        $all_categories = $categories->getCategories();
 
-		$products = new Products();
-		$products_catalog = $products->getProducts();
+        $products = new Products();
+        $products_catalog = $products->getProducts();
 
         $pages = new Pages();
         $all_pages = $pages->getPages();

@@ -1,14 +1,14 @@
 <?php
 class Lists
 {
-	public static function enDisDel($table)
-	{
-		$database = new Database();
-		$request = new Request();
+    public static function enDisDel($table)
+    {
+        $database = new Database();
+        $request = new Request();
 
-		if($request->post('send')) {
-			$url = $_SERVER['HTTP_REFERER'];
-        	$refresh = header("Location: $url");
+        if($request->post('send')) {
+            $url = $_SERVER['HTTP_REFERER'];
+            $refresh = header("Location: $url");
 
             $id = $request->post('check');
             if($request->post('select') == 'enable') {
@@ -34,7 +34,7 @@ class Lists
                 }
             }
         }
-	}
+    }
 
     public static function singleDel($table)
     {

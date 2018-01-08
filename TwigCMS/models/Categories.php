@@ -1,7 +1,7 @@
 <?php
 class Categories extends Database
 {
-	/*public function __construct()
+    /*public function __construct()
     {
         parent::__construct();
     }*/

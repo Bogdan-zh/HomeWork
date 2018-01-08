@@ -6,56 +6,56 @@
 
 <a class="add_something" href="/admin/category">Добавить категорию</a>
 <div class="obertka">
-	<form method="post">
-		<table class="table table-condensed table-hover">
-			
-			<tr>
-				<th></th>
-				<th style="width: 45px;">id</th>
-				<th>Название</th>
-				<th>Описание</th>
-				<th>Видимость</th>
-				<th></th>
-			</tr>
+    <form method="post">
+        <table class="table table-condensed table-hover">
+            
+            <tr>
+                <th></th>
+                <th style="width: 45px;">id</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Видимость</th>
+                <th></th>
+            </tr>
 
-			{% for category in categories %}
-			<tr class="categories">
-				<td>
-					<input class="checkbox" type="checkbox" name="check[]" value="{{ category.id }}">
-				</td>
-				<td>{{ category.id }}</td>
-				<td>
-					<a href="/admin/category?id={{ category.id }}">
-						<img class="avatars" src="../../../uploads/{{ category.image }}" alt="" width="40">
-						{{ category.name }}
-					</a>
-				</td>
-				<td>{{ category.description }}</td>
-				<td>
-					{% if category.visible == 1 %}
-					<input disabled data-toggle="toggle" type="checkbox" value="1" name="visible" checked>
-					{% else %}
-					<input disabled data-toggle="toggle" type="checkbox" value="1" name="visible">
-					{% endif %}
-				</td>
-				<td>
-					<label class="label_for_hidden_del">X
-						<input class="hidden_del" type="submit" name="del[]" value="{{ category.id }}">
-					</label>
-				</td>
-			</tr>
-			{% endfor %}
-			
-		</table> 
-		<div class="select">
-			<select name="select">
-				<option value="enable">Включить</option>
-				<option value="disable">Выключить</option>
-				<option value="delete">Удалить</option>
-			</select>
-			<input class="btn btn-lg btn-success" type="submit" name="send" value="Применить"> 
-		</div>
-	</form>
+            {% for category in categories %}
+            <tr class="categories">
+                <td>
+                    <input class="checkbox" type="checkbox" name="check[]" value="{{ category.id }}">
+                </td>
+                <td>{{ category.id }}</td>
+                <td>
+                    <a href="/admin/category?id={{ category.id }}">
+                        <img class="avatars" src="../../../uploads/{{ category.image }}" alt="" width="40">
+                        {{ category.name }}
+                    </a>
+                </td>
+                <td>{{ category.description }}</td>
+                <td>
+                    {% if category.visible == 1 %}
+                    <input disabled data-toggle="toggle" type="checkbox" value="1" name="visible" checked>
+                    {% else %}
+                    <input disabled data-toggle="toggle" type="checkbox" value="1" name="visible">
+                    {% endif %}
+                </td>
+                <td>
+                    <label class="label_for_hidden_del">X
+                        <input class="hidden_del" type="submit" name="del[]" value="{{ category.id }}">
+                    </label>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </table> 
+        <div class="select">
+            <select name="select">
+                <option value="enable">Включить</option>
+                <option value="disable">Выключить</option>
+                <option value="delete">Удалить</option>
+            </select>
+            <input class="btn btn-lg btn-success" type="submit" name="send" value="Применить"> 
+        </div>
+    </form>
 </div>
 
 {% endblock %}

@@ -3,8 +3,6 @@ class MainAdmin extends CoreAdmin
 {
     public function fetch()
     {
-
-
         $array_vars = array(
             'name' => 'ADMIN',
         );

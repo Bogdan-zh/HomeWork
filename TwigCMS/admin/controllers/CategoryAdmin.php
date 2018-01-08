@@ -33,7 +33,7 @@ class CategoryAdmin extends CoreAdmin
             Images::uploadImage($id, 'categories'); // загружается картинка
 
             if($request->post('del')) { // удаляем картинку
-            	Images::delImages($id, 'categories');
+                Images::delImages($id, 'categories');
             }
 
             $category = $categories->getCategory($id);
