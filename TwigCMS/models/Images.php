@@ -38,7 +38,6 @@ class Images
             $array_ext = array('jpg','jpeg','png','gif');
             $files = $_FILES['files'];
             $cnt = count($files['name']);
-            $id = $request->post('id');
 
             $uri = parse_url($_SERVER['REQUEST_URI']);
             $parts = explode('/', $uri['path']);
