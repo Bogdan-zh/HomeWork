@@ -56,4 +56,20 @@ class Products extends Database
         return $id;
     }
 
+    public function productsCategories($id, $choice)
+    {   
+        $request = new Request();
+        $category_id = $request->post('categories');
+        //$category_id = $_POST['categories'];
+        
+        if($choice == 'set') {
+            $query = "INSERT INTO `products-categories`(product_id, category_id) VALUES ('$id', '$category_id')";
+        } elseif($choice == 'update') {
+            $query = "UPDATE `products-categories` SET category_id='$category_id' WHERE product_id='$id'";
+        }
+
+        $this->query($query);
+        
+    }
+
 }

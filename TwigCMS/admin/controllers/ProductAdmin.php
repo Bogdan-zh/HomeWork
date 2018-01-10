@@ -28,12 +28,13 @@ class ProductAdmin extends CoreAdmin
                 }
 
                 if($request->post('id','integer')) {
-                    $id = $products->updateProduct($request->post('id','integer'),$product);
+                    $id = $products->updateProduct($request->post('id','integer'),$product); // обновляем товар
 
                 } else {
-                    //Добавление товара
-                    $id = $products->addProduct($product);
+                    $id = $products->addProduct($product); //Добавление товара
+                    $products->productsCategories($id, 'set'); // устанавливаем категорию для нового товара
                 }
+                $products->productsCategories($id, 'update'); // обновляем категорию у товара
 
                 Images::uploadImage($id, 'products'); // загружается картинка товара
 
@@ -45,9 +46,8 @@ class ProductAdmin extends CoreAdmin
             } else { 
                 echo 'Введите название товара';
             }
-            //echo "<meta http-equiv=\"refresh\" content=\"0;#\">";
         } elseif($request->get('id', 'integer')) {
-            $product = $products->getProduct($request->get('id', 'integer'));
+            $product = $products->getProduct($request->get('id', 'integer')); // просто зашли на товар
         }
 
         $array_vars = array(
