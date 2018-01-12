@@ -17,11 +17,17 @@
 }
 
 .select {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .home-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
@@ -36,7 +42,9 @@
 
 .contain {
     margin-left: 200px;
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
     padding: 0 35px 30px;
 }
 
@@ -49,8 +57,12 @@
 }
 
 .aside ul li a {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     width: 100%;
     padding: 13px 20px;
     color: white;
