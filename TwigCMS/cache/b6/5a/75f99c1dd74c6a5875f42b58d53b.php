@@ -35,39 +35,39 @@ class __TwigTemplate_b65a75f99c1dd74c6a5875f42b58d53b extends Twig_Template
     <h3>Хиты продаж</h3>
 
     <div class=\"bestsellers\">
-    \t";
+        ";
         // line 9
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["products"]) ? $context["products"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
             // line 10
-            echo "\t    \t";
+            echo "            ";
             if ((($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "visible") == 1) && ($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "bestseller") == 1))) {
                 // line 11
-                echo "\t            <div class=\"box\">
-\t            \t<img class=\"bestseller_img\" src=\"theme/assets/img/hit.png\" alt=\"\">
-\t            \t<div class=\"box_avatar\">
-\t            \t\t<img src=\"../uploads/";
+                echo "                <div class=\"box\">
+                    <img class=\"bestseller_img\" src=\"theme/assets/img/hit.png\" alt=\"\">
+                    <div class=\"box_avatar\">
+                        <img src=\"../uploads/";
                 // line 14
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image"), "html", null, true);
                 echo "\" alt=\"\">
-\t            \t</div>
-\t            \t<div class=\"box_name\">
-\t            \t\t<a href=\"products/";
+                    </div>
+                    <div class=\"box_name\">
+                        <a href=\"products/";
                 // line 17
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "url"), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "name"), "html", null, true);
                 echo "</a>
-\t            \t</div>
-\t            \t<div class=\"box_price\">
-\t            \t\t";
+                    </div>
+                    <div class=\"box_price\">
+                        ";
                 // line 20
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "price"), "html", null, true);
                 echo " грн
-\t            \t</div>
-\t            </div>
-\t        ";
+                    </div>
+                </div>
+            ";
             }
             // line 24
             echo "        ";
@@ -77,7 +77,7 @@ class __TwigTemplate_b65a75f99c1dd74c6a5875f42b58d53b extends Twig_Template
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
         // line 25
         echo "    </div>
-\t
+    
 
 ";
     }
@@ -87,38 +87,38 @@ class __TwigTemplate_b65a75f99c1dd74c6a5875f42b58d53b extends Twig_Template
     {
         // line 32
         echo "<!-- <div class=\"aside\">
-\t<ul>
-\t\t";
+    <ul>
+        ";
         // line 34
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) ? $context["categories"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
             // line 35
-            echo "\t\t";
+            echo "        ";
             if (($this->getAttribute((isset($context["category"]) ? $context["category"] : null), "visible") == 1)) {
                 // line 36
-                echo "\t\t<li>
-\t\t\t<a href=\"catalog/";
+                echo "        <li>
+            <a href=\"catalog/";
                 // line 37
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "url"), "html", null, true);
                 echo "\" class=\"\">
-\t\t\t\t<span>";
+                <span>";
                 // line 38
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "name"), "html", null, true);
                 echo "</span>
-\t\t\t</a>
-\t\t</li>
-\t\t";
+            </a>
+        </li>
+        ";
             }
             // line 42
-            echo "\t\t";
+            echo "        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
         // line 43
-        echo "\t</ul>
-\t
+        echo "    </ul>
+    
 </div> -->
 ";
     }

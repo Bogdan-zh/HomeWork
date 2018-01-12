@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 08 2018 г., 14:31
+-- Время создания: Янв 12 2018 г., 11:37
 -- Версия сервера: 5.6.37
 -- Версия PHP: 5.5.38
 
@@ -44,8 +44,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `url`, `description`, `visible`, `created_at`, `updated_at`, `image`, `parent_id`) VALUES
-(1, 'Гаджеты', 'gadzhety', 'вавапвап', 1, '2017-12-29 20:24:53', '2018-01-07 12:50:14', 'id1_category__Lighthouse_ec67aef820.jpg', 0),
-(2, 'Мебель для дома', 'mebel-dlya-doma', 'описание', 1, '2017-12-29 20:33:50', '2018-01-07 12:51:02', 'noimage.png', 0);
+(1, 'Без категории', 'bez-kategorii', '', 0, '2018-01-08 15:18:12', '2018-01-08 15:18:12', 'noimage.png', 0),
+(2, 'Гаджеты', 'gadzhety', 'описание категории', 1, '2018-01-08 15:18:48', '2018-01-12 08:34:51', 'id2_category__Lighthouse_7bef77e0b0.jpg', 0),
+(3, 'Мебель для дома', 'mebel-dlya-doma', 'описание', 1, '2018-01-08 15:19:58', '2018-01-08 15:20:21', 'noimage.png', 0);
 
 -- --------------------------------------------------------
 
@@ -58,14 +59,6 @@ CREATE TABLE `images` (
   `filename` varchar(255) NOT NULL DEFAULT '''''',
   `product_id` int(255) NOT NULL DEFAULT '0'
 ) ;
-
---
--- Дамп данных таблицы `images`
---
-
-INSERT INTO `images` (`id`, `filename`, `product_id`) VALUES
-(2, '4_green_06411927c5.png', 4),
-(3, '2_08022009_ef09346407.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -134,9 +127,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `amount`, `url`, `visible`, `created_at`, `updated_at`, `bestseller`, `image`) VALUES
-(1, 'Товар 1', 'Описание товара №1 ', 100.00, 1000, 'tovar-1', 1, '2017-12-28 09:58:19', '2018-01-04 22:07:07', 1, 'id1_product__kot_12e67f3f35.png'),
-(2, 'Товар 2', 'описание товара 2', 22.00, 50, 'tovar-2', 1, '2017-12-28 12:59:46', '2018-01-06 12:41:13', 1, 'noimage.png'),
-(4, 'gfhf', 'еще одно описание', 2.50, 2, 'gfhf', 1, '2017-12-28 13:00:58', '2018-01-06 19:41:44', 1, 'id4_product__Koala_121d67d6cc.jpg');
+(1, 'Товар 1', 'описание товара 1', 100.00, 25, 'tovar-1', 1, '2018-01-12 08:27:53', '2018-01-12 08:33:59', 1, 'id1_product__kot_d9f3f25534.png'),
+(2, 'товар 2', '', 55.00, 1000, 'tovar-2', 1, '2018-01-12 08:28:25', '2018-01-12 08:28:25', 1, 'noimage.png'),
+(3, 'еще товар', '', 2.50, 20, 'esche-tovar', 1, '2018-01-12 08:30:12', '2018-01-12 08:34:09', 1, 'id3_product__Koala_136142b7fb.jpg');
 
 -- --------------------------------------------------------
 
@@ -149,6 +142,15 @@ CREATE TABLE `products-categories` (
   `product_id` int(11) NOT NULL DEFAULT '0',
   `category_id` int(11) NOT NULL DEFAULT '0'
 ) ;
+
+--
+-- Дамп данных таблицы `products-categories`
+--
+
+INSERT INTO `products-categories` (`id`, `product_id`, `category_id`) VALUES
+(1, 1, 2),
+(2, 2, 3),
+(3, 3, 3);
 
 -- --------------------------------------------------------
 

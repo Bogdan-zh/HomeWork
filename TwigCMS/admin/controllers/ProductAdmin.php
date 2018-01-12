@@ -28,18 +28,19 @@ class ProductAdmin extends CoreAdmin
                 }
 
                 if($request->post('id','integer')) {
-                    $id = $products->updateProduct($request->post('id','integer'),$product); // обновляем товар
-
+                    $id = $products->updateProduct($request->post('id','integer'),$product); // обновляем изменения товара
                 } else {
-                    $id = $products->addProduct($product); //Добавление товара
+                    $id = $products->addProduct($product); //Добавление нового товара
                     $products->productsCategories($id, 'set'); // устанавливаем категорию для нового товара
                 }
-                $products->productsCategories($id, 'update'); // обновляем категорию у товара
+                $products->productsCategories($id, 'update'); // обновляем категорию товара
+
+                //$products->checkProductCategory($id);
 
                 Images::uploadImage($id, 'products'); // загружается картинка товара
 
-                if($request->post('del')) { // удаляем картинку товара
-                    Images::delImages($id, 'products');
+                if($request->post('del')) { 
+                    Images::delImages($id, 'products'); // удаляем картинку товара
                 }
 
                 $product = $products->getProduct($id);
@@ -47,7 +48,7 @@ class ProductAdmin extends CoreAdmin
                 echo 'Введите название товара';
             }
         } elseif($request->get('id', 'integer')) {
-            $product = $products->getProduct($request->get('id', 'integer')); // просто зашли на товар
+            $product = $products->getProduct($request->get('id', 'integer')); // просто заходим в настройки товара
         }
 
         $array_vars = array(

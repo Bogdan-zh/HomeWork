@@ -129,16 +129,16 @@ class __TwigTemplate_a45abed27b4bf41c05eb31f143be9c89 extends Twig_Template
         echo "</textarea>
         </div>
         <div class=\"form-group\">
-            <label>Категория: </label> <!-- ПОКА НЕ РАБОТАЕТ  -->
-            <select>
+            <label>Категория: </label> <!-- присваивает категорию, но не фиксирует ее в селекте  -->
+            <select name=\"categories\">
                 ";
         // line 65
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) ? $context["categories"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
             // line 66
-            echo "                    <option name=\"category\" value=\"";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "name"), "html", null, true);
+            echo "                    <option checked value=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "id"), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "name"), "html", null, true);
             echo "</option>

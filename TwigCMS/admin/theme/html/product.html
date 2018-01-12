@@ -60,10 +60,10 @@
             <textarea class="form-control" name="description">{{ product.description }}</textarea>
         </div>
         <div class="form-group">
-            <label>Категория: </label> <!-- ПОКА НЕ РАБОТАЕТ  -->
-            <select>
+            <label>Категория: </label> <!-- присваивает категорию, но не фиксирует ее в селекте  -->
+            <select name="categories">
                 {% for category in categories %}
-                    <option name="category" value="{{ category.name }}">{{ category.name }}</option>
+                    <option checked value="{{ category.id }}">{{ category.name }}</option>
                 {% endfor %}
             </select>
         </div>

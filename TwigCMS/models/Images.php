@@ -1,20 +1,20 @@
 <?php
 class Images
 {
-    public static function getImages($id)
-    {
-        $database = new Database();
+    // public static function getImages($id)
+    // {
+    //     $database = new Database();
 
-        $query = "SELECT filename FROM images WHERE product_id = $id";
-        $this->res = $database->query($query);
-        return $this->res;
-    }
+    //     $query = "SELECT filename FROM images WHERE product_id = $id";
+    //     $this->res = $database->query($query);
+    //     return $this->res;
+    // }
 
     public static function delImages($id, $table) // удаляет физически картинку
     { 
         $database = new Database();
 
-        $query = "SELECT image FROM $table WHERE id='$id'";
+        $query = "SELECT image FROM $table WHERE id='$id' LIMIT 1";
         $result = $database->query($query);
         $res = $result->fetch_assoc();
         $old_image = $res['image'];
@@ -47,7 +47,7 @@ class Images
                 $ext = pathinfo($files['name'][$i], PATHINFO_EXTENSION);
                 if(in_array($ext, $array_ext)) {
                     $hash = substr(md5($name.date('Y-m-d-h-i-s').rand(1,1000)),0,10);
-                    $filename = 'id'.$request->post('id').'_'."$parts[2]".'__'.$coreadmin->filesTranslit($name)."_".$hash.".".$ext;
+                    $filename = 'id'.$id.'_'."$parts[2]".'__'.$coreadmin->filesTranslit($name)."_".$hash.".".$ext;
                     if(move_uploaded_file($files['tmp_name'][$i], '../uploads/'.$filename)) {
                         
                         Images::delImages($id, $table);

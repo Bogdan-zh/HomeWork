@@ -56,6 +56,7 @@ class Products extends Database
         return $id;
     }
 
+    /////////////////////////
     public function productsCategories($id, $choice)
     {   
         $request = new Request();
@@ -70,6 +71,17 @@ class Products extends Database
 
         $this->query($query);
         
+    }
+
+    public function checkProductCategory($id)
+    {
+        $database = new Database();
+
+        $query = "SELECT category_id FROM `products-categories` WHERE product_id='$id' LIMIT 1";
+        $result = $database->query($query);
+        $res = $result->fetch_assoc();
+        $getCheckedCategoryId = $res['category_id'];
+        return $getCheckedCategoryId;
     }
 
 }
