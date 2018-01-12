@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 12 2018 г., 19:23
+-- Время создания: Янв 12 2018 г., 21:58
 -- Версия сервера: 5.6.37
 -- Версия PHP: 5.5.38
 
@@ -38,7 +38,7 @@ CREATE TABLE `categories` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `image` varchar(255) NOT NULL DEFAULT 'noimage.png',
   `parent_id` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `categories`
@@ -47,7 +47,8 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `name`, `url`, `description`, `visible`, `created_at`, `updated_at`, `image`, `parent_id`) VALUES
 (1, 'Без категории', 'bez-kategorii', '', 0, '2018-01-08 15:18:12', '2018-01-08 15:18:12', 'noimage.png', 0),
 (2, 'Гаджеты', 'gadzhety', 'описание категории', 1, '2018-01-08 15:18:48', '2018-01-12 08:34:51', 'id2_category__Lighthouse_7bef77e0b0.jpg', 0),
-(3, 'Мебель для дома', 'mebel-dlya-doma', 'описание', 1, '2018-01-08 15:19:58', '2018-01-08 15:20:21', 'noimage.png', 0);
+(3, 'Мебель для дома', 'mebel-dlya-doma', 'описание', 1, '2018-01-08 15:19:58', '2018-01-08 15:20:21', 'noimage.png', 0),
+(4, 'Детские игрушки', 'detskie-igrushki', '', 1, '2018-01-12 18:30:09', '2018-01-12 18:30:09', 'noimage.png', 0);
 
 -- --------------------------------------------------------
 
@@ -59,7 +60,7 @@ CREATE TABLE `images` (
   `id` int(11) NOT NULL,
   `filename` varchar(255) NOT NULL DEFAULT '''''',
   `product_id` int(255) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,7 @@ CREATE TABLE `orders` (
   `email` varchar(255) NOT NULL DEFAULT '''''',
   `phone` varchar(255) NOT NULL DEFAULT '''''',
   `status_id` tinyint(4) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -93,7 +94,7 @@ CREATE TABLE `pages` (
   `visible` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `pages`
@@ -121,7 +122,7 @@ CREATE TABLE `products` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `bestseller` tinyint(1) NOT NULL DEFAULT '0',
   `image` varchar(255) NOT NULL DEFAULT 'noimage.png'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `products`
@@ -133,33 +134,33 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `amount`, `url`, `
 (3, 'еще товар', '', 2.50, 20, 'esche-tovar', 1, '2018-01-12 08:30:12', '2018-01-12 08:34:09', 1, 'id3_product__Koala_136142b7fb.jpg'),
 (4, 'dfggdf', '', 0.00, 4, 'dfggdf', 1, '2018-01-12 09:12:54', '2018-01-12 09:15:05', 1, 'noimage.png'),
 (5, 'dgdgdas', '', 0.00, 2, 'dgdgdas', 1, '2018-01-12 09:13:03', '2018-01-12 09:16:44', 1, 'noimage.png'),
-(6, 'dddddd', '', 0.00, 4, 'dddddd', 1, '2018-01-12 09:13:11', '2018-01-12 09:16:50', 1, 'noimage.png'),
+(6, 'dddddd', '', 220.00, 4, 'dddddd', 1, '2018-01-12 09:13:11', '2018-01-12 16:31:01', 1, 'noimage.png'),
 (7, 'sdfds', '', 0.00, 0, 'sdfds', 1, '2018-01-12 09:13:18', '2018-01-12 09:13:18', 1, 'noimage.png'),
 (8, 'dfgdfg', '', 5.00, 33, 'dfgdfg', 1, '2018-01-12 09:16:04', '2018-01-12 11:26:19', 1, 'noimage.png');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `products-categories`
+-- Структура таблицы `products_categories`
 --
 
-CREATE TABLE `products-categories` (
+CREATE TABLE `products_categories` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL DEFAULT '0',
   `category_id` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `products-categories`
+-- Дамп данных таблицы `products_categories`
 --
 
-INSERT INTO `products-categories` (`id`, `product_id`, `category_id`) VALUES
+INSERT INTO `products_categories` (`id`, `product_id`, `category_id`) VALUES
 (1, 1, 2),
 (2, 2, 3),
 (3, 3, 3),
 (4, 4, 1),
 (5, 5, 1),
-(6, 6, 1),
+(6, 6, 2),
 (7, 7, 1),
 (8, 8, 1);
 
@@ -175,7 +176,7 @@ CREATE TABLE `purchases` (
   `product_name` varchar(255) NOT NULL DEFAULT '''''',
   `price` float(11,2) NOT NULL DEFAULT '0.00',
   `amount` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -187,7 +188,7 @@ CREATE TABLE `statuses` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL DEFAULT 'Новый',
   `color` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `statuses`
@@ -213,7 +214,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL DEFAULT '''''',
   `phone` varchar(255) NOT NULL DEFAULT '''''',
   `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Индексы сохранённых таблиц
@@ -250,9 +251,9 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `products-categories`
+-- Индексы таблицы `products_categories`
 --
-ALTER TABLE `products-categories`
+ALTER TABLE `products_categories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -281,7 +282,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT для таблицы `images`
 --
@@ -303,9 +304,9 @@ ALTER TABLE `pages`
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT для таблицы `products-categories`
+-- AUTO_INCREMENT для таблицы `products_categories`
 --
-ALTER TABLE `products-categories`
+ALTER TABLE `products_categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT для таблицы `purchases`
