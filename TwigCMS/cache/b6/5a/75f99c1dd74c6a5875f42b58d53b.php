@@ -42,7 +42,7 @@ class __TwigTemplate_b65a75f99c1dd74c6a5875f42b58d53b extends Twig_Template
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
             // line 10
             echo "            ";
-            if ((($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "visible") == 1) && ($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "bestseller") == 1))) {
+            if ((((($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "visible") == 1) && ($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "bestseller") == 1)) && ($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "amount") > 0)) && ((isset($context["i"]) ? $context["i"] : null) < 6))) {
                 // line 11
                 echo "                <div class=\"box\">
                     <img class=\"bestseller_img\" src=\"theme/assets/img/hit.png\" alt=\"\">
@@ -67,56 +67,60 @@ class __TwigTemplate_b65a75f99c1dd74c6a5875f42b58d53b extends Twig_Template
                 echo " грн
                     </div>
                 </div>
-            ";
+                ";
+                // line 23
+                $context["i"] = ((isset($context["i"]) ? $context["i"] : null) + 1);
+                // line 24
+                echo "            ";
             }
-            // line 24
+            // line 25
             echo "        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 25
+        // line 26
         echo "    </div>
     
 
 ";
     }
 
-    // line 31
+    // line 32
     public function block_sidebar($context, array $blocks = array())
     {
-        // line 32
+        // line 33
         echo "<!-- <div class=\"aside\">
     <ul>
         ";
-        // line 34
+        // line 35
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) ? $context["categories"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
-            // line 35
+            // line 36
             echo "        ";
             if (($this->getAttribute((isset($context["category"]) ? $context["category"] : null), "visible") == 1)) {
-                // line 36
+                // line 37
                 echo "        <li>
             <a href=\"catalog/";
-                // line 37
+                // line 38
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "url"), "html", null, true);
                 echo "\" class=\"\">
                 <span>";
-                // line 38
+                // line 39
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "name"), "html", null, true);
                 echo "</span>
             </a>
         </li>
         ";
             }
-            // line 42
+            // line 43
             echo "        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 43
+        // line 44
         echo "    </ul>
     
 </div> -->
@@ -135,6 +139,6 @@ class __TwigTemplate_b65a75f99c1dd74c6a5875f42b58d53b extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  120 => 43,  114 => 42,  107 => 38,  103 => 37,  100 => 36,  97 => 35,  93 => 34,  89 => 32,  86 => 31,  79 => 25,  73 => 24,  66 => 20,  58 => 17,  52 => 14,  47 => 11,  44 => 10,  40 => 9,  32 => 5,  29 => 4,);
+        return array (  124 => 44,  118 => 43,  111 => 39,  107 => 38,  104 => 37,  101 => 36,  97 => 35,  93 => 33,  90 => 32,  83 => 26,  77 => 25,  74 => 24,  72 => 23,  66 => 20,  58 => 17,  52 => 14,  47 => 11,  44 => 10,  40 => 9,  32 => 5,  29 => 4,);
     }
 }

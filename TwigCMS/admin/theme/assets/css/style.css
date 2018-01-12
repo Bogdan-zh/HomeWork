@@ -136,3 +136,17 @@
 .label_for_hidden_del:hover {
     color: red;
 }
+
+.price_amount {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.price_amount .form-group {
+    width: 20%;
+    margin-right: 30px;
+}

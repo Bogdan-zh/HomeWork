@@ -56,7 +56,8 @@ class Products extends Database
         return $id;
     }
 
-    /////////////////////////
+    ///////////////////////////////////////////////////////////////////
+
     public function productsCategories($id, $choice)
     {   
         $request = new Request();
@@ -73,15 +74,13 @@ class Products extends Database
         
     }
 
-    public function checkProductCategory($id)
+    public function getCategoryForSelect($id) // получаем категорию, которая присвоена товару
     {
-        $database = new Database();
-
-        $query = "SELECT category_id FROM `products-categories` WHERE product_id='$id' LIMIT 1";
-        $result = $database->query($query);
+        $query = "SELECT p.category_id, c.id, c.name FROM `products-categories` p INNER JOIN categories c ON p.category_id = c.id WHERE product_id='$id'";
+        $result = $this->query($query);
         $res = $result->fetch_assoc();
-        $getCheckedCategoryId = $res['category_id'];
-        return $getCheckedCategoryId;
+        return $res['name'];
     }
 
+    ///////////////////////////////////////////////////////////////////
 }

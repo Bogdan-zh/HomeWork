@@ -100,14 +100,14 @@
 	width: 55px;
 }
 
-.box_avatar {
-	width: 145px;
-	height: 145px;
+/*.box_avatar {
+	//width: 145px;
+	//height: 145px;
 	overflow: hidden;
-}
+}*/
 
 .box_avatar img {
-	min-width: 145px;
+	min-width: 100%;
 	height: 145px;
 	border-bottom: 2px solid black;
 }
