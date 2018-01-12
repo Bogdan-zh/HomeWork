@@ -63,7 +63,7 @@
         </div>
         <div class="form-group">
             <label>Категория: </label> <!-- присваивает категорию, но не фиксирует ее в селекте  -->
-            <p>{{ product_category }}</p> <!-- тут название текущей категории, которую нужно выводить в селект  -->
+            <span>{{ product_category }}</span><br> <!-- тут название текущей категории, которую нужно выводить в селект  -->
             <select name="categories">
                 {% for category in categories %}
                     {% if category.name == product_category %}
