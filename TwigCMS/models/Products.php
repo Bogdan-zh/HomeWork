@@ -65,9 +65,9 @@ class Products extends Database
         //$category_id = $_POST['categories'];
         
         if($choice == 'set') {
-            $query = "INSERT INTO `products-categories`(product_id, category_id) VALUES ('$id', '$category_id')";
+            $query = "INSERT INTO `products_categories`(product_id, category_id) VALUES ('$id', '$category_id')";
         } elseif($choice == 'update') {
-            $query = "UPDATE `products-categories` SET category_id='$category_id' WHERE product_id='$id'";
+            $query = "UPDATE `products_categories` SET category_id='$category_id' WHERE product_id='$id'";
         }
 
         $this->query($query);
@@ -76,7 +76,7 @@ class Products extends Database
 
     public function getCategoryForSelect($id) // получаем категорию, которая присвоена товару
     {
-        $query = "SELECT p.category_id, c.id, c.name FROM `products-categories` p INNER JOIN categories c ON p.category_id = c.id WHERE product_id='$id'";
+        $query = "SELECT p.category_id, c.id, c.name FROM `products_categories` p INNER JOIN categories c ON p.category_id = c.id WHERE product_id='$id'";
         $result = $this->query($query);
         $res = $result->fetch_assoc();
         return $res['name'];
