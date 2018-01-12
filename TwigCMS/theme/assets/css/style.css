@@ -1,29 +1,3 @@
-.products td, .categories td, .pages td {
-	vertical-align: middle !important;
-}
-
-.avatar_in_product {
-	margin-bottom: 10px;
-}
-
-.checkbox {
-	width: 15px;
-	height: 15px;
-	outline: none;
-}
-
-.table td:first-child {
-	width: 35px;
-}
-
-.select {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: justify;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
-}
 
 .home-title {
 	display: -webkit-box;
@@ -86,57 +60,6 @@
 
 .containe {
 	padding: 0 70px;
-}
-
-.obertka {
-	border-radius: 3px;
-	margin-top: 20px;
-	padding: 0 20px;
-	background-color: #F7F7F9;
-	border: 1px solid #CCCCCC;
-}
-
-.obertka .table th {
-	border: none;
-}
-
-.add_something {
-	background-color: #1ABC9C;
-	border-radius: 6px;
-	padding: 10px 13px;
-	color: white;
-}
-.add_something:before {
-	content: "+ ";
-}
-
-
-.add_something:hover {
-	color: white;
-	background-color: #22C4A4;
-}
-
-.avatars {
-	margin-right: 5px;
-	width: 40px;
-}
-
-.hidden_del {
-	display: none;
-}
-
-.label_for_hidden_del {
-	width: 20px;
-	height: 20px;
-	text-align: center;
-	line-height: 20px;
-	font-size: 20px;
-	color: grey;
-	font-weight: bold;
-}
-
-.label_for_hidden_del:hover {
-	color: red;
 }
 
 .login-form {
