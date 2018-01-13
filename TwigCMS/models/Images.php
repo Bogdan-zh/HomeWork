@@ -1,5 +1,5 @@
 <?php
-class Images
+class Images extends Database
 {
     // public static function getImages($id)
     // {
@@ -10,28 +10,25 @@ class Images
     //     return $this->res;
     // }
 
-    public static function delImages($id, $table) // удаляет физически картинку
+    public function delImages($id, $table) // удаляет физически картинку
     { 
-        $database = new Database();
-
         $query = "SELECT image FROM $table WHERE id='$id' LIMIT 1";
-        $result = $database->query($query);
+        $result = $this->query($query);
         $res = $result->fetch_assoc();
         $old_image = $res['image'];
         
-        if(isset($old_image) && file_exists('../uploads/'.$old_image) && $old_image != 'noimage.png') {
-            unlink('../uploads/'.$old_image);
+        if(isset($old_image) && file_exists('../uploads/'.$table.'/'.$old_image) && $old_image != 'noimage.png') {
+            unlink('../uploads/'.$table.'/'.$old_image);
         }
 
         $query = "UPDATE $table SET image='noimage.png' WHERE id='$id'";
-        $database->query($query);
+        $this->query($query);
     }
 
-    public static function uploadImage($id, $table) 
+    public function uploadImage($id, $table) 
     {
         $coreadmin = new CoreAdmin();
         $request = new Request();
-        $database = new Database();
 
         if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_FILES)) {
 
@@ -48,11 +45,11 @@ class Images
                 if(in_array($ext, $array_ext)) {
                     $hash = substr(md5($name.date('Y-m-d-h-i-s').rand(1,1000)),0,10);
                     $filename = 'id'.$id.'_'."$parts[2]".'__'.$coreadmin->filesTranslit($name)."_".$hash.".".$ext;
-                    if(move_uploaded_file($files['tmp_name'][$i], '../uploads/'.$filename)) {
+                    if(move_uploaded_file($files['tmp_name'][$i], '../uploads/'.$table.'/'.$filename)) {
                         
-                        Images::delImages($id, $table);
+                        $this->delImages($id, $table);
                         $query = "UPDATE $table SET image='$filename' WHERE id=$id";
-                        $database->query($query);
+                        $this->query($query);
                     } else {
                         echo 'ERROR';
                     }

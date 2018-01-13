@@ -26,7 +26,13 @@
                 <td>{{ category.id }}</td>
                 <td>
                     <a href="/admin/category?id={{ category.id }}">
-                        <img class="avatars" src="../../../uploads/{{ category.image }}" alt="" width="40">
+
+                        {% if category.image == 'noimage.png' or category.image is not defined %}
+                        <img class="avatars" src="../../../admin/theme/assets/img/noimage.png" alt="">
+                        {% else %}
+                        <img class="avatars" src="../../../uploads/categories/{{ category.image }}" alt="">
+                        {% endif %}
+
                         {{ category.name }}
                     </a>
                 </td>

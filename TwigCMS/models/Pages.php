@@ -30,9 +30,11 @@ class Pages extends Database
         if(empty($id)) {
             return false;
         }
-        $query = "SELECT id, name, description, url, visible FROM pages WHERE $type = $id LIMIT 1";
+        $query = "SELECT id, name, description, url, visible FROM pages WHERE $type = '$id' LIMIT 1";
         $this->query($query);
-        return $this->result();
+        $res = $this->result();
+
+        return $res;
     }
     public function getPages()
     {

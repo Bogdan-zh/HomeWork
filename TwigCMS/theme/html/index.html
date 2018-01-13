@@ -29,6 +29,7 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-left menu">
+
                         {% for page in pages %}
                             {% if page.visible == 1 %}
                                 <li>
@@ -39,11 +40,6 @@
                             {% endif %}
                         {% endfor %}
                         
-                        
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right menu">
-                        <li><a href="login">Login</a></li>
-                        <li><a href="register">Registration</a></li>
                     </ul>
                 </div>
 
@@ -53,18 +49,20 @@
     <div id="layout-content">
         <section class="home-title">
             <div class="aside">
+            {% block sidebar %}
+            {% endblock %}
                 
-                {% for category in categories %}
+                <!-- {% for category in categories %}
                     <ul>
                         {% if category.visible == 1 %}
                             <li>
-                                <a href="catalog/{{ category.url }}" class="">
+                                <a href="{{ category.url }}" class="">
                                     <span>{{ category.name }}</span>
                                 </a>
                             </li>
                         {% endif %}
                     </ul>
-                {% endfor %}
+                {% endfor %} -->
                 
             </div>
             <div class="contain">

@@ -1,7 +1,7 @@
 <?php
-class Page extends Core
+class Product extends Core
 {
-    public function fetch()
+    public function fetch() // НЕ РАБОТАЕТ
     {
         $categories = new Categories();
         $all_categories = $categories->getCategories();
@@ -26,10 +26,8 @@ class Page extends Core
             //'products' => $products_catalog,
         );
 
-        print_r($page);
-
-        if(($page['url'])) {
-            return $this->view->render('page.html',$array_vars);
+        if(($product['url'])) {
+            return $this->view->render('product.html',$array_vars);
         } else {
             header("http/1.0 404 not found");
             return $this->view->render('error404.html',$array_vars);

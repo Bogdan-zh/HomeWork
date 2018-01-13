@@ -11,6 +11,7 @@ class __TwigTemplate_aaa1b78827055a5f5c68755485650845 extends Twig_Template
 
         $this->blocks = array(
             'content' => array($this, 'block_content'),
+            'sidebar' => array($this, 'block_sidebar'),
         );
     }
 
@@ -48,6 +49,47 @@ class __TwigTemplate_aaa1b78827055a5f5c68755485650845 extends Twig_Template
 ";
     }
 
+    // line 23
+    public function block_sidebar($context, array $blocks = array())
+    {
+        // line 24
+        echo "<!-- <div class=\"aside\">
+    <ul>
+        ";
+        // line 26
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) ? $context["categories"] : null));
+        foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
+            // line 27
+            echo "        ";
+            if (($this->getAttribute((isset($context["category"]) ? $context["category"] : null), "visible") == 1)) {
+                // line 28
+                echo "        <li>
+            <a href=\"catalog/";
+                // line 29
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "url"), "html", null, true);
+                echo "\" class=\"\">
+                <span>";
+                // line 30
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "name"), "html", null, true);
+                echo "</span>
+            </a>
+        </li>
+        ";
+            }
+            // line 34
+            echo "        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
+        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        // line 35
+        echo "    </ul>
+    
+</div> -->
+";
+    }
+
     public function getTemplateName()
     {
         return "login.html";
@@ -60,6 +102,6 @@ class __TwigTemplate_aaa1b78827055a5f5c68755485650845 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  31 => 4,  28 => 3,);
+        return array (  87 => 35,  81 => 34,  74 => 30,  70 => 29,  67 => 28,  64 => 27,  60 => 26,  56 => 24,  53 => 23,  32 => 4,  29 => 3,);
     }
 }

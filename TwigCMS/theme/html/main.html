@@ -8,18 +8,22 @@
     <div class="bestsellers">
         {% for product in products %}
             {% if product.visible == 1 and product.bestseller == 1 and product.amount > 0 and i < 6 %}
-                <div class="box">
+                <a class="box" href="products/{{ product.url }}">
                     <img class="bestseller_img" src="theme/assets/img/hit.png" alt="">
                     <div class="box_avatar">
-                        <img src="../uploads/{{ product.image }}" alt="">
+                        {% if product.image == 'noimage.png' or product.image is not defined %}
+                        <img src="../admin/theme/assets/img/noimage.png" alt="">
+                        {% else %}
+                        <img src="../uploads/products/{{ product.image }}" alt="">
+                        {% endif %}
                     </div>
                     <div class="box_name">
-                        <a href="products/{{ product.url }}">{{ product.name }}</a>
+                        {{ product.name }}
                     </div>
                     <div class="box_price">
                         {{ product.price }} грн
                     </div>
-                </div>
+                </a>
                 {% set i = i + 1 %}
             {% endif %}
         {% endfor %}
@@ -30,18 +34,18 @@
 
 
 {% block sidebar %}
-<!-- <div class="aside">
+
     <ul>
         {% for category in categories %}
-        {% if category.visible == 1 %}
-        <li>
-            <a href="catalog/{{ category.url }}" class="">
-                <span>{{ category.name }}</span>
-            </a>
-        </li>
-        {% endif %}
+            {% if category.visible == 1 %}
+            <li>
+                <a href="catalog/{{ category.url }}" class="">
+                    <span>{{ category.name }}</span>
+                </a>
+            </li>
+            {% endif %}
         {% endfor %}
     </ul>
     
-</div> -->
+
 {% endblock %}

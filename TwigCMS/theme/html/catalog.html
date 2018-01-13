@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+категория
+    <!-- <h1>{{ category.name }}</h1>
+    
+    <p>{{ category.description|raw }}</p> -->
+{% endblock %}
+
+
+{% block sidebar %}
+
+<ul>
+	{% for category in categories %}
+		{% if category.visible == 1 %}
+		<li>
+			<a href="{{ category.url }}" class="">
+				<span>{{ category.name }}</span>
+			</a>
+		</li>
+		{% endif %}
+	{% endfor %}
+</ul>
+
+
+{% endblock %}

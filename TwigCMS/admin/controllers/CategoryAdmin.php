@@ -6,7 +6,6 @@ class CategoryAdmin extends CoreAdmin
         $categories = new Categories(); // подключаем модель Категории
         $request = new Request();  // подключаем модель Запрос
         $images = new Images();
-        $database = new Database();
         ////////////////////////////
         $category = new stdClass();
 
@@ -30,10 +29,10 @@ class CategoryAdmin extends CoreAdmin
                 $id = $categories->addCategory($category);
             }
 
-            Images::uploadImage($id, 'categories'); // загружается картинка
+            $images->uploadImage($id, 'categories'); // загружается картинка
 
             if($request->post('del')) { // удаляем картинку
-                Images::delImages($id, 'categories');
+                $images->delImages($id, 'categories');
             }
 
             $category = $categories->getCategory($id);

@@ -5,16 +5,14 @@ class CatalogAdmin extends CoreAdmin
     {
         $products = new Products();
         $lists = new Lists();
-        $database = new Database();
-        
-        $products_catalog = $products->getProducts();
+
+        $lists->enDisDel('products');
 
         if(isset($_POST['del'])) {
-            Lists::singleDel('products');
+            $lists->singleDel('products');
         }
-
-        Lists::enDisDel('products');
-
+        
+        $products_catalog = $products->getProducts();
 
         $array_vars = array(
             'name' => 'Товары',

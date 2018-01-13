@@ -6,13 +6,14 @@ class PagesAdmin extends CoreAdmin
         $pages = new Pages();
         $lists = new Lists();
         ///////////////////////
-        $all_pages = $pages->getPages();
+
+        $lists->enDisDel('pages');
 
         if(isset($_POST['del'])) {
-            Lists::singleDel('pages');
+            $lists->singleDel('pages');
         }
-
-        Lists::enDisDel('pages');
+        
+        $all_pages = $pages->getPages();
 
         $array_vars = array(
             'pages' => $all_pages,

@@ -150,3 +150,11 @@
     width: 20%;
     margin-right: 30px;
 }
+
+/*------HTML редактор. убираем "рекламу"------*/
+
+.mce-notification-inner, #mceu_31, #mceu_30 {
+    display: none !important;
+}
+
+/*------------*/

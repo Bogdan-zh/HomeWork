@@ -17,7 +17,7 @@ class Route
             '/admin/categories' => 'CategoriesAdmin',
             '/admin/category' => 'CategoryAdmin',
         );
-        if($uri['path']) {
+        if( array_key_exists($uri['path'], $uri_array)) {
 
             if(file_exists($controllers_dir.$uri_array[$uri['path']] . '.php')) {
                 require $controllers_dir.$uri_array[$uri['path']] . '.php'; //controllers/Main.php
@@ -26,17 +26,15 @@ class Route
                 if(method_exists($controller,'fetch')) {
                     print $controller->fetch();
                 } else {
-                    Route::error404();
+                    header("Location: /admin");
                 }
             } else {
-                Route::error404();
+                header("Location: /admin");
             }
 
+        } else {
+            header("Location: /admin");
         }
     }
 
-    public static function error404()
-    {
-        //здесь будет 404
-    }
 }

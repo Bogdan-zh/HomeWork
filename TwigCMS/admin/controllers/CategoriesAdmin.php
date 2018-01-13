@@ -6,13 +6,14 @@ class CategoriesAdmin extends CoreAdmin
         $categories = new Categories();
         $lists = new Lists();
         ///////////////////////
-        $all_categories = $categories->getCategories();
+
+        $lists->enDisDel('categories');
 
         if(isset($_POST['del'])) {
-            Lists::singleDel('categories');
+            $lists->singleDel('categories');
         }
-
-        Lists::enDisDel('categories');
+        
+        $all_categories = $categories->getCategories();
 
         $array_vars = array(
             'categories' => $all_categories,

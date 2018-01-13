@@ -3,6 +3,21 @@
 
 {% block content %}
 
-    <h1>{{ title }}</h1>
+    <h1>Ошибка 404</h1>
     
+{% endblock %}
+
+
+{% block sidebar %}
+<ul>
+	{% for category in categories %}
+	{% if category.visible == 1 %}
+	<li>
+		<a href="catalog/{{ category.url }}" class="">
+			<span>{{ category.name }}</span>
+		</a>
+	</li>
+	{% endif %}
+	{% endfor %}
+</ul>
 {% endblock %}

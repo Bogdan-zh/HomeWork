@@ -1,48 +1,54 @@
 <?php
-class Lists
+class Lists extends Database
 {
-    public static function enDisDel($table)
+    public function enDisDel($table)
     {
-        $database = new Database();
         $request = new Request();
+        $images = new Images();
 
         if($request->post('send')) {
-            $url = $_SERVER['HTTP_REFERER'];
-            $refresh = header("Location: $url");
-
+            
             $id = $request->post('check');
+
             if($request->post('select') == 'enable') {
                 if(isset($id)) {
                     foreach($id as $i) {
-                        $database->query("UPDATE $table SET visible='1' WHERE id=$i");
-                        echo $refresh;
+                        $this->query("UPDATE $table SET visible='1' WHERE id=$i");
                     }
                 }
             } elseif($request->post('select') == 'disable') {
                 if(isset($id)) {
                     foreach($id as $i) {
-                        $database->query("UPDATE $table SET visible='0' WHERE id=$i");
-                        echo $refresh;
+                        $this->query("UPDATE $table SET visible='0' WHERE id=$i");
                     }
                 }
             } elseif ($request->post('select') == 'delete') {
                 if(isset($id)) {
                     foreach($id as $i) {
-                        $database->query("DELETE FROM $table WHERE id=$i");
-                        echo $refresh;
+                        switch($table) {
+                            case 'products':
+                            case 'categories':
+                                $images->delImages($i, $table);
+                                break;
+                        }
+                        
+                        $this->query("DELETE FROM $table WHERE id=$i");
                     }
                 }
             }
         }
     }
 
-    public static function singleDel($table)
+    public function singleDel($table)
     {
-        $database = new Database();
-
+        $images = new Images();
         $id = $_POST['del'][0];
-        $database->query("DELETE FROM $table WHERE $table.id = '$id'");
-        $url = $_SERVER['HTTP_REFERER'];
-        header("Location: $url");
+        switch($table) {
+            case 'products':
+            case 'categories':
+                $images->delImages($i, $table);
+                break;
+        }
+        $this->query("DELETE FROM $table WHERE $table.id = '$id'");
     }
 }

@@ -11,6 +11,7 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
 
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'sidebar' => array($this, 'block_sidebar'),
             'content' => array($this, 'block_content'),
         );
     }
@@ -52,41 +53,37 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
                         </li>
                     </ul>
                     <ul class=\"nav navbar-nav navbar-left menu\">
+
                         ";
-        // line 32
+        // line 33
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["pages"]) ? $context["pages"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["page"]) {
-            // line 33
+            // line 34
             echo "                            ";
             if (($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "visible") == 1)) {
-                // line 34
+                // line 35
                 echo "                                <li>
                                     <a href=\"";
-                // line 35
+                // line 36
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "url"), "html", null, true);
                 echo "\" class=\"\">
                                         <span>";
-                // line 36
+                // line 37
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "name"), "html", null, true);
                 echo "</span>
                                     </a>
                                 </li>
                             ";
             }
-            // line 40
+            // line 41
             echo "                        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['page'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 41
+        // line 42
         echo "                        
-                        
-                    </ul>
-                    <ul class=\"nav navbar-nav navbar-right menu\">
-                        <li><a href=\"login\">Login</a></li>
-                        <li><a href=\"register\">Registration</a></li>
                     </ul>
                 </div>
 
@@ -96,46 +93,51 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
     <div id=\"layout-content\">
         <section class=\"home-title\">
             <div class=\"aside\">
-                
-                ";
-        // line 57
+            ";
+        // line 52
+        $this->displayBlock('sidebar', $context, $blocks);
+        // line 54
+        echo "                
+                <!-- ";
+        // line 55
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) ? $context["categories"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
-            // line 58
+            // line 56
             echo "                    <ul>
                         ";
-            // line 59
+            // line 57
             if (($this->getAttribute((isset($context["category"]) ? $context["category"] : null), "visible") == 1)) {
-                // line 60
+                // line 58
                 echo "                            <li>
-                                <a href=\"catalog/";
-                // line 61
+                                <a href=\"";
+                // line 59
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "url"), "html", null, true);
                 echo "\" class=\"\">
                                     <span>";
-                // line 62
+                // line 60
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "name"), "html", null, true);
                 echo "</span>
                                 </a>
                             </li>
                         ";
             }
-            // line 66
+            // line 64
             echo "                    </ul>
                 ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 68
-        echo "                
+        // line 65
+        echo " -->
+                
             </div>
             <div class=\"contain\">
                 ";
-        // line 71
+        // line 69
         $this->displayBlock('content', $context, $blocks);
-        // line 73
+        // line 71
         echo "            </div>
         </section>
     </div>
@@ -151,10 +153,17 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
     {
     }
 
-    // line 71
+    // line 52
+    public function block_sidebar($context, array $blocks = array())
+    {
+        // line 53
+        echo "            ";
+    }
+
+    // line 69
     public function block_content($context, array $blocks = array())
     {
-        // line 72
+        // line 70
         echo "                ";
     }
 
@@ -170,6 +179,6 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  158 => 72,  155 => 71,  150 => 4,  139 => 73,  137 => 71,  132 => 68,  125 => 66,  118 => 62,  114 => 61,  111 => 60,  109 => 59,  106 => 58,  102 => 57,  84 => 41,  78 => 40,  71 => 36,  67 => 35,  64 => 34,  61 => 33,  57 => 32,  26 => 4,  21 => 1,);
+        return array (  167 => 70,  164 => 69,  160 => 53,  157 => 52,  152 => 4,  141 => 71,  139 => 69,  133 => 65,  126 => 64,  119 => 60,  115 => 59,  112 => 58,  110 => 57,  107 => 56,  103 => 55,  100 => 54,  98 => 52,  86 => 42,  80 => 41,  73 => 37,  69 => 36,  66 => 35,  63 => 34,  59 => 33,  27 => 4,  22 => 1,  31 => 5,  28 => 4,);
     }
 }

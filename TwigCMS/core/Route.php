@@ -22,9 +22,6 @@ class Route
             'order' => 'Order',
             'contact' => 'Contact',
             '404' => 'Error404',
-            'login' => 'Login',
-            'register' => 'Register',
-
         );
 
         if(!empty($parts)) {

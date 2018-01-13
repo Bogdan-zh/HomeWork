@@ -58,6 +58,9 @@ class Products extends Database
 
     ///////////////////////////////////////////////////////////////////
 
+    // replace into - insert и update в одном
+    // between - диапазон
+
     public function productsCategories($id, $choice)
     {   
         $request = new Request();
@@ -80,6 +83,17 @@ class Products extends Database
         $result = $this->query($query);
         $res = $result->fetch_assoc();
         return $res['name'];
+    }
+
+    public function getProductCategories($id = 0)
+    {
+        $where = '';
+        if(!empty($id)) {
+            $where .= "WHERE product_id = $id";
+        }
+        $query = "SELECT id, product_id, category_id FROM products_categories $where";
+        $result = $this->query($query);
+        return $this->results();
     }
 
     ///////////////////////////////////////////////////////////////////

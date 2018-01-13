@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 12 2018 г., 21:58
+-- Время создания: Янв 13 2018 г., 23:43
 -- Версия сервера: 5.6.37
 -- Версия PHP: 5.5.38
 
@@ -46,9 +46,9 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `name`, `url`, `description`, `visible`, `created_at`, `updated_at`, `image`, `parent_id`) VALUES
 (1, 'Без категории', 'bez-kategorii', '', 0, '2018-01-08 15:18:12', '2018-01-08 15:18:12', 'noimage.png', 0),
-(2, 'Гаджеты', 'gadzhety', 'описание категории', 1, '2018-01-08 15:18:48', '2018-01-12 08:34:51', 'id2_category__Lighthouse_7bef77e0b0.jpg', 0),
-(3, 'Мебель для дома', 'mebel-dlya-doma', 'описание', 1, '2018-01-08 15:19:58', '2018-01-08 15:20:21', 'noimage.png', 0),
-(4, 'Детские игрушки', 'detskie-igrushki', '', 1, '2018-01-12 18:30:09', '2018-01-12 18:30:09', 'noimage.png', 0);
+(2, 'Гаджеты', 'gadzhety', '<p>описание категории</p>', 1, '2018-01-08 15:18:48', '2018-01-13 18:02:24', 'id2_category__Lighthouse_05f24d3a24.jpg', 0),
+(3, 'Мебель для дома', 'mebel-dlya-doma', 'описание', 1, '2018-01-08 15:19:58', '2018-01-13 17:35:17', 'noimage.png', 0),
+(4, 'Детские игрушки', 'detskie-igrushki', '', 1, '2018-01-12 18:30:09', '2018-01-13 16:08:44', 'noimage.png', 0);
 
 -- --------------------------------------------------------
 
@@ -129,14 +129,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `amount`, `url`, `visible`, `created_at`, `updated_at`, `bestseller`, `image`) VALUES
-(1, 'Товар 1', 'описание товара 1', 100.00, 25, 'tovar-1', 1, '2018-01-12 08:27:53', '2018-01-12 08:33:59', 1, 'id1_product__kot_d9f3f25534.png'),
+(1, 'Товар 1', '<p>описание товара 1</p>', 100.00, 25, 'tovar-1', 1, '2018-01-12 08:27:53', '2018-01-13 17:49:49', 1, 'id1_product__kot_2677ecb328.png'),
 (2, 'товар 2', '', 55.00, 1000, 'tovar-2', 1, '2018-01-12 08:28:25', '2018-01-12 08:28:25', 1, 'noimage.png'),
-(3, 'еще товар', '', 2.50, 20, 'esche-tovar', 1, '2018-01-12 08:30:12', '2018-01-12 08:34:09', 1, 'id3_product__Koala_136142b7fb.jpg'),
+(3, 'еще товар', '', 2.50, 20, 'esche-tovar', 1, '2018-01-12 08:30:12', '2018-01-13 15:31:57', 1, 'id3_product__Hydrangeas_65948c8fd7.jpg'),
 (4, 'dfggdf', '', 0.00, 4, 'dfggdf', 1, '2018-01-12 09:12:54', '2018-01-12 09:15:05', 1, 'noimage.png'),
-(5, 'dgdgdas', '', 0.00, 2, 'dgdgdas', 1, '2018-01-12 09:13:03', '2018-01-12 09:16:44', 1, 'noimage.png'),
-(6, 'dddddd', '', 220.00, 4, 'dddddd', 1, '2018-01-12 09:13:11', '2018-01-12 16:31:01', 1, 'noimage.png'),
-(7, 'sdfds', '', 0.00, 0, 'sdfds', 1, '2018-01-12 09:13:18', '2018-01-12 09:13:18', 1, 'noimage.png'),
-(8, 'dfgdfg', '', 5.00, 33, 'dfgdfg', 1, '2018-01-12 09:16:04', '2018-01-12 11:26:19', 1, 'noimage.png');
+(5, 'dgdgdas', '', 0.00, 2, 'dgdgdas', 1, '2018-01-12 09:13:03', '2018-01-12 09:16:44', 1, 'noimage.png');
 
 -- --------------------------------------------------------
 
@@ -161,8 +158,18 @@ INSERT INTO `products_categories` (`id`, `product_id`, `category_id`) VALUES
 (4, 4, 1),
 (5, 5, 1),
 (6, 6, 2),
-(7, 7, 1),
-(8, 8, 1);
+(7, 7, 2),
+(8, 8, 2),
+(9, 9, 2),
+(10, 10, 2),
+(11, 11, 2),
+(12, 12, 2),
+(13, 13, 2),
+(14, 14, 2),
+(15, 15, 2),
+(16, 16, 2),
+(17, 6, 2),
+(18, 7, 2);
 
 -- --------------------------------------------------------
 
@@ -302,12 +309,12 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT для таблицы `products_categories`
 --
 ALTER TABLE `products_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT для таблицы `purchases`
 --

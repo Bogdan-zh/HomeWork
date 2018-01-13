@@ -5,7 +5,7 @@ class ProductAdmin extends CoreAdmin
     {
         $products = new Products(); // подключаем модель Товары
         $request = new Request();  // подключаем модель Запрос
-        $database = new Database();
+        $images = new Images();
         ////////////////////////////
         $product = new stdClass();
 
@@ -35,13 +35,11 @@ class ProductAdmin extends CoreAdmin
                 }
                 $products->productsCategories($id, 'update'); // обновляем категорию товара
 
-                Images::uploadImage($id, 'products'); // загружается картинка товара
+                $images->uploadImage($id, 'products'); // загружается картинка товара
 
                 if($request->post('del')) { 
-                    Images::delImages($id, 'products'); // удаляем картинку товара
+                    $images->delImages($id, 'products'); // удаляем картинку товара
                 }
-
-                $product_category = $products->getCategoryForSelect($id);
 
                 $product = $products->getProduct($id);
             } else { 
@@ -50,13 +48,14 @@ class ProductAdmin extends CoreAdmin
         } elseif($request->get('id', 'integer')) {
             $product = $products->getProduct($request->get('id', 'integer')); // просто заходим в настройки товара
             $id = $request->get('id');
-            $product_category = $products->getCategoryForSelect($id);
         }
+
+        $selected_category = $products->getProductCategories($request->get('id', 'integer'));
 
         $array_vars = array(
             'product' => $product,
             'categories' => $all_categories,
-            'product_category' => $product_category,
+            'selected_category' => reset($selected_category),
         );
 
         return $this->view->render('product.html',$array_vars);

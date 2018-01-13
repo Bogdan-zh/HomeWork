@@ -33,7 +33,13 @@
                 </td>
                 <td>
                     <a href="/admin/product?id={{ product.id }}">
-                        <img class="avatars" src="../../../uploads/{{ product.image }}" alt="">
+
+                        {% if product.image == 'noimage.png' or product.image is not defined %}
+                        <img class="avatars" src="../../../admin/theme/assets/img/noimage.png" alt="">
+                        {% else %}
+                        <img class="avatars" src="../../../uploads/products/{{ product.image }}" alt="">
+                        {% endif %}
+
                         {{ product.name }}
                     </a>
                 </td>
