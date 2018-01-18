@@ -21,7 +21,7 @@ class Route
             'cart' => 'Cart',
             'order' => 'Order',
             'contact' => 'Contact',
-            '404' => 'Error404',
+            // '404' => 'Error404',
         );
 
         if(!empty($parts)) {
@@ -58,7 +58,6 @@ class Route
 
     public static function error404()
     {
-        header("http/1.0 404 not found");
         require 'controllers/Error404.php';
         $controler = new Error404();
         if (method_exists($controler, 'fetch'))

@@ -1,26 +1,60 @@
 {% extends "index.html" %}
 
 
-{% block content %}
-категория
-    <!-- <h1>{{ category.name }}</h1>
-    
-    <p>{{ category.description|raw }}</p> -->
+{% block pages %}
+    {% for page in pages %}
+        {% if page.visible == 1 %}
+        <li>
+            <a href="/{{ page.url }}" class="">
+                <span>{{ page.name }}</span>
+            </a>
+        </li>
+        {% endif %}
+    {% endfor %}
 {% endblock %}
+
+
+
+
+{% block content %}
+
+    <h1>{{ category.name }}</h1>
+    
+    <p>{{ category.description|raw }}</p>
+
+
+
+    {% for product in products %}
+        {% if product.visible == 1 %}
+            <p>
+                <a href="/products/{{ product.url }}">{{ product.name }}</a>
+            </p>
+        {% endif %}
+    {% endfor %}
+
+
+
+
+{% endblock %}
+
+
+
+
+
 
 
 {% block sidebar %}
 
 <ul>
-	{% for category in categories %}
-		{% if category.visible == 1 %}
-		<li>
-			<a href="{{ category.url }}" class="">
-				<span>{{ category.name }}</span>
-			</a>
-		</li>
-		{% endif %}
-	{% endfor %}
+    {% for category in categories %}
+        {% if category.visible == 1 %}
+        <li>
+            <a href="{{ category.url }}" class="">
+                <span>{{ category.name }}</span>
+            </a>
+        </li>
+        {% endif %}
+    {% endfor %}
 </ul>
 
 

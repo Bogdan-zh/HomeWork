@@ -1,6 +1,21 @@
 {% extends "index.html" %}
 
 
+
+{% block pages %}
+    {% for page in pages %}
+        {% if page.visible == 1 %}
+        <li>
+            <a href="/{{ page.url }}" class="">
+                <span>{{ page.name }}</span>
+            </a>
+        </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+
+
 {% block content %}
     <h1>{{ name }}</h1>
     <h3>Хиты продаж</h3>
@@ -39,7 +54,7 @@
         {% for category in categories %}
             {% if category.visible == 1 %}
             <li>
-                <a href="catalog/{{ category.url }}" class="">
+                <a href="/catalog/{{ category.url }}" class="">
                     <span>{{ category.name }}</span>
                 </a>
             </li>
@@ -49,3 +64,5 @@
     
 
 {% endblock %}
+
+

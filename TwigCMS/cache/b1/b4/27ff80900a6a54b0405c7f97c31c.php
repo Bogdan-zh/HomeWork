@@ -11,6 +11,7 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
 
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'pages' => array($this, 'block_pages'),
             'sidebar' => array($this, 'block_sidebar'),
             'content' => array($this, 'block_content'),
         );
@@ -53,37 +54,43 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
                         </li>
                     </ul>
                     <ul class=\"nav navbar-nav navbar-left menu\">
+                        <!-- ";
+        // line 32
+        $this->displayBlock('pages', $context, $blocks);
+        // line 33
+        echo " -->
 
                         ";
-        // line 33
+        // line 35
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["pages"]) ? $context["pages"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["page"]) {
-            // line 34
-            echo "                            ";
+            // line 36
+            echo "                        ";
             if (($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "visible") == 1)) {
-                // line 35
-                echo "                                <li>
-                                    <a href=\"";
-                // line 36
+                // line 37
+                echo "                        <li>
+                            <a href=\"/";
+                // line 38
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "url"), "html", null, true);
                 echo "\" class=\"\">
-                                        <span>";
-                // line 37
+                                <span>";
+                // line 39
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "name"), "html", null, true);
                 echo "</span>
-                                    </a>
-                                </li>
-                            ";
+                            </a>
+                        </li>
+                        ";
             }
-            // line 41
+            // line 43
             echo "                        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['page'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 42
-        echo "                        
+        // line 44
+        echo "
+
                     </ul>
                 </div>
 
@@ -94,50 +101,50 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
         <section class=\"home-title\">
             <div class=\"aside\">
             ";
-        // line 52
+        // line 55
         $this->displayBlock('sidebar', $context, $blocks);
-        // line 54
+        // line 57
         echo "                
                 <!-- ";
-        // line 55
+        // line 58
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) ? $context["categories"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
-            // line 56
+            // line 59
             echo "                    <ul>
                         ";
-            // line 57
+            // line 60
             if (($this->getAttribute((isset($context["category"]) ? $context["category"] : null), "visible") == 1)) {
-                // line 58
+                // line 61
                 echo "                            <li>
                                 <a href=\"";
-                // line 59
+                // line 62
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "url"), "html", null, true);
                 echo "\" class=\"\">
                                     <span>";
-                // line 60
+                // line 63
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "name"), "html", null, true);
                 echo "</span>
                                 </a>
                             </li>
                         ";
             }
-            // line 64
+            // line 67
             echo "                    </ul>
                 ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 65
+        // line 68
         echo " -->
                 
             </div>
             <div class=\"contain\">
                 ";
-        // line 69
+        // line 72
         $this->displayBlock('content', $context, $blocks);
-        // line 71
+        // line 74
         echo "            </div>
         </section>
     </div>
@@ -153,17 +160,24 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
     {
     }
 
-    // line 52
+    // line 32
+    public function block_pages($context, array $blocks = array())
+    {
+        // line 33
+        echo "                        ";
+    }
+
+    // line 55
     public function block_sidebar($context, array $blocks = array())
     {
-        // line 53
+        // line 56
         echo "            ";
     }
 
-    // line 69
+    // line 72
     public function block_content($context, array $blocks = array())
     {
-        // line 70
+        // line 73
         echo "                ";
     }
 
@@ -179,6 +193,6 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  167 => 70,  164 => 69,  160 => 53,  157 => 52,  152 => 4,  141 => 71,  139 => 69,  133 => 65,  126 => 64,  119 => 60,  115 => 59,  112 => 58,  110 => 57,  107 => 56,  103 => 55,  100 => 54,  98 => 52,  86 => 42,  80 => 41,  73 => 37,  69 => 36,  66 => 35,  63 => 34,  59 => 33,  27 => 4,  22 => 1,  31 => 5,  28 => 4,);
+        return array (  181 => 73,  178 => 72,  174 => 56,  171 => 55,  167 => 33,  164 => 32,  159 => 4,  148 => 74,  146 => 72,  140 => 68,  133 => 67,  126 => 63,  122 => 62,  119 => 61,  117 => 60,  114 => 59,  110 => 58,  107 => 57,  105 => 55,  92 => 44,  86 => 43,  79 => 39,  75 => 38,  72 => 37,  69 => 36,  65 => 35,  61 => 33,  59 => 32,  28 => 4,  23 => 1,);
     }
 }
