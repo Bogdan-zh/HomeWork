@@ -16,7 +16,7 @@ class Product extends Core
         $uri = parse_url($_SERVER['REQUEST_URI']);
         $parts = explode('/', $uri['path']);
 
-        if(isset($parts[1])) {
+        if(isset($parts[2])) {
             $product = $products->getProduct($request->get('url', 'string'), 'url');
         }
 

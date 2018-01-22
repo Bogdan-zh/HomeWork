@@ -125,19 +125,19 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
                         <li class=\" \">
                             <a href=\"/admin/products\" class=\"\">
                                 <span>Товары</span>
-                                <img src=\"theme/assets/img/cart.png\" alt=\"\" width=\"28\" height=\"28\">
+                                <img src=\"/theme/assets/img/cart.png\" alt=\"\" width=\"28\" height=\"28\">
                             </a>
                         </li>
                         <li class=\" \">
                             <a href=\"/admin/categories\" class=\"\">
                                 <span>Категории</span>
-                                <img src=\"theme/assets/img/categories.png\" alt=\"\" width=\"28\" height=\"28\">
+                                <img src=\"/theme/assets/img/categories.png\" alt=\"\" width=\"28\" height=\"28\">
                             </a>
                         </li>
                         <li class=\" \">
                             <a href=\"/admin/pages\" class=\"\">
                                 <span>Страницы</span>
-                                <img src=\"theme/assets/img/pages.png\" alt=\"\" width=\"25\" height=\"28\">
+                                <img src=\"/theme/assets/img/pages.png\" alt=\"\" width=\"25\" height=\"28\">
                             </a>
                         </li>
                         

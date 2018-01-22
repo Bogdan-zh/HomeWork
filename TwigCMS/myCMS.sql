@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 13 2018 г., 23:43
+-- Время создания: Янв 21 2018 г., 22:35
 -- Версия сервера: 5.6.37
 -- Версия PHP: 5.5.38
 
@@ -90,7 +90,7 @@ CREATE TABLE `pages` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL DEFAULT '''''',
   `url` varchar(255) NOT NULL DEFAULT '''''',
-  `description` varchar(255) NOT NULL DEFAULT '''''',
+  `description` text NOT NULL,
   `visible` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -101,7 +101,7 @@ CREATE TABLE `pages` (
 --
 
 INSERT INTO `pages` (`id`, `name`, `url`, `description`, `visible`, `created_at`, `updated_at`) VALUES
-(1, 'Доставка', 'dostavka', 'Страница доставки', 1, '2017-12-28 09:30:47', '2018-01-03 14:31:31'),
+(1, 'Доставка', 'dostavka', '<p>описание страницы доставки</p>', 1, '2017-12-28 09:30:47', '2018-01-20 11:03:27'),
 (2, 'Оплата', 'oplata', 'Страница оплаты', 1, '2017-12-28 09:38:08', '2017-12-29 17:09:29');
 
 -- --------------------------------------------------------
@@ -129,11 +129,11 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `amount`, `url`, `visible`, `created_at`, `updated_at`, `bestseller`, `image`) VALUES
-(1, 'Товар 1', '<p>описание товара 1</p>', 100.00, 25, 'tovar-1', 1, '2018-01-12 08:27:53', '2018-01-13 17:49:49', 1, 'id1_product__kot_2677ecb328.png'),
-(2, 'товар 2', '', 55.00, 1000, 'tovar-2', 1, '2018-01-12 08:28:25', '2018-01-12 08:28:25', 1, 'noimage.png'),
-(3, 'еще товар', '', 2.50, 20, 'esche-tovar', 1, '2018-01-12 08:30:12', '2018-01-13 15:31:57', 1, 'id3_product__Hydrangeas_65948c8fd7.jpg'),
-(4, 'dfggdf', '', 0.00, 4, 'dfggdf', 1, '2018-01-12 09:12:54', '2018-01-12 09:15:05', 1, 'noimage.png'),
-(5, 'dgdgdas', '', 0.00, 2, 'dgdgdas', 1, '2018-01-12 09:13:03', '2018-01-12 09:16:44', 1, 'noimage.png');
+(1, 'Товар 1', '<p>описание товара 1</p>', 100.00, 25, 'tovar-1', 1, '2018-01-12 08:27:53', '2018-01-15 12:42:21', 1, 'id1_product__kot_2677ecb328.png'),
+(2, 'товар 2', '<p>апрапрапр</p>', 55.00, 1000, 'tovar-2', 1, '2018-01-12 08:28:25', '2018-01-21 18:57:46', 1, 'noimage.png'),
+(3, 'еще товар', '<p>еще описание</p>', 2.50, 20, 'esche-tovar', 1, '2018-01-12 08:30:12', '2018-01-21 18:58:21', 1, 'id3_product__Hydrangeas_65948c8fd7.jpg'),
+(4, 'dfggdf', '<p>еще описание</p>', 0.00, 4, 'dfggdf', 1, '2018-01-12 09:12:54', '2018-01-21 18:58:27', 1, 'noimage.png'),
+(5, 'dgdgdas', '<p>еще описание</p>', 0.00, 2, 'dgdgdas', 1, '2018-01-12 09:13:03', '2018-01-21 18:58:31', 1, 'noimage.png');
 
 -- --------------------------------------------------------
 

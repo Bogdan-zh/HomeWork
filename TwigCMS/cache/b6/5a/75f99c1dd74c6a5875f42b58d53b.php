@@ -146,7 +146,7 @@ class __TwigTemplate_b65a75f99c1dd74c6a5875f42b58d53b extends Twig_Template
             if (($this->getAttribute((isset($context["category"]) ? $context["category"] : null), "visible") == 1)) {
                 // line 56
                 echo "            <li>
-                <a href=\"catalog/";
+                <a href=\"/catalog/";
                 // line 57
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "url"), "html", null, true);
                 echo "\" class=\"\">

@@ -21,7 +21,6 @@ class Route
             'cart' => 'Cart',
             'order' => 'Order',
             'contact' => 'Contact',
-            // '404' => 'Error404',
         );
 
         if(!empty($parts)) {

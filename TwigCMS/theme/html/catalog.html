@@ -18,19 +18,32 @@
 
 {% block content %}
 
-    <h1>{{ category.name }}</h1>
+    <h1>{{ catalog.name }}</h1>
     
-    <p>{{ category.description|raw }}</p>
+    <p>{{ catalog.description|raw }}</p>
 
 
-
-    {% for product in products %}
-        {% if product.visible == 1 %}
-            <p>
-                <a href="/products/{{ product.url }}">{{ product.name }}</a>
-            </p>
-        {% endif %}
-    {% endfor %}
+    <div class="bestsellers">
+        {% for product in products %}
+            {% if product.visible == 1 %}
+                <a class="box" href="/products/{{ product.url }}">
+                    <div class="box_avatar">
+                        {% if product.image == 'noimage.png' or product.image is not defined %}
+                        <img src="../theme/assets/img/noimage.png" alt="">
+                        {% else %}
+                        <img src="../uploads/products/{{ product.image }}" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="box_name">
+                        {{ product.name }}
+                    </div>
+                    <div class="box_price">
+                        {{ product.price }} грн
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
 
 
 

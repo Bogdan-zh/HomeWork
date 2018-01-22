@@ -28,9 +28,9 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
         <meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\"/>
-        <link href=\"theme/assets/css/vendor/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">
-        <link href=\"theme/assets/css/flat-ui.min.css\" rel=\"stylesheet\">
-        <link href=\"theme/assets/css/style.css\" rel=\"stylesheet\">
+        <link href=\"/theme/assets/css/vendor/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">
+        <link href=\"/theme/assets/css/flat-ui.min.css\" rel=\"stylesheet\">
+        <link href=\"/theme/assets/css/style.css\" rel=\"stylesheet\">
     </head>
     <body class=\"\">
     <header class=\"header-navbar clearfix\">
@@ -48,7 +48,7 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
 
                 <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
                     <ul class=\"nav navbar-nav navbar-left menu\">
-                        <a class=\"navbar-brand\" href=\"/\">TwigCMS</a>
+                        <a class=\"navbar-brand\" href=\"/\">Twig Shop</a>
                         <li class=\"go_to_site\">
                             <a href=\"/admin/\">Перейти в админку</a>
                         </li>
@@ -148,8 +148,8 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
         echo "            </div>
         </section>
     </div>
-    <script src=\"theme/assets/js/vendor/jquery.min.js\"></script>
-    <script src=\"theme/assets/js/flat-ui.min.js\"></script>
+    <script src=\"/theme/assets/js/vendor/jquery.min.js\"></script>
+    <script src=\"/theme/assets/js/flat-ui.min.js\"></script>
 </body>
 
 </html>";
