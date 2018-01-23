@@ -1,11 +1,12 @@
 <?php
 
-class Feed extends Database
+class Feed
 {
 	public function createFeed()
 	{
-		$result = $this->query("SELECT id, name, price, amount, description, url, visible, bestseller, image FROM products");
-
+		$products = new Products();
+		$products_catalog = $products->getProducts();
+		
 		$xml = new DOMDocument("1.0");
 		//$xml->formatOutput=true;
 
@@ -26,23 +27,23 @@ class Feed extends Database
 
 		$arr = ["name", "price", "amount"];
 
-		while($row = mysqli_fetch_array($result)) {
+		foreach($products_catalog as $prod) {
 			$product = $xml->createElement("product");
-			$product->setAttribute("id", $row['id']);
+			$product->setAttribute("id", $prod['id']);
 			$catalog->appendChild($product);
 
 			foreach($arr as $a) {
-				$a = $xml->createElement("$a", $row["$a"]);
+				$a = $xml->createElement("$a", $prod["$a"]);
 				$product->appendChild($a);
 			}
 
-			$description = $xml->createElement("description", strip_tags($row['description']));
+			$description = $xml->createElement("description", strip_tags($prod['description']));
 			$product->appendChild($description);
 
-			$url = $xml->createElement("url", $scheme."://".$host."/".'products'."/".$row['url']);
+			$url = $xml->createElement("url", $scheme."://".$host."/".'products'."/".$prod['url']);
 			$product->appendChild($url);
 				
-			$image = $xml->createElement("image", $_SERVER['DOCUMENT_ROOT'].'/uploads/products/'.$row['image']);
+			$image = $xml->createElement("image", $_SERVER['DOCUMENT_ROOT'].'/uploads/products/'.$prod['image']);
 			$product->appendChild($image);
 		}
 

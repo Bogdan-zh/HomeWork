@@ -22,21 +22,19 @@ class CatalogAdmin extends CoreAdmin
         
         $export = '';
         if(isset($_POST['export_products'])) {
-
-
             
             $fp = fopen('../products.csv', 'w');
-            
             //fputs($fp, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
             //fwrite($fp,b"\xEF\xBB\xBF" );
             //fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
             //iconv('UTF-8', 'WINDOWS-1251', $fp);
 
-            fputcsv($fp, array('id','Name','Price','Amount','Description','url','Visible','Bestseller','Image'), ';', '"');
+            fputcsv($fp, array('id','Name','Price','Amount','Description','url','Visible','Bestseller','Image'), ';');
             foreach ($products_catalog as $fields) {
-                fputcsv($fp, $fields, ';', '"');
+                fputcsv($fp, $fields, ';');
             }
             fclose($fp);
+
             $export = "Товары экспортированы в корень сайта!";
         }
         
