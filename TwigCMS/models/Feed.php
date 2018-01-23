@@ -26,10 +26,8 @@ class Feed extends Database
 
 		while($row = mysqli_fetch_array($result)) {
 			$product = $xml->createElement("product");
+			$product->setAttribute("id", $row['id']);
 			$catalog->appendChild($product);
-
-			$id = $xml->createElement("id", $row['id']);
-			$product->appendChild($id);
 
 			$name = $xml->createElement("name", $row['name']);
 			$product->appendChild($name);
