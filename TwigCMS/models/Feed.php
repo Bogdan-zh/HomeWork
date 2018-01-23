@@ -24,32 +24,24 @@ class Feed extends Database
 		$shopurl = $xml->createElement("shopurl", $scheme."://".$host);
 		$catalog->appendChild($shopurl);
 
+		$arr = ["name", "price", "amount"];
+
 		while($row = mysqli_fetch_array($result)) {
 			$product = $xml->createElement("product");
 			$product->setAttribute("id", $row['id']);
 			$catalog->appendChild($product);
 
-			$name = $xml->createElement("name", $row['name']);
-			$product->appendChild($name);
+			foreach($arr as $a) {
+				$a = $xml->createElement("$a", $row["$a"]);
+				$product->appendChild($a);
+			}
 
-			$price = $xml->createElement("price", $row['price']);
-			$product->appendChild($price);
-
-			$amount = $xml->createElement("amount", $row['amount']);
-			$product->appendChild($amount);
-
-			$description = $xml->createElement("description", $row['description']);
+			$description = $xml->createElement("description", strip_tags($row['description']));
 			$product->appendChild($description);
 
 			$url = $xml->createElement("url", $scheme."://".$host."/".'products'."/".$row['url']);
 			$product->appendChild($url);
-
-			$visible = $xml->createElement("visible", $row['visible']);
-			$product->appendChild($visible);
-
-			$bestseller = $xml->createElement("bestseller", $row['bestseller']);
-			$product->appendChild($bestseller);
-
+				
 			$image = $xml->createElement("image", $_SERVER['DOCUMENT_ROOT'].'/uploads/products/'.$row['image']);
 			$product->appendChild($image);
 		}
