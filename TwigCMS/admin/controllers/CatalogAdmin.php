@@ -44,10 +44,10 @@ class CatalogAdmin extends CoreAdmin
 
         ////////////////////////////// XML /////////////////////////////////
 
-        $feed1 = '';
+        $feed_link = '';
         if(isset($_POST['feed'])) {
             $feed->createFeed();
-            $feed1 = "../feed.xml";
+            $feed_link = "../feed.xml";
         }
 
 
@@ -56,7 +56,7 @@ class CatalogAdmin extends CoreAdmin
             'name' => 'Товары',
             'products' => $products_catalog,
             'export' => $export,
-            'feed' => $feed1,
+            'feed' => $feed_link,
 
         );
 
