@@ -22,10 +22,12 @@ class CatalogAdmin extends CoreAdmin
             $fp = fopen('../products.csv', 'w');
 
             // НАВЕРНОЕ ИЗВРАЩЕНСКИЙ СПОСОБ, НО ТОЛЬКО ОН РАБОТАЕТ
-            $csv_headers = array('id','Name','Price','Amount','Description','url','visible','Image');
+            $csv_headers = array('id','Name','Price','Amount','Description','url','visible','Image','category',);
             $arr = [];
             fputcsv($fp, $csv_headers, ';');
             foreach ($products_catalog as $fields) {
+                $id = $fields['id'];
+                array_push($fields, $products->getCategoryCurrentProduct($id));
                 foreach ($fields as $key => $val) {
                     $v = iconv('UTF-8', 'WINDOWS-1251', $val);
                     $arr[$key] = $v;
