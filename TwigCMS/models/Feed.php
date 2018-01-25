@@ -1,5 +1,4 @@
 <?php
-
 class Feed
 {
 	public function createFeed()
@@ -16,14 +15,16 @@ class Feed
 		$catalog = $xml->createElement("catalog");
 		$xml->appendChild($catalog);
 
-		$shopname = $xml->createElement("date", date('Y-m-d H:i'));
-		$catalog->appendChild($shopname);
+		$head_tags = [
+			"data" => date('Y-m-d H:i'),
+			"shopname" => "Twig Shop",
+			"shopurl" => "$scheme://$host",
+		];
 
-		$shopname = $xml->createElement("shopname", "Twig Shop");
-		$catalog->appendChild($shopname);
-
-		$shopurl = $xml->createElement("shopurl", $scheme."://".$host);
-		$catalog->appendChild($shopurl);
+		foreach($head_tags as $key => $val) {
+			$shopname = $xml->createElement($key, $val);
+			$catalog->appendChild($shopname);
+		}
 
 		$arr = ["name", "price", "amount", "visible", "image"];
 
