@@ -16,33 +16,28 @@ class CatalogAdmin extends CoreAdmin
         $products_catalog = $products->getProducts();
 
         ////////////////////////////// CSV /////////////////////////////////
-        // $f = serialize($products_catalog);
-        // var_dump(iconv('UTF-8', 'WINDOWS-1251', $f));
-        // $products_catalog1 = unserialize($f);
-        
         $export = '';
         if(isset($_POST['export_products'])) {
             
             $fp = fopen('../products.csv', 'w');
-            //fputs($fp, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
-            //fwrite($fp,b"\xEF\xBB\xBF" );
-            //fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
-            //iconv('UTF-8', 'WINDOWS-1251', $fp);
 
+            // НАВЕРНОЕ ИЗВРАЩЕНСКИЙ СПОСОБ, НО ТОЛЬКО ОН РАБОТАЕТ
             $csv_headers = array('id','Name','Price','Amount','Description','url','visible','Image');
+            $arr = [];
             fputcsv($fp, $csv_headers, ';');
             foreach ($products_catalog as $fields) {
-                unset($fields['bestseller']);
-                fputcsv($fp, $fields, ';');
+                foreach ($fields as $key => $val) {
+                    $v = iconv('UTF-8', 'WINDOWS-1251', $val);
+                    $arr[$key] = $v;
+                }
+                unset($arr['bestseller']);
+                fputcsv($fp, $arr, ';');
             }
+
             fclose($fp);
 
             $export = "Товары экспортированы в корень сайта!";
         }
-        
-        // $t = file_get_contents('../file.csv');
-        // echo mb_detect_encoding($t);
-
 
         ////////////////////////////// XML /////////////////////////////////
 
