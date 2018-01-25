@@ -29,10 +29,10 @@ class CatalogAdmin extends CoreAdmin
             //fprintf($fp, chr(0xEF).chr(0xBB).chr(0xBF));
             //iconv('UTF-8', 'WINDOWS-1251', $fp);
 
-            fputcsv($fp, array('id','Name','Price','Amount','Description','url','Image'), ';');
+            $csv_headers = array('id','Name','Price','Amount','Description','url','visible','Image');
+            fputcsv($fp, $csv_headers, ';');
             foreach ($products_catalog as $fields) {
-                unset($fields['visible'], $fields['bestseller']);
-
+                unset($fields['bestseller']);
                 fputcsv($fp, $fields, ';');
             }
             fclose($fp);
