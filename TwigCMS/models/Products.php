@@ -77,13 +77,13 @@ class Products extends Database
         
     }
 
-    // public function getCategoryForSelect($id) // получаем категорию, которая присвоена товару
-    // {
-    //     $query = "SELECT p.category_id, c.id, c.name FROM `products_categories` p INNER JOIN categories c ON p.category_id = c.id WHERE product_id='$id'";
-    //     $result = $this->query($query);
-    //     $res = $result->fetch_assoc();
-    //     return $res['name'];
-    // }
+    public function getCategoryCurrentProduct($id) // получаем категорию, которая присвоена товару
+    {
+        $query = "SELECT p.category_id, c.id, c.name FROM `products_categories` p INNER JOIN categories c ON p.category_id = c.id WHERE product_id='$id'";
+        $result = $this->query($query);
+        $res = $result->fetch_assoc();
+        return $res['name'];
+    }
 
     public function getProductCategories($id = 0)
     {
