@@ -25,7 +25,7 @@ class Feed
 		$shopurl = $xml->createElement("shopurl", $scheme."://".$host);
 		$catalog->appendChild($shopurl);
 
-		$arr = ["name", "price", "amount"];
+		$arr = ["name", "price", "amount", "visible", "image"];
 
 		foreach($products_catalog as $prod) {
 			$product = $xml->createElement("product");
@@ -42,9 +42,6 @@ class Feed
 
 			$url = $xml->createElement("url", $scheme."://".$host."/".'products'."/".$prod['url']);
 			$product->appendChild($url);
-				
-			$image = $xml->createElement("image", $_SERVER['DOCUMENT_ROOT'].'/uploads/products/'.$prod['image']);
-			$product->appendChild($image);
 		}
 
 		//echo "<xmp>".$xml->saveXML()."</xmp>";

@@ -25,6 +25,7 @@ foreach ($products_catalog as $product) {
 	print "<amount>".$product['amount']."</amount>";
 	print "<description>".strip_tags($product['description'])."</description>";
 	print "<url>".$scheme."://".$host."/".'products'."/".$product['url']."</url>";
+	print "<visible>".$product['visible']."</visible>";
 	print "<image>".$_SERVER['DOCUMENT_ROOT'].'/uploads/products/'.$product['image']."</image>";
 	print "</product>";
 }
