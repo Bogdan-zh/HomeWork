@@ -30,7 +30,7 @@ class Categories extends Database
         if(empty($id)) {
             return false;
         }
-        $query = "SELECT id, name, description, url, visible, image FROM categories WHERE $type = $id LIMIT 1";
+        $query = "SELECT id, name, description, url, visible, image FROM categories WHERE $type = '$id' LIMIT 1";
         $this->query($query);
         return $this->result();
     }

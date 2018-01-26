@@ -30,7 +30,7 @@ class Products extends Database
         if(empty($id)) {
             return false;
         }
-        $query = "SELECT id, name, price, amount, description, url, visible, bestseller, image FROM products WHERE id = $id LIMIT 1";
+        $query = "SELECT id, name, price, amount, description, url, visible, bestseller, image FROM products WHERE id = '$id' LIMIT 1";
         $this->query($query);
         return $this->result();
     }
@@ -51,7 +51,7 @@ class Products extends Database
             $columns[] = $column."="."'".$val."'";
         }
         $colum_sql = implode(',',$columns);
-        $query = "UPDATE products SET $colum_sql WHERE id=$id";
+        $query = "UPDATE products SET $colum_sql WHERE id='$id'";
         $this->query($query);
         return $id;
     }

@@ -20,12 +20,8 @@
 
     <h1>{{ catalog.name }}</h1>
     
-    <p>{{ catalog.description|raw }}</p>
-
-
-    
     {% set flag = 0 %}
-    <div class="bestsellers">
+    <div class="catalog">
         {% for product in products %}
             {% if product.category_id == catalog.id %}
                 {% if product.visible == 1 %}
