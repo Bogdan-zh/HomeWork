@@ -25,12 +25,12 @@ class Products extends Database
         return $this->resId();
     }
 
-    public function getProduct($id)
+    public function getProduct($id, $type = 'id')
     {
         if(empty($id)) {
             return false;
         }
-        $query = "SELECT id, name, price, amount, description, url, visible, bestseller, image FROM products WHERE id = '$id' LIMIT 1";
+        $query = "SELECT id, name, price, amount, description, url, visible, bestseller, image FROM products WHERE $type = '$id' LIMIT 1";
         $this->query($query);
         return $this->result();
     }

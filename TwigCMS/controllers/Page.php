@@ -25,7 +25,7 @@ class Page extends Core
             'pages' => $all_pages,
         );
 
-        if(($page['url'])) {
+        if($page) {
             return $this->view->render('page.html',$array_vars);
         } else {
             header("http/1.0 404 not found");

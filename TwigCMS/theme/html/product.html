@@ -16,9 +16,47 @@
 
 
 {% block content %}
-    <h1>{{ product.name }}</h1>
-    
-    <p>{{ product.description|raw }}</p>
+    <!-- <div class="product">
+        <h1>{{ product.name }}</h1>
+        
+        <p>{{ product.description|raw }}</p>
+    </div> -->
+    <div class="product">
+        <h1>{{ product.name }}</h1>
+        <div class="product1">
+            <div class="first-box">
+                <div class="product_avatar">
+                    {% if product.image == 'noimage.png' or product.image is not defined %}
+                    <img class="avatar_in_product" src="../../../admin/theme/assets/img/noimage.png" alt="" width="200">
+                    {% else %}
+                    <img class="product-image kek" src="../../uploads/products/{{ product.image }}">
+                    {% endif %}
+                </div>
+                <form method="post">
+                    <div class="product-buy">
+                        <input type="hidden" name="id" value="{{ product.id }}">
+                        <div class="amount">
+                            <span>Количество:</span>
+                            <input type="number" name="amount" value="1" min="1">
+                        </div>
+                        <div class="buttons">
+                            <input class="button btn btn-lg btn-success" type="submit" name="cart" value="Купить">
+                            <input class="button btn btn-lg btn-info" type="submit" name="wishlist" value="В избранное">
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="second-box">
+                <p class="product-description_price">Цена товара: <span>{{ product.price }}</span></p>
+                <p class="product-description_description">Описание: <span>{{ product.description|raw }}</span></p>
+                <p class="product-description_stock">На складе: <span>{{ product.amount }} </span>штук</p>
+            </div>
+
+        </div>
+    </div>
+
 {% endblock %}
 
 
@@ -28,7 +66,7 @@
     {% for category in categories %}
     {% if category.visible == 1 %}
     <li>
-        <a href="{{ category.url }}" class="">
+        <a href="/catalog/{{ category.url }}" class="">
             <span>{{ category.name }}</span>
         </a>
     </li>

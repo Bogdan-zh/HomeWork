@@ -15,10 +15,10 @@ class Catalog extends Core
 
         $uri = parse_url($_SERVER['REQUEST_URI']);
         $parts = explode('/', $uri['path']);
-        
+
         if (isset($parts[2])) {
             $catalog = $categories->getCategory($parts[2], 'url');
-        }
+        } 
 
         $array_vars = array(
             'catalog' => $catalog,
@@ -26,7 +26,6 @@ class Catalog extends Core
             'pages' => $all_pages,
             'products' => $products_catalog,
         );
-
         if($catalog) {
             return $this->view->render('catalog.html',$array_vars);
         } else {

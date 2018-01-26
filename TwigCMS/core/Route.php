@@ -17,7 +17,7 @@ class Route
         $uri_array = array(
             '' => 'Main',
             'catalog' => 'Catalog',
-            'product' => 'Product',
+            'products' => 'Product',
             'cart' => 'Cart',
             'order' => 'Order',
             'contact' => 'Contact',

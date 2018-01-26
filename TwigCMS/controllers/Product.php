@@ -10,24 +10,26 @@ class Product extends Core
         $all_pages = $pages->getPages();
 
         $products = new Products();
-        //$products_catalog = $products->getProducts();
-        $product = new stdClass();
 
         $uri = parse_url($_SERVER['REQUEST_URI']);
         $parts = explode('/', $uri['path']);
 
         if(isset($parts[2])) {
-            $product = $products->getProduct($request->get('url', 'string'), 'url');
+            $product = $products->getProduct($parts[2], 'url');
         }
 
         $array_vars = array(
-            //'page' => $page,
             'categories' => $all_categories,
             'pages' => $all_pages,
             'product' => $product,
         );
 
-        return $this->view->render('product.html',$array_vars);
+        if($product) {
+            return $this->view->render('product.html',$array_vars);
+        } else {
+            header("http/1.0 404 not found");
+            return $this->view->render('error404.html',$array_vars);
+        }
         
     }
 }
