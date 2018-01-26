@@ -15,12 +15,7 @@ class Catalog extends Core
 
         $uri = parse_url($_SERVER['REQUEST_URI']);
         $parts = explode('/', $uri['path']);
-
-        // foreach($all_categories as $category) {
-        //     if($category['url'] == $parts[2]) {
-        //         $catalog = $categories->getCategory($category['id'], 'id');  
-        //     }
-        // }
+        
         if (isset($parts[2])) {
             $catalog = $categories->getCategory($parts[2], 'url');
         }
