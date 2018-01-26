@@ -23,10 +23,7 @@ class Page extends Core
             'page' => $page,
             'categories' => $all_categories,
             'pages' => $all_pages,
-            //'products' => $products_catalog,
         );
-
-        //print_r($page);
 
         if(($page['url'])) {
             return $this->view->render('page.html',$array_vars);
