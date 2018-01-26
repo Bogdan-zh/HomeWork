@@ -6,22 +6,21 @@ class Catalog extends Core
         $request = new Request();
         $categories = new Categories();
         $all_categories = $categories->getCategories();
-        $catalog = new stdClass();
 
         $pages = new Pages();
         $all_pages = $pages->getPages();
 
         $products = new Products();
-        $products_catalog = $products->getProducts();
+        $products_catalog = $products->getCategoriesForCatalog();
 
         $uri = parse_url($_SERVER['REQUEST_URI']);
         $parts = explode('/', $uri['path']);
 
-        //if(isset($parts[2])) {
-            $catalog = $categories->getCategory($request->get('url', 'string'), 'url');
-        //}
-            //$catalog->name = $request->get('url', 'string');
-            print_r($request->get('url', 'string'));
+        foreach($all_categories as $category) {
+            if($category['url'] == $parts[2]) {
+                $catalog = $categories->getCategory($category['id'], 'id');
+            }
+        }
 
         $array_vars = array(
             'catalog' => $catalog,

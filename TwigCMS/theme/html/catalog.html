@@ -23,27 +23,35 @@
     <p>{{ catalog.description|raw }}</p>
 
 
+    
+    {% set flag = 0 %}
     <div class="bestsellers">
         {% for product in products %}
-            {% if product.visible == 1 %}
-                <a class="box" href="/products/{{ product.url }}">
-                    <div class="box_avatar">
-                        {% if product.image == 'noimage.png' or product.image is not defined %}
-                        <img src="../theme/assets/img/noimage.png" alt="">
-                        {% else %}
-                        <img src="../uploads/products/{{ product.image }}" alt="">
-                        {% endif %}
-                    </div>
-                    <div class="box_name">
-                        {{ product.name }}
-                    </div>
-                    <div class="box_price">
-                        {{ product.price }} грн
-                    </div>
-                </a>
+            {% if product.category_id == catalog.id %}
+                {% if product.visible == 1 %}
+                {% set flag = 1 %}
+                    <a class="box" href="/products/{{ product.url }}">
+                        <div class="box_avatar">
+                            {% if product.image == 'noimage.png' or product.image is not defined %}
+                            <img src="../theme/assets/img/noimage.png" alt="">
+                            {% else %}
+                            <img src="../uploads/products/{{ product.image }}" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="box_name">
+                            {{ product.name }}
+                        </div>
+                        <div class="box_price">
+                            {{ product.price }} грн
+                        </div>
+                    </a>
+                {% endif %}
             {% endif %}
         {% endfor %}
     </div>
+    {% if flag == 0 %}
+        <p>Нет товаров данной категории</p>
+    {% endif %}
 
 
 

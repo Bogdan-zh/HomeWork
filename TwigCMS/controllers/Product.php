@@ -10,7 +10,7 @@ class Product extends Core
         $all_pages = $pages->getPages();
 
         $products = new Products();
-        $products_catalog = $products->getProducts();
+        //$products_catalog = $products->getProducts();
         $product = new stdClass();
 
         $uri = parse_url($_SERVER['REQUEST_URI']);
@@ -24,7 +24,6 @@ class Product extends Core
             //'page' => $page,
             'categories' => $all_categories,
             'pages' => $all_pages,
-            'products' => $products_catalog,
             'product' => $product,
         );
 

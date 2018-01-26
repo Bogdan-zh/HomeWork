@@ -96,5 +96,18 @@ class Products extends Database
         return $this->results();
     }
 
+
+
+    public function getCategoriesForCatalog()
+    {
+        $query = "SELECT p.id, p.name, p.price, p.amount, p.description, p.url, p.visible, p.bestseller, p.created_at, p.image, pc.category_id
+            FROM products p
+            LEFT JOIN products_categories pc
+            ON pc.product_id = p.id
+            ORDER BY pc.category_id";
+        $this->query($query);
+        return $this->results();
+    }
+
     ///////////////////////////////////////////////////////////////////
 }
