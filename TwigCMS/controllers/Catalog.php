@@ -32,7 +32,11 @@ class Catalog extends Core
             'products' => $products_catalog,
         );
 
-        return $this->view->render('catalog.html',$array_vars);
+        if($catalog) {
+            return $this->view->render('catalog.html',$array_vars);
+        } else {
+            return $this->view->render('error404.html',$array_vars);
+        }
         
     }
 }
