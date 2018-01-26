@@ -36,31 +36,6 @@ class CatalogAdmin extends CoreAdmin
                 fputcsv($fp, $arr, ';');
             }
 
-
-
-
-
-            
-            // $arr = [];
-            // $arr_headers = ["name", "price", "amount", "visible", "image", "description"];
-            // fputcsv($fp, $arr_headers, ';');
-            // foreach ($products_catalog as $fields) {
-            //     $id = $fields['id'];
-            //     array_push($fields, $products->getCategoryCurrentProduct($id));
-            //     foreach ($fields as $key => $val) {
-            //         $v = iconv('UTF-8', 'WINDOWS-1251', $val);
-            //         $arr[$key] = $v;
-            //     }
-                
-            //     $keys_end = array_flip($arr_headers); // ключи для итогового массива
-            //     $ooo = array_intersect_key($arr, $keys_end);
-            //     //unset($arr['bestseller']);
-            //     //fputcsv($fp, $ooo, ';');
-            //     //print_r($ooo);
-            // }
-
-
-
             fclose($fp);
 
             $export = "Товары экспортированы в корень сайта!";
