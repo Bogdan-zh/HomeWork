@@ -83,6 +83,13 @@
                     {% endif %}
                 </td>
                 <td>
+                    <a class="view_on_site" href="/products/{{ product.url }}" title="Посмотреть на сайте">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 460 460" width="30px" height="30px">
+                            <path d="M0,67.5v285h460v-285H0z M30,97.5h400v225H30V97.5z M130,362.5l-20,20v10h240v-10l-20-20H130z" fill="currentColor"></path>
+                        </svg>
+                    </a>
+                </td>
+                <td>
                     <label class="label_for_hidden_del">X
                         <input class="hidden_del" type="submit" name="del[]" value="{{ product.id }}">
                     </label>

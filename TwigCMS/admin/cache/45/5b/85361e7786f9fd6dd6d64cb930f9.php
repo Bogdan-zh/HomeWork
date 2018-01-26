@@ -178,9 +178,19 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
             // line 84
             echo "                </td>
                 <td>
+                    <a class=\"view_on_site\" href=\"/products/";
+            // line 86
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "url"), "html", null, true);
+            echo "\" title=\"Посмотреть на сайте\">
+                        <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 460 460\" width=\"30px\" height=\"30px\">
+                            <path d=\"M0,67.5v285h460v-285H0z M30,97.5h400v225H30V97.5z M130,362.5l-20,20v10h240v-10l-20-20H130z\" fill=\"currentColor\"></path>
+                        </svg>
+                    </a>
+                </td>
+                <td>
                     <label class=\"label_for_hidden_del\">X
                         <input class=\"hidden_del\" type=\"submit\" name=\"del[]\" value=\"";
-            // line 87
+            // line 94
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "id"), "html", null, true);
             echo "\">
                     </label>
@@ -191,7 +201,7 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 92
+        // line 99
         echo "        </table>
         <div class=\"select\">
             <select name=\"select\">
@@ -219,6 +229,6 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  195 => 92,  184 => 87,  179 => 84,  175 => 82,  173 => 81,  169 => 79,  165 => 77,  161 => 75,  159 => 74,  154 => 72,  150 => 71,  146 => 70,  140 => 67,  137 => 66,  131 => 64,  127 => 62,  125 => 61,  120 => 59,  114 => 56,  110 => 55,  104 => 52,  100 => 50,  96 => 49,  76 => 31,  70 => 28,  65 => 25,  63 => 24,  60 => 23,  52 => 18,  49 => 17,  47 => 16,  34 => 6,  31 => 5,  28 => 4,);
+        return array (  205 => 99,  194 => 94,  183 => 86,  179 => 84,  175 => 82,  173 => 81,  169 => 79,  165 => 77,  161 => 75,  159 => 74,  154 => 72,  150 => 71,  146 => 70,  140 => 67,  137 => 66,  131 => 64,  127 => 62,  125 => 61,  120 => 59,  114 => 56,  110 => 55,  104 => 52,  100 => 50,  96 => 49,  76 => 31,  70 => 28,  65 => 25,  63 => 24,  60 => 23,  52 => 18,  49 => 17,  47 => 16,  34 => 6,  31 => 5,  28 => 4,);
     }
 }
