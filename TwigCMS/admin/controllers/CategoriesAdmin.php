@@ -5,7 +5,6 @@ class CategoriesAdmin extends CoreAdmin
     {
         $categories = new Categories();
         $lists = new Lists();
-        ///////////////////////
 
         $lists->enDisDel('categories');
 

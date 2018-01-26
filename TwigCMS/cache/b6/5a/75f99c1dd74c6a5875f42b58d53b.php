@@ -87,11 +87,11 @@ class __TwigTemplate_b65a75f99c1dd74c6a5875f42b58d53b extends Twig_Template
                 // line 29
                 if ((($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image") == "noimage.png") || (!$this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image", array(), "any", true, true)))) {
                     // line 30
-                    echo "                        <img src=\"../admin/theme/assets/img/noimage.png\" alt=\"\">
+                    echo "                        <img src=\"/admin/theme/assets/img/noimage.png\" alt=\"\">
                         ";
                 } else {
                     // line 32
-                    echo "                        <img src=\"../uploads/products/";
+                    echo "                        <img src=\"/uploads/products/";
                     echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image"), "html", null, true);
                     echo "\" alt=\"\">
                         ";

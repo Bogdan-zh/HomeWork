@@ -5,7 +5,6 @@ class PagesAdmin extends CoreAdmin
     {
         $pages = new Pages();
         $lists = new Lists();
-        ///////////////////////
 
         $lists->enDisDel('pages');
 

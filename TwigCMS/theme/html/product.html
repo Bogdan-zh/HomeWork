@@ -16,20 +16,20 @@
 
 
 {% block content %}
-    <!-- <div class="product">
-        <h1>{{ product.name }}</h1>
-        
-        <p>{{ product.description|raw }}</p>
-    </div> -->
+
     <div class="product">
         <h1>{{ product.name }}</h1>
         <div class="product1">
             <div class="first-box">
                 <div class="product_avatar">
+                    {% if product.bestseller == 1 %}
+                    <img class="bestseller" src="/theme/assets/img/hit.png" alt="">
+                    {% endif %}
+
                     {% if product.image == 'noimage.png' or product.image is not defined %}
-                    <img class="avatar_in_product" src="../../../admin/theme/assets/img/noimage.png" alt="" width="200">
+                    <img class="product-image" src="/theme/assets/img/noimage.png" alt="">
                     {% else %}
-                    <img class="product-image kek" src="../../uploads/products/{{ product.image }}">
+                    <img class="product-image" src="/uploads/products/{{ product.image }}">
                     {% endif %}
                 </div>
                 <form method="post">

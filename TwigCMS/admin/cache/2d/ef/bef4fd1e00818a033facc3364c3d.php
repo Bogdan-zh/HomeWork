@@ -117,11 +117,6 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
             <section class=\"home-title\">
                 <div class=\"aside\">
                     <ul>
-                        <!-- <li class=\" \">
-                            <a href=\"/admin\" class=\"\">
-                                Главная
-                            </a>
-                        </li> -->
                         <li class=\" \">
                             <a href=\"/admin/products\" class=\"\">
                                 <span>Товары</span>
@@ -145,9 +140,9 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
                 </div>
                 <div class=\"contain\">
                     ";
-        // line 124
+        // line 119
         $this->displayBlock('content', $context, $blocks);
-        // line 126
+        // line 121
         echo "                </div>
             </section>
         </div>
@@ -165,10 +160,10 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
     {
     }
 
-    // line 124
+    // line 119
     public function block_content($context, array $blocks = array())
     {
-        // line 125
+        // line 120
         echo "                    ";
     }
 
@@ -179,6 +174,6 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  172 => 125,  169 => 124,  164 => 4,  151 => 126,  149 => 124,  26 => 4,  21 => 1,);
+        return array (  167 => 120,  164 => 119,  159 => 4,  146 => 121,  144 => 119,  26 => 4,  21 => 1,);
     }
 }

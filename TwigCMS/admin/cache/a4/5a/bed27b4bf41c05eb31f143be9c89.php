@@ -116,11 +116,11 @@ class __TwigTemplate_a45abed27b4bf41c05eb31f143be9c89 extends Twig_Template
         // line 57
         if ((($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image") == "noimage.png") || (!$this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image", array(), "any", true, true)))) {
             // line 58
-            echo "                <img class=\"avatar_in_product\" src=\"../../../admin/theme/assets/img/noimage.png\" alt=\"\" width=\"200\">
+            echo "                <img class=\"avatar_in_product\" src=\"/admin/theme/assets/img/noimage.png\" alt=\"\" width=\"200\">
             ";
         } else {
             // line 60
-            echo "                <img class=\"avatar_in_product\" src=\"../../../uploads/products/";
+            echo "                <img class=\"avatar_in_product\" src=\"/uploads/products/";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image"), "html", null, true);
             echo "\" alt=\"\" width=\"200\">
             ";

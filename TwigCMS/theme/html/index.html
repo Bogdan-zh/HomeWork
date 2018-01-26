@@ -29,20 +29,15 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-left menu">
-                        <!-- {% block pages %}
-                        {% endblock %} -->
-
                         {% for page in pages %}
-                        {% if page.visible == 1 %}
-                        <li>
-                            <a href="/{{ page.url }}" class="">
-                                <span>{{ page.name }}</span>
-                            </a>
-                        </li>
-                        {% endif %}
+                            {% if page.visible == 1 %}
+                            <li>
+                                <a href="/{{ page.url }}" class="">
+                                    <span>{{ page.name }}</span>
+                                </a>
+                            </li>
+                            {% endif %}
                         {% endfor %}
-
-
                     </ul>
                 </div>
 
@@ -52,21 +47,8 @@
     <div id="layout-content">
         <section class="home-title">
             <div class="aside">
-            {% block sidebar %}
-            {% endblock %}
-                
-                <!-- {% for category in categories %}
-                    <ul>
-                        {% if category.visible == 1 %}
-                            <li>
-                                <a href="{{ category.url }}" class="">
-                                    <span>{{ category.name }}</span>
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                {% endfor %} -->
-                
+                {% block sidebar %}
+                {% endblock %}
             </div>
             <div class="contain">
                 {% block content %}

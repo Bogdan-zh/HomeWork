@@ -27,9 +27,9 @@
                     <img class="bestseller_img" src="theme/assets/img/hit.png" alt="">
                     <div class="box_avatar">
                         {% if product.image == 'noimage.png' or product.image is not defined %}
-                        <img src="../admin/theme/assets/img/noimage.png" alt="">
+                        <img src="/admin/theme/assets/img/noimage.png" alt="">
                         {% else %}
-                        <img src="../uploads/products/{{ product.image }}" alt="">
+                        <img src="/uploads/products/{{ product.image }}" alt="">
                         {% endif %}
                     </div>
                     <div class="box_name">

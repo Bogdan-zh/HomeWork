@@ -11,7 +11,6 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
 
         $this->blocks = array(
             'title' => array($this, 'block_title'),
-            'pages' => array($this, 'block_pages'),
             'sidebar' => array($this, 'block_sidebar'),
             'content' => array($this, 'block_content'),
         );
@@ -54,44 +53,36 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
                         </li>
                     </ul>
                     <ul class=\"nav navbar-nav navbar-left menu\">
-                        <!-- ";
-        // line 32
-        $this->displayBlock('pages', $context, $blocks);
-        // line 33
-        echo " -->
-
                         ";
-        // line 35
+        // line 32
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["pages"]) ? $context["pages"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["page"]) {
-            // line 36
-            echo "                        ";
+            // line 33
+            echo "                            ";
             if (($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "visible") == 1)) {
-                // line 37
-                echo "                        <li>
-                            <a href=\"/";
-                // line 38
+                // line 34
+                echo "                            <li>
+                                <a href=\"/";
+                // line 35
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "url"), "html", null, true);
                 echo "\" class=\"\">
-                                <span>";
-                // line 39
+                                    <span>";
+                // line 36
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "name"), "html", null, true);
                 echo "</span>
-                            </a>
-                        </li>
-                        ";
+                                </a>
+                            </li>
+                            ";
             }
-            // line 43
+            // line 40
             echo "                        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['page'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 44
-        echo "
-
-                    </ul>
+        // line 41
+        echo "                    </ul>
                 </div>
 
             </div>
@@ -100,51 +91,16 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
     <div id=\"layout-content\">
         <section class=\"home-title\">
             <div class=\"aside\">
-            ";
-        // line 55
-        $this->displayBlock('sidebar', $context, $blocks);
-        // line 57
-        echo "                
-                <!-- ";
-        // line 58
-        $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) ? $context["categories"] : null));
-        foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
-            // line 59
-            echo "                    <ul>
-                        ";
-            // line 60
-            if (($this->getAttribute((isset($context["category"]) ? $context["category"] : null), "visible") == 1)) {
-                // line 61
-                echo "                            <li>
-                                <a href=\"";
-                // line 62
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "url"), "html", null, true);
-                echo "\" class=\"\">
-                                    <span>";
-                // line 63
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "name"), "html", null, true);
-                echo "</span>
-                                </a>
-                            </li>
-                        ";
-            }
-            // line 67
-            echo "                    </ul>
                 ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 68
-        echo " -->
-                
-            </div>
+        // line 50
+        $this->displayBlock('sidebar', $context, $blocks);
+        // line 52
+        echo "            </div>
             <div class=\"contain\">
                 ";
-        // line 72
+        // line 54
         $this->displayBlock('content', $context, $blocks);
-        // line 74
+        // line 56
         echo "            </div>
         </section>
     </div>
@@ -160,24 +116,17 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
     {
     }
 
-    // line 32
-    public function block_pages($context, array $blocks = array())
-    {
-        // line 33
-        echo "                        ";
-    }
-
-    // line 55
+    // line 50
     public function block_sidebar($context, array $blocks = array())
     {
-        // line 56
-        echo "            ";
+        // line 51
+        echo "                ";
     }
 
-    // line 72
+    // line 54
     public function block_content($context, array $blocks = array())
     {
-        // line 73
+        // line 55
         echo "                ";
     }
 
@@ -193,6 +142,6 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  181 => 73,  178 => 72,  174 => 56,  171 => 55,  167 => 33,  164 => 32,  159 => 4,  148 => 74,  146 => 72,  140 => 68,  133 => 67,  126 => 63,  122 => 62,  119 => 61,  117 => 60,  114 => 59,  110 => 58,  107 => 57,  105 => 55,  92 => 44,  86 => 43,  79 => 39,  75 => 38,  72 => 37,  69 => 36,  65 => 35,  61 => 33,  59 => 32,  28 => 4,  23 => 1,);
+        return array (  130 => 55,  123 => 51,  120 => 50,  115 => 4,  102 => 54,  98 => 52,  96 => 50,  85 => 41,  79 => 40,  72 => 36,  68 => 35,  65 => 34,  62 => 33,  58 => 32,  27 => 4,  22 => 1,  168 => 63,  162 => 62,  155 => 58,  151 => 57,  148 => 56,  145 => 55,  141 => 54,  137 => 52,  134 => 51,  127 => 54,  121 => 44,  118 => 43,  116 => 42,  110 => 39,  104 => 56,  100 => 34,  94 => 32,  90 => 30,  88 => 29,  81 => 26,  78 => 25,  74 => 24,  66 => 20,  63 => 19,  55 => 14,  48 => 10,  44 => 9,  41 => 8,  38 => 7,  33 => 6,  30 => 5,);
     }
 }

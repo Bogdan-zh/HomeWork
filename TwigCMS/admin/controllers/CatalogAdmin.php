@@ -23,6 +23,7 @@ class CatalogAdmin extends CoreAdmin
             
             $fp = fopen('../products.csv', 'w');
 
+            // НАВЕРНОЕ ИЗВРАЩЕНСКИЙ СПОСОБ, НО ТОЛЬКО ОН РАБОТАЕТ
             $csv_headers = array('id','Name','Price','Amount','Description','url','visible','Image','category',);
             $arr = [];
             fputcsv($fp, $csv_headers, ';');
@@ -37,8 +38,8 @@ class CatalogAdmin extends CoreAdmin
                 fputcsv($fp, $arr, ';');
             }
 
-
-
+            
+            
             // $arr = [];
             // $arr_headers = ["name", "price", "amount", "visible", "image", "description"];
             // fputcsv($fp, $arr_headers, ';');

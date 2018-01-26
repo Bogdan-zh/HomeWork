@@ -59,9 +59,9 @@
                     <a href="/admin/product?id={{ product.id }}">
 
                         {% if product.image == 'noimage.png' or product.image is not defined %}
-                        <img class="avatars" src="../../../admin/theme/assets/img/noimage.png" alt="">
+                        <img class="avatars" src="/admin/theme/assets/img/noimage.png" alt="">
                         {% else %}
-                        <img class="avatars" src="../../../uploads/products/{{ product.image }}" alt="">
+                        <img class="avatars" src="/uploads/products/{{ product.image }}" alt="">
                         {% endif %}
 
                         {{ product.name }}
@@ -79,7 +79,7 @@
                 </td>
                 <td>
                     {% if product.bestseller == 1 %}
-                    <img src="theme/assets/img/hit.png" alt="" width="40">
+                    <img src="/admin/theme/assets/img/hit.png" alt="" width="40">
                     {% endif %}
                 </td>
                 <td>

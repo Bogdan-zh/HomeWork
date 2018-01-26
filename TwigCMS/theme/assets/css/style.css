@@ -212,6 +212,7 @@ a:hover {
 
 .product-description_price span {
     font-weight: bold;
+    font-size: 2.2rem;
 }
 
 .product-description_description span {
@@ -220,4 +221,9 @@ a:hover {
 
 .product-description_stock span {
     font-weight: bold;
+}
+
+.product_avatar .bestseller {
+    position: absolute;
+    width: 80px;
 }

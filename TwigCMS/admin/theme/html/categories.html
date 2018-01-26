@@ -28,9 +28,9 @@
                     <a href="/admin/category?id={{ category.id }}">
 
                         {% if category.image == 'noimage.png' or category.image is not defined %}
-                        <img class="avatars" src="../../../admin/theme/assets/img/noimage.png" alt="">
+                        <img class="avatars" src="/admin/theme/assets/img/noimage.png" alt="">
                         {% else %}
-                        <img class="avatars" src="../../../uploads/categories/{{ category.image }}" alt="">
+                        <img class="avatars" src="/uploads/categories/{{ category.image }}" alt="">
                         {% endif %}
 
                         {{ category.name }}

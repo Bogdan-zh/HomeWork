@@ -6,7 +6,7 @@ class ProductAdmin extends CoreAdmin
         $products = new Products(); // подключаем модель Товары
         $request = new Request();  // подключаем модель Запрос
         $images = new Images();
-        ////////////////////////////
+        
         $product = new stdClass();
 
         $categories = new Categories();

@@ -124,11 +124,11 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
             // line 61
             if ((($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image") == "noimage.png") || (!$this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image", array(), "any", true, true)))) {
                 // line 62
-                echo "                        <img class=\"avatars\" src=\"../../../admin/theme/assets/img/noimage.png\" alt=\"\">
+                echo "                        <img class=\"avatars\" src=\"/admin/theme/assets/img/noimage.png\" alt=\"\">
                         ";
             } else {
                 // line 64
-                echo "                        <img class=\"avatars\" src=\"../../../uploads/products/";
+                echo "                        <img class=\"avatars\" src=\"/uploads/products/";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image"), "html", null, true);
                 echo "\" alt=\"\">
                         ";
@@ -172,7 +172,7 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
             // line 81
             if (($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "bestseller") == 1)) {
                 // line 82
-                echo "                    <img src=\"theme/assets/img/hit.png\" alt=\"\" width=\"40\">
+                echo "                    <img src=\"/admin/theme/assets/img/hit.png\" alt=\"\" width=\"40\">
                     ";
             }
             // line 84

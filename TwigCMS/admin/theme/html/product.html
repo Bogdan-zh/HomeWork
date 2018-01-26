@@ -55,9 +55,9 @@
             <label>Картинка</label><br>
             
             {% if product.image == 'noimage.png' or product.image is not defined %}
-                <img class="avatar_in_product" src="../../../admin/theme/assets/img/noimage.png" alt="" width="200">
+                <img class="avatar_in_product" src="/admin/theme/assets/img/noimage.png" alt="" width="200">
             {% else %}
-                <img class="avatar_in_product" src="../../../uploads/products/{{ product.image }}" alt="" width="200">
+                <img class="avatar_in_product" src="/uploads/products/{{ product.image }}" alt="" width="200">
             {% endif %}
             
             <input class="form-control" type="file" name="files[]" value="">
