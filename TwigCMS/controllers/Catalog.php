@@ -30,6 +30,7 @@ class Catalog extends Core
         if($catalog) {
             return $this->view->render('catalog.html',$array_vars);
         } else {
+            header("http/1.0 404 not found");
             return $this->view->render('error404.html',$array_vars);
         }
         

@@ -31,7 +31,7 @@ class Page extends Core
         if(($page['url'])) {
             return $this->view->render('page.html',$array_vars);
         } else {
-            //header("http/1.0 404 not found");
+            header("http/1.0 404 not found");
             return $this->view->render('error404.html',$array_vars);
         }
     }
