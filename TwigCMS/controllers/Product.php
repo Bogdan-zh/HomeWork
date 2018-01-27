@@ -6,6 +6,8 @@ class Product extends Core
         $categories = new Categories();
         $all_categories = $categories->getCategories();
 
+        $categories_catalog_tree = $categories->GetCategoriesTree();
+
         $pages = new Pages();
         $all_pages = $pages->getPages();
 
@@ -22,6 +24,7 @@ class Product extends Core
             'categories' => $all_categories,
             'pages' => $all_pages,
             'product' => $product,
+            'categories_tree' => $categories_catalog_tree,
         );
 
         if($product) {

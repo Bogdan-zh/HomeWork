@@ -153,7 +153,7 @@
 
 /*------HTML редактор. убираем "рекламу"------*/
 
-.mce-notification-inner, #mceu_31, #mceu_30 {
+.mce-notification-inner, #mceu_31, #mceu_30, #mceu_32 {
     display: none !important;
 }
 

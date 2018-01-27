@@ -228,3 +228,8 @@ a:hover {
     width: 80px;
 }
 
+/*-----------категории-------------*/
+
+.main-menu li ul {
+    margin-left: 20px !important;
+}

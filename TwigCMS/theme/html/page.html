@@ -25,7 +25,31 @@
 
 {% block sidebar %}
 
-<ul>
+{% macro menu_categories(categories_tree) %}
+{% import _self as macros %}
+    {% for category in categories_tree %}
+        {% if category.visible %}
+            <li>
+                <a href="/catalog/{{ category.url }}">{{ category.name }}</a>
+                {% if category.visible %}
+                    {% if category.subcategories %}
+                        <ul>
+                            {{ macros.menu_categories(category.subcategories) }}
+                        </ul>
+                    {% endif %}
+                {% endif %}
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{% import _self as macros %}
+
+<ul class="main-menu">
+    {{ macros.menu_categories(categories_tree) }}
+</ul>
+
+<!-- <ul>
     {% for category in categories %}
     {% if category.visible == 1 %}
     <li>
@@ -35,6 +59,6 @@
     </li>
     {% endif %}
     {% endfor %}
-</ul>
+</ul> -->
 
 {% endblock %}

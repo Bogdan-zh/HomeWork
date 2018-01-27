@@ -6,6 +6,8 @@ class Page extends Core
         $categories = new Categories();
         $all_categories = $categories->getCategories();
 
+        $categories_catalog_tree = $categories->GetCategoriesTree();
+
         $pages = new Pages();
         $all_pages = $pages->getPages();
 
@@ -23,6 +25,7 @@ class Page extends Core
             'page' => $page,
             'categories' => $all_categories,
             'pages' => $all_pages,
+            'categories_tree' => $categories_catalog_tree,
         );
 
         if($page) {

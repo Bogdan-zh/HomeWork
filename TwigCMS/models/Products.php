@@ -37,7 +37,7 @@ class Products extends Database
     public function getProducts()
     {
 
-        $query = "SELECT id, name, price, amount, description, url, visible, bestseller, image FROM products";
+        $query = "SELECT id, name, price, amount, description, url, visible, bestseller, image FROM products ORDER BY id DESC";
         $this->query($query);
         return $this->results();
     }

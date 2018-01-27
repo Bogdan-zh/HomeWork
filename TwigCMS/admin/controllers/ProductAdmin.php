@@ -24,7 +24,7 @@ class ProductAdmin extends CoreAdmin
                 if(empty($request->post('url'))) {
                     $product->url = CoreAdmin::translit($request->post('name'));
                 } else {
-                    $product->url = $request->post('url');
+                    $product->url = CoreAdmin::translit($request->post('url'));
                 }
 
                 if($request->post('id','integer')) {

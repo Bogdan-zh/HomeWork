@@ -30,13 +30,13 @@ class Categories extends Database
         if(empty($id)) {
             return false;
         }
-        $query = "SELECT id, name, description, url, visible, image FROM categories WHERE $type = '$id' LIMIT 1";
+        $query = "SELECT id, name, description, url, visible, image, parent_id FROM categories WHERE $type = '$id' LIMIT 1";
         $this->query($query);
         return $this->result();
     }
     public function getCategories()
     {
-        $query = "SELECT id,name, description, url, visible, image FROM categories";
+        $query = "SELECT id,name, description, url, visible, image, parent_id FROM categories";
         $this->query($query);
         return $this->results();
     }
@@ -55,4 +55,32 @@ class Categories extends Database
         return $id;
     }
 
+
+
+    //Дерево категорий
+    public function GetCategoriesTree($parent_id=0)
+    {
+        $results=array();
+        $categories = $this->getCategories();
+//        print_r($categories);
+        if ($categories) {
+            foreach ($categories as $category) {
+                if ($category['parent_id'] == $parent_id && $category['visible']) {
+                    if ($category['id'] != $parent_id) {
+                        $subcategories = $this->GetCategoriesTree($category['id']);
+                        if(!empty($subcategories))
+                            $category['subcategories'] = $subcategories ;
+                    };
+                    $results[]=$category;
+                    unset($category);
+                }
+            }
+        }
+//        print_r($results);
+        return $results;
+    }
+
+
 }
+
+

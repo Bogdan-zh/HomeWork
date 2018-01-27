@@ -17,7 +17,7 @@ class PageAdmin extends CoreAdmin
             if(empty($request->post('url'))) {
                 $page->url = CoreAdmin::translit($request->post('name'));
             } else {
-                $page->url = $request->post('url');
+                $page->url = CoreAdmin::translit($request->post('url'));
             }
 
             if($request->post('id','integer')) {

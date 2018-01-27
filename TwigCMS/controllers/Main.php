@@ -5,6 +5,7 @@ class Main extends Core
     {
         $categories = new Categories();
         $all_categories = $categories->getCategories();
+        $categories_catalog_tree = $categories->GetCategoriesTree();
 
         $products = new Products();
         $products_catalog = $products->getProducts();
@@ -17,6 +18,7 @@ class Main extends Core
             'categories' => $all_categories,
             'products' => $products_catalog,
             'pages' => $all_pages,
+            'categories_tree' => $categories_catalog_tree,
         );
 
         return $this->view->render('main.html',$array_vars);

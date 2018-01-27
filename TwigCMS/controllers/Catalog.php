@@ -6,6 +6,8 @@ class Catalog extends Core
         $request = new Request();
         $categories = new Categories();
         $all_categories = $categories->getCategories();
+        
+        $categories_catalog_tree = $categories->GetCategoriesTree();
 
         $pages = new Pages();
         $all_pages = $pages->getPages();
@@ -23,8 +25,10 @@ class Catalog extends Core
         $array_vars = array(
             'catalog' => $catalog,
             'categories' => $all_categories,
+            'categories_tree' => $categories_catalog_tree,
             'pages' => $all_pages,
             'products' => $products_catalog,
+
         );
         if($catalog) {
             return $this->view->render('catalog.html',$array_vars);

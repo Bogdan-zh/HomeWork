@@ -37,7 +37,7 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
 <a class=\"btn btn-primary btn-lg add_something\" href=\"/admin/product\">Добавить товар</a>
 
 <form method=\"post\" style=\"display: inline-block; margin: 0;\">
-    <button type=\"submit\" name=\"export_products\" class=\"btn btn-lg btn-info\">Экспорт товаров в CSV</button>
+    <button type=\"submit\" name=\"export_products\" class=\"btn btn-lg btn-info\" value=\"1\">Экспорт товаров в CSV</button>
     <button type=\"submit\" name=\"feed\" class=\"btn btn-lg btn-info\">Создать ФИД XML</button>
     <a class=\"btn btn-lg btn-info\" href=\"/feed2.php\">Создать ФИД XML (альтернативный вариант)</a>
 </form>
