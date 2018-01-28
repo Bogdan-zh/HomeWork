@@ -46,18 +46,12 @@
         <div class="form-group">
             <label>Родительская категория: </label>
             <select name="parent_id">
-
-                <!-- ПОКА НЕ РАБОТАЕТ -->
                 <option {% if category.parent_id == 0 %} selected {% endif %} value="0">Без родительской категории</option>
-            
-                {% for category in categories %}
-                    <option {% if category.parent_id == category.id %} selected {% endif %} value="{{ category.id }}">{{ category.name }}</option>
+                {% for cat in categories %}
+                    <option {% if category.parent_id == cat.id %} selected {% endif %} value="{{ cat.id }}">{{ cat.name }}</option>
                 {% endfor %}
-                
             </select>
-
         </div>
-        <p>{{ category.parent_id }}</p>
         <div class="form-group">
             <label>Описание</label>
             <textarea class="form-control" id="mytextarea" name="description">{{ category.description }}</textarea>
