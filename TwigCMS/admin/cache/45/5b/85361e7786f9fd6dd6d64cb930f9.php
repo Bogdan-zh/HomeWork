@@ -38,8 +38,8 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
 
 <form method=\"post\" style=\"display: inline-block; margin: 0;\">
     <button type=\"submit\" name=\"export_products\" class=\"btn btn-lg btn-info\" value=\"1\">Экспорт товаров в CSV</button>
-    <button type=\"submit\" name=\"feed\" class=\"btn btn-lg btn-info\">Создать ФИД XML</button>
-    <a class=\"btn btn-lg btn-info\" href=\"/feed2.php\">Создать ФИД XML (альтернативный вариант)</a>
+    <!-- <button type=\"submit\" name=\"feed\" class=\"btn btn-lg btn-info\">Создать ФИД XML</button> -->
+    <a class=\"btn btn-lg btn-info\" href=\"/feed2.php\">ФИД XML</a>
 </form>
 
 ";
@@ -149,9 +149,9 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
             // line 71
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "amount"), "html", null, true);
             echo " шт.</td>
-                <td>";
+                <td class=\"description\">";
             // line 72
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "description"), "html", null, true);
+            echo twig_escape_filter($this->env, twig_slice($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "description"), 0, 50), "html", null, true);
             echo "</td>
                 <td>
                     ";

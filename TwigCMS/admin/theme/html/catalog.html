@@ -9,8 +9,8 @@
 
 <form method="post" style="display: inline-block; margin: 0;">
     <button type="submit" name="export_products" class="btn btn-lg btn-info" value="1">Экспорт товаров в CSV</button>
-    <button type="submit" name="feed" class="btn btn-lg btn-info">Создать ФИД XML</button>
-    <a class="btn btn-lg btn-info" href="/feed2.php">Создать ФИД XML (альтернативный вариант)</a>
+    <!-- <button type="submit" name="feed" class="btn btn-lg btn-info">Создать ФИД XML</button> -->
+    <a class="btn btn-lg btn-info" href="/feed2.php">ФИД XML</a>
 </form>
 
 {% if export is not empty %}
@@ -69,7 +69,7 @@
                 </td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.amount }} шт.</td>
-                <td>{{ product.description }}</td>
+                <td class="description">{{ product.description|slice(0, 50) }}</td>
                 <td>
                     {% if product.visible == 1 %}
                     <input disabled data-toggle="toggle" type="checkbox" value="1" name="visible" checked>

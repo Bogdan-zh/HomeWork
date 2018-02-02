@@ -3,9 +3,11 @@ class Page extends Core
 {
     public function fetch()
     {
+        $request = new Request();
+        $carts = new Carts();
+        
         $categories = new Categories();
         $all_categories = $categories->getCategories();
-
         $categories_catalog_tree = $categories->GetCategoriesTree();
 
         $pages = new Pages();
@@ -21,11 +23,16 @@ class Page extends Core
             $page = $pages->getPage($parts[1], 'url');
         }
 
+        $amount_in_cart = $carts->cart_count();
+        $total = $carts->cart_total();
+
         $array_vars = array(
             'page' => $page,
             'categories' => $all_categories,
             'pages' => $all_pages,
             'categories_tree' => $categories_catalog_tree,
+            'amount_in_cart' => $amount_in_cart,
+            'total' => $total,
         );
 
         if($page) {

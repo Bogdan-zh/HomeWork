@@ -36,7 +36,7 @@
                         {{ category.name }}
                     </a>
                 </td>
-                <td>{{ category.description }}</td>
+                <td>{{ category.description|slice(0, 50) }}</td>
                 <td>
                     {% if category.visible == 1 %}
                     <input disabled data-toggle="toggle" type="checkbox" value="1" name="visible" checked>

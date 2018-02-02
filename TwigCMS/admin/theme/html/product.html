@@ -2,12 +2,7 @@
 
 
 {% block content %}
-<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
-<script>
-      tinymce.init({
-        selector: '#mytextarea'
-      });
-</script>
+
 <h1 style="text-align: center;">{{ product.name }}</h1>
 <div class="single_item">
 
@@ -65,13 +60,23 @@
         </div>
         <div class="form-group">
             <label>Описание</label>
-            <textarea class="form-control" id="mytextarea" name="description">{{ product.description }}</textarea>
+            <textarea class="form-control" rows="5" name="description">{{ product.description }}</textarea>
         </div>
         <div class="form-group">
             <label>Категория: </label>
-            <select name="categories">
+            <select name="categories"> 
                 {% for category in categories %}
-                    <option {% if category.id == selected_category.category_id %} selected {% endif %} value="{{ category.id }}">{{ category.name }}</option>
+                     {% if category.parent_id == 0 %} <!-- чтобы вернуть как раньше, удалить первое(это) условие -->
+                        <option 
+                            disabled 
+                            value="{{ category.id }}">{{ category.name }}
+                        </option>
+                     {% else %}
+                        <option 
+                            {% if category.id == selected_category.category_id %} selected {% endif %} 
+                            value="{{ category.id }}">--{{ category.name }}
+                        </option>
+                    {% endif %}
                 {% endfor %}
             </select>
         </div>

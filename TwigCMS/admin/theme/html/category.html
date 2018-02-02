@@ -2,12 +2,7 @@
 
 
 {% block content %}
-<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
-<script>
-      tinymce.init({
-        selector: '#mytextarea'
-      });
-</script>
+
 <h1 style="text-align: center;">{{ category.name }}</h1>
 <div class="">
 
@@ -44,17 +39,35 @@
             <input class="btn btn-lg btn-danger" style="margin-top: 10px;" type="submit" name="del" value="Удалить картинку">
         </div>
         <div class="form-group">
-            <label>Родительская категория: </label>
+            <label>Категория: </label>
             <select name="parent_id">
-                <option {% if category.parent_id == 0 %} selected {% endif %} value="0">Без родительской категории</option>
+                <option {% if category.parent_id == 0 %} selected {% endif %} value="0">Корневая категория</option>
                 {% for cat in categories %}
-                    <option {% if category.parent_id == cat.id %} selected {% endif %} value="{{ cat.id }}">{{ cat.name }}</option>
+                    {% if cat.parent_id == 0 %}
+                    <option 
+                        {% if category.parent_id == cat.id %} 
+                            selected 
+                            {% elseif category.id == cat.id %}
+                            disabled
+                            {% endif %} 
+                        value="{{ cat.id }}">{{ cat.name }}
+                    </option>
+                    {% else %}
+                        <option 
+                            {% if category.parent_id == cat.id %} 
+                            selected 
+                            {% elseif category.id == cat.id %}
+                            disabled
+                            {% endif %} 
+                            value="{{ cat.id }}">--{{ cat.name }}
+                        </option>
+                    {% endif %}
                 {% endfor %}
             </select>
         </div>
         <div class="form-group">
             <label>Описание</label>
-            <textarea class="form-control" id="mytextarea" name="description">{{ category.description }}</textarea>
+            <textarea class="form-control" rows="5" name="description">{{ category.description }}</textarea>
         </div>
         
 

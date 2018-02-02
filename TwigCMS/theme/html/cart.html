@@ -1,0 +1,83 @@
+{% extends "index.html" %}
+{% block title %}Корзина{% endblock %}
+
+
+{% block content %}
+	<h1>Корзина</h1>
+	{% if cart.amount > 0 %}
+	<div class="cart_container">
+		<form method="post">
+			<div>
+				<table class="table table-condensed">
+					<tr>
+						<th>#</th>
+						<th>Название товара</th>
+						<th>Цена</th>
+						<th>Кол-во</th>
+						<th>Сумма</th>
+					</tr>
+					{% set i = 0 %}
+					{% if cart_products is defined %}
+					{% for item in cart_products %}
+					<tr>
+						
+						<td>
+							{% set i = i + 1 %}
+							{{ i }}
+						</td>
+						
+						<td>
+							<a href="/products/{{ item.url }}">
+								{% if item.image == 'noimage.png' or item.image is not defined %}
+								<img class="avatars" src="/admin/theme/assets/img/noimage.png" alt="">
+								{% else %}
+								<img class="avatars" src="/uploads/products/{{ item.image }}" alt="">
+								{% endif %}
+								{{ item.name }}
+							</a>
+						</td>
+						<td>{{ item.price }}</td>
+						<td><input 
+							onchange="$('#update').click(); return false;" 
+							class="amount_in_cart" 
+							type="number" 
+							min="0" 
+							name="cart_item[{{ item.id }}]" 
+							value="{{ item.amount }}">
+						</td>
+						<td>{{ item.price * item.amount }}</td>
+						<td>
+							<label class="label_for_hidden_del">X
+								<input class="hidden_del" type="submit" name="delete" value="{{ item.id }}">
+							</label>
+						</td>
+					</tr>
+					{% endfor %}
+					{% endif %}
+					<tr>
+						<td colspan="5">
+							<p class="total" ">Итого: <span>{{ total }}</span></p>
+						</td>
+					</tr>
+				</table>
+				<input style="display: none;" class="btn btn-lg btn-info" id="update" type="submit" name="update_cart" value="Обновить корзину">
+				<input style="display: none;" class="btn btn-lg btn-danger" type="submit" name="clear_cart" value="Очистить корзину">
+			</div>
+			<h5>Контактные данные</h5>
+			<div class="order_list">
+
+				<input type="text" name="first_name" placeholder=" Имя">
+				<input type="text" name="last_name" placeholder=" Фамилия">
+				<input type="text" name="email" placeholder=" Email">
+				<input type="text" name="phone" placeholder=" Телефон">
+				<input class="btn btn-lg btn-success" type="submit" name="buy" value="Оформить заказ">
+			</div>
+			
+			
+		</form>
+	</div>	
+	{% else %}
+	<p>Корзина пуста</p>
+	{% endif %}
+
+{% endblock %}

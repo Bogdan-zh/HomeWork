@@ -1,5 +1,5 @@
 <?php
-class Catalog extends Core
+class Cart extends Core
 {
     public function fetch()
     {
@@ -19,33 +19,47 @@ class Catalog extends Core
         $uri = parse_url($_SERVER['REQUEST_URI']);
         $parts = explode('/', $uri['path']);
 
-        if (isset($parts[2])) {
-            $catalog = $categories->getCategory($parts[2], 'url');
-        }
-        $category_id = $categories->GetCategoriesId($catalog['id']);
+        if (isset($parts[1])) {
+            $cart = $carts->getCart(); // тут массив, в котором все товары добавленые в корзину 
+            //print_r($cart);
+        } 
 
-        if($request->post('to_cart')) {
-            $carts->addToCart('cart'); // добавление товара в корзину со страницы каталога
+        if($request->post('clear_cart') || $cart['amount'] < 1) {
+            $carts->clearCart(); // очищаем всю корзину(удаляем куку)
         }
+
+        if($request->post('update_cart')) {
+            $carts->updateCart(); // обновляем изменения в корзине
+        }
+
+        if($request->post('delete')) {
+            $carts->delete(); // обновляем изменения в корзине
+        }
+
+
+        // echo "<pre>";
+        // //print_r($_POST);
+        // print_r(unserialize($request->cookie('cart')));
+        // echo "</pre>";
 
         $amount_in_cart = $carts->cart_count();
         $total = $carts->cart_total();
 
         $array_vars = array(
-            'catalog' => $catalog,
             'categories' => $all_categories,
             'categories_tree' => $categories_catalog_tree,
             'pages' => $all_pages,
             'products' => $products_catalog,
-            'category' => $category_id,
             'amount_in_cart' => $amount_in_cart,
+            'cart' => $cart,
+            'cart_products' => $cart['products'],
             'total' => $total,
         );
 
-        if($catalog) {
-            return $this->view->render('catalog.html',$array_vars);
+        if(true) {
+            return $this->view->render('cart.html',$array_vars);
         } else {
-            header("http/1.0 404 not found");
+            //header("http/1.0 404 not found");
             return $this->view->render('error404.html',$array_vars);
         }
         

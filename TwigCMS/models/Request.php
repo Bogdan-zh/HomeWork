@@ -68,4 +68,14 @@ class Request
             return null;
     }
 
+
+    public function cookie($name)
+    {
+        if(!empty($name) && isset($_COOKIE[$name])) {
+            return $_COOKIE[$name];
+        } else {
+            return false;
+        }
+    }
+
 }

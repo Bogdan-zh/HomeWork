@@ -30,81 +30,114 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
         <link href=\"/theme/assets/css/vendor/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">
         <link href=\"/theme/assets/css/flat-ui.min.css\" rel=\"stylesheet\">
         <link href=\"/theme/assets/css/style.css\" rel=\"stylesheet\">
+        <script src=\"/theme/assets/js/vendor/jquery.min.js\"></script>
+        
     </head>
-    <body class=\"\">
-    <header class=\"header-navbar clearfix\">
-        <nav class=\"navbar navbar-inverse navbar-fixed-top\">
-            <div class=\"containe\">
+    <body>
+        
+        <div class=\"top_header\">
+            <div class=\"container\">
+                <ul class=\"go_to_admin\">
+                    <li><a href=\"/admin/products\">Перейти в админку</a></li>
+                </ul>
+                <ul class=\"reg_log\">
+                    <li><a href=\"#\">Логин</a></li>
+                    <li>&nbsp;/&nbsp;</li>
+                    <li><a href=\"#\">Регистрация</a></li>
+                </ul>
+            </div>
+        </div>
 
-                <div class=\"navbar-header\">
-                    <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\">
-                        <span class=\"sr-only\">Toggle navigation</span>
-                        <span class=\"icon-bar\"></span>
-                        <span class=\"icon-bar\"></span>
-                        <span class=\"icon-bar\"></span>
-                    </button>
-                </div>
-
-                <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
-                    <ul class=\"nav navbar-nav navbar-left menu\">
-                        <a class=\"navbar-brand\" href=\"/\">Twig Shop</a>
-                        <li class=\"go_to_site\">
-                            <a href=\"/admin/\">Перейти в админку</a>
-                        </li>
-                    </ul>
-                    <ul class=\"nav navbar-nav navbar-left menu\">
-                        ";
-        // line 32
+        <header>
+            <div class=\"container\">
+                
+                <ul class=\"my_menu\">
+                    <li><a href=\"/\">Twig Shop</a></li>
+                    
+                    ";
+        // line 33
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["pages"]) ? $context["pages"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["page"]) {
-            // line 33
-            echo "                            ";
+            // line 34
+            echo "                        ";
             if (($this->getAttribute((isset($context["page"]) ? $context["page"] : null), "visible") == 1)) {
-                // line 34
-                echo "                            <li>
-                                <a href=\"/";
                 // line 35
+                echo "                        <li>
+                            <a href=\"/";
+                // line 36
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "url"), "html", null, true);
                 echo "\" class=\"\">
-                                    <span>";
-                // line 36
+                                <span>";
+                // line 37
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : null), "name"), "html", null, true);
                 echo "</span>
-                                </a>
-                            </li>
-                            ";
+                            </a>
+                        </li>
+                        ";
             }
-            // line 40
-            echo "                        ";
+            // line 41
+            echo "                    ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['page'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 41
-        echo "                    </ul>
-                </div>
-
+        // line 42
+        echo "                </ul>
+                
             </div>
-        </nav>
-    </header>
-    <div id=\"layout-content\">
-        <section class=\"home-title\">
-            <div class=\"aside\">
+        </header>
+        <div class=\"bottom_header\">
+            <div class=\"container\">
+                <div>
+                <div class=\"menuToggle\" style=\"cursor: pointer;\"><span class=\"fui-list-columned\" style=\"margin-right: 10px;\"></span>Каталог</div>
+                
                 ";
-        // line 50
+        // line 51
         $this->displayBlock('sidebar', $context, $blocks);
-        // line 52
-        echo "            </div>
-            <div class=\"contain\">
+        // line 77
+        echo "                </div>
+                <ul class=\"my_cart\">
+                    <li>
+                        <a class=\"cart\" href=\"/cart\"><img src=\"/theme/assets/img/cart1.png\" alt=\"\">
+                            <span>( ";
+        // line 81
+        echo twig_escape_filter($this->env, (isset($context["amount_in_cart"]) ? $context["amount_in_cart"] : null), "html", null, true);
+        echo " )</span>
+                            <span>";
+        // line 82
+        if (((isset($context["total"]) ? $context["total"] : null) > 0)) {
+            echo " ";
+            echo twig_escape_filter($this->env, (isset($context["total"]) ? $context["total"] : null), "html", null, true);
+            echo " грн ";
+        }
+        echo "</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class=\"content\">
+            <div class=\"container\">
                 ";
-        // line 54
+        // line 90
         $this->displayBlock('content', $context, $blocks);
-        // line 56
+        // line 92
         echo "            </div>
-        </section>
-    </div>
-    <script src=\"/theme/assets/js/vendor/jquery.min.js\"></script>
+        </div>
+
+        <script>
+            \$(function() { // для выпадающего каталога
+                \$(\".menuToggle\").on(\"click\", function() {
+                    \$(\".main-menu\").slideToggle(300, function() {
+                        if(\$(this).css(\"display\") === \"none\") {
+                            \$(this).removeAttr(\"style\");
+                        }
+                    });
+                });
+            });
+        </script>
+
     <script src=\"/theme/assets/js/flat-ui.min.js\"></script>
 </body>
 
@@ -116,18 +149,102 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
     {
     }
 
-    // line 50
+    // line 51
     public function block_sidebar($context, array $blocks = array())
     {
-        // line 51
+        // line 52
+        echo "                    ";
+        // line 69
+        echo "
+                    ";
+        // line 70
+        $context["macros"] = $this;
+        // line 71
+        echo "                    <div class=\"navi\">
+                        <ul class=\"main-menu\">
+                            ";
+        // line 73
+        echo $context["macros"]->getmenu_categories((isset($context["categories_tree"]) ? $context["categories_tree"] : null));
+        echo "
+                        </ul>
+                    </div>
+                ";
+    }
+
+    // line 90
+    public function block_content($context, array $blocks = array())
+    {
+        // line 91
         echo "                ";
     }
 
-    // line 54
-    public function block_content($context, array $blocks = array())
+    // line 52
+    public function getmenu_categories($_categories_tree = null)
     {
-        // line 55
-        echo "                ";
+        $context = $this->env->mergeGlobals(array(
+            "categories_tree" => $_categories_tree,
+        ));
+
+        $blocks = array();
+
+        ob_start();
+        try {
+            // line 53
+            echo "                    ";
+            $context["macros"] = $this;
+            // line 54
+            echo "                        ";
+            $context['_parent'] = (array) $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["categories_tree"]) ? $context["categories_tree"] : null));
+            foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
+                // line 55
+                echo "                            ";
+                if ($this->getAttribute((isset($context["category"]) ? $context["category"] : null), "visible")) {
+                    // line 56
+                    echo "                            <li>
+                                <a href=\"/catalog/";
+                    // line 57
+                    echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "url"), "html", null, true);
+                    echo "\">";
+                    echo twig_escape_filter($this->env, $this->getAttribute((isset($context["category"]) ? $context["category"] : null), "name"), "html", null, true);
+                    echo "</a>
+                                ";
+                    // line 58
+                    if ($this->getAttribute((isset($context["category"]) ? $context["category"] : null), "visible")) {
+                        // line 59
+                        echo "                                    ";
+                        if ($this->getAttribute((isset($context["category"]) ? $context["category"] : null), "subcategories")) {
+                            // line 60
+                            echo "                                        <ul class=\"sub-menu\">
+                                            ";
+                            // line 61
+                            echo $context["macros"]->getmenu_categories($this->getAttribute((isset($context["category"]) ? $context["category"] : null), "subcategories"));
+                            echo "
+                                        </ul>
+                                    ";
+                        }
+                        // line 64
+                        echo "                                ";
+                    }
+                    // line 65
+                    echo "                            </li>
+                            ";
+                }
+                // line 67
+                echo "                        ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
+            $context = array_merge($_parent, array_intersect_key($context, $_parent));
+            // line 68
+            echo "                    ";
+        } catch (Exception $e) {
+            ob_end_clean();
+
+            throw $e;
+        }
+
+        return ('' === $tmp = ob_get_clean()) ? '' : new Twig_Markup($tmp, $this->env->getCharset());
     }
 
     public function getTemplateName()
@@ -142,6 +259,6 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  130 => 55,  123 => 51,  120 => 50,  115 => 4,  102 => 54,  98 => 52,  96 => 50,  85 => 41,  79 => 40,  72 => 36,  68 => 35,  65 => 34,  62 => 33,  58 => 32,  27 => 4,  22 => 1,  168 => 63,  162 => 62,  155 => 58,  151 => 57,  148 => 56,  145 => 55,  141 => 54,  137 => 52,  134 => 51,  127 => 54,  121 => 44,  118 => 43,  116 => 42,  110 => 39,  104 => 56,  100 => 34,  94 => 32,  90 => 30,  88 => 29,  81 => 26,  78 => 25,  74 => 24,  66 => 20,  63 => 19,  55 => 14,  48 => 10,  44 => 9,  41 => 8,  38 => 7,  33 => 6,  30 => 5,);
+        return array (  240 => 68,  234 => 67,  230 => 65,  227 => 64,  221 => 61,  218 => 60,  215 => 59,  213 => 58,  207 => 57,  204 => 56,  201 => 55,  196 => 54,  193 => 53,  182 => 52,  178 => 91,  175 => 90,  167 => 73,  163 => 71,  161 => 70,  158 => 69,  156 => 52,  153 => 51,  148 => 4,  126 => 92,  124 => 90,  109 => 82,  105 => 81,  99 => 77,  97 => 51,  86 => 42,  80 => 41,  73 => 37,  69 => 36,  66 => 35,  63 => 34,  59 => 33,  27 => 4,  22 => 1,);
     }
 }

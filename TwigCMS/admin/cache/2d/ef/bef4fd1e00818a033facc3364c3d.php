@@ -26,9 +26,9 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
         <meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\"/>
-        <link href=\"/theme/assets/css/vendor/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">
+        <link href=\"/admin/theme/assets/css/vendor/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">
         <link href=\"https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css\" rel=\"stylesheet\">
-        <link href=\"/theme/assets/css/flat-ui.min.css\" rel=\"stylesheet\">
+        <link href=\"/admin/theme/assets/css/flat-ui.min.css\" rel=\"stylesheet\">
         <link rel=\"stylesheet\" href=\"/admin/theme/assets/css/style.css\">
     </head>
     <body class=\"page-home layout-default\">
@@ -53,6 +53,7 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
                             </li>
                             
                         </ul>
+                        
                         <!-- <ul class=\"nav navbar-nav navbar-right menu\">
                             <li class=\"dropdown\">
                                 <a href=\"#\" data-toggle=\"dropdown\" class=\"dropdown-toggle\">
@@ -140,9 +141,9 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
                 </div>
                 <div class=\"contain\">
                     ";
-        // line 119
+        // line 120
         $this->displayBlock('content', $context, $blocks);
-        // line 121
+        // line 122
         echo "                </div>
             </section>
         </div>
@@ -160,10 +161,10 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
     {
     }
 
-    // line 119
+    // line 120
     public function block_content($context, array $blocks = array())
     {
-        // line 120
+        // line 121
         echo "                    ";
     }
 
@@ -174,6 +175,6 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  167 => 120,  164 => 119,  159 => 4,  146 => 121,  144 => 119,  26 => 4,  21 => 1,);
+        return array (  168 => 121,  165 => 120,  160 => 4,  147 => 122,  145 => 120,  26 => 4,  21 => 1,);
     }
 }

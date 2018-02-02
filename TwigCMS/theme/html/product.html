@@ -1,22 +1,8 @@
 {% extends "index.html" %}
-
-
-{% block pages %}
-    {% for page in pages %}
-        {% if page.visible == 1 %}
-        <li>
-            <a href="/{{ page.url }}" class="">
-                <span>{{ page.name }}</span>
-            </a>
-        </li>
-        {% endif %}
-    {% endfor %}
-{% endblock %}
-
-
+{% block title %}{{ product.name }}{% endblock %}
 
 {% block content %}
-
+{% if product.visible == 1 %}
     <div class="product">
         <h1>{{ product.name }}</h1>
         <div class="product1">
@@ -33,14 +19,26 @@
                     {% endif %}
                 </div>
                 <form method="post">
+                    <input type="hidden" name="id" value="{{ product.id }}">
                     <div class="product-buy">
-                        <input type="hidden" name="id" value="{{ product.id }}">
                         <div class="amount">
                             <span>Количество:</span>
-                            <input type="number" name="amount" value="1" min="1">
+                            <input 
+                            type="number" 
+                            name="amount"
+                            {% if product.amount == 0 %}
+                                value="0" 
+                                min="0"
+                            {% else %}
+                                value="1" 
+                                min="1"
+                            {% endif %}
+                            max="{{ product.amount }}">
+
+
                         </div>
                         <div class="buttons">
-                            <input class="button btn btn-lg btn-success" type="submit" name="cart" value="Купить">
+                            <input class="button btn btn-lg btn-success" type="submit" name="to_cart" value="Купить">
                             <input class="button btn btn-lg btn-info" type="submit" name="wishlist" value="В избранное">
                         </div>
 
@@ -49,54 +47,22 @@
             </div>
 
             <div class="second-box">
-                <p class="product-description_price">Цена товара: <span>{{ product.price }}</span></p>
+                <p class="product-description_price">Цена: <span>{{ product.price }}</span></p>
+                <p class="product-description_stock">Наличие: 
+                    {% if product.amount > 0 %}
+                    <span style="color: #03AF04;">&#10004;</span>
+                    <span>В наличии</span>
+                    {% else %}
+                    <span style="color: #FF441F;">&#10006;</span>
+                    <span>Нет на складе</span>
+                    {% endif %}
+
+                </p>
                 <p class="product-description_description">Описание: <span>{{ product.description|raw }}</span></p>
-                <p class="product-description_stock">На складе: <span>{{ product.amount }} </span>штук</p>
+                
             </div>
 
         </div>
     </div>
-
-{% endblock %}
-
-
-
-{% block sidebar %}
-
-{% macro menu_categories(categories_tree) %}
-{% import _self as macros %}
-    {% for category in categories_tree %}
-        {% if category.visible %}
-            <li>
-                <a href="/catalog/{{ category.url }}">{{ category.name }}</a>
-                {% if category.visible %}
-                    {% if category.subcategories %}
-                        <ul>
-                            {{ macros.menu_categories(category.subcategories) }}
-                        </ul>
-                    {% endif %}
-                {% endif %}
-            </li>
-        {% endif %}
-    {% endfor %}
-{% endmacro %}
-
-{% import _self as macros %}
-
-<ul class="main-menu">
-    {{ macros.menu_categories(categories_tree) }}
-</ul>
-
-
-<!-- <ul>
-    {% for category in categories %}
-    {% if category.visible == 1 %}
-    <li>
-        <a href="/catalog/{{ category.url }}" class="">
-            <span>{{ category.name }}</span>
-        </a>
-    </li>
-    {% endif %}
-    {% endfor %}
-</ul> -->
+{% endif %}
 {% endblock %}

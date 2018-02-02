@@ -6,57 +6,104 @@
         <link href="/theme/assets/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/theme/assets/css/flat-ui.min.css" rel="stylesheet">
         <link href="/theme/assets/css/style.css" rel="stylesheet">
+        <script src="/theme/assets/js/vendor/jquery.min.js"></script>
+        
     </head>
-    <body class="">
-    <header class="header-navbar clearfix">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="containe">
+    <body>
+        
+        <div class="top_header">
+            <div class="container">
+                <ul class="go_to_admin">
+                    <li><a href="/admin/products">Перейти в админку</a></li>
+                </ul>
+                <ul class="reg_log">
+                    <li><a href="#">Логин</a></li>
+                    <li>&nbsp;/&nbsp;</li>
+                    <li><a href="#">Регистрация</a></li>
+                </ul>
+            </div>
+        </div>
 
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-left menu">
-                        <a class="navbar-brand" href="/">Twig Shop</a>
-                        <li class="go_to_site">
-                            <a href="/admin/">Перейти в админку</a>
+        <header>
+            <div class="container">
+                
+                <ul class="my_menu">
+                    <li><a href="/">Twig Shop</a></li>
+                    
+                    {% for page in pages %}
+                        {% if page.visible == 1 %}
+                        <li>
+                            <a href="/{{ page.url }}" class="">
+                                <span>{{ page.name }}</span>
+                            </a>
                         </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-left menu">
-                        {% for page in pages %}
-                            {% if page.visible == 1 %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                
+            </div>
+        </header>
+        <div class="bottom_header">
+            <div class="container">
+                <div>
+                <div class="menuToggle" style="cursor: pointer;"><span class="fui-list-columned" style="margin-right: 10px;"></span>Каталог</div>
+                
+                {% block sidebar %}
+                    {% macro menu_categories(categories_tree) %}
+                    {% import _self as macros %}
+                        {% for category in categories_tree %}
+                            {% if category.visible %}
                             <li>
-                                <a href="/{{ page.url }}" class="">
-                                    <span>{{ page.name }}</span>
-                                </a>
+                                <a href="/catalog/{{ category.url }}">{{ category.name }}</a>
+                                {% if category.visible %}
+                                    {% if category.subcategories %}
+                                        <ul class="sub-menu">
+                                            {{ macros.menu_categories(category.subcategories) }}
+                                        </ul>
+                                    {% endif %}
+                                {% endif %}
                             </li>
                             {% endif %}
                         {% endfor %}
-                    </ul>
-                </div>
+                    {% endmacro %}
 
-            </div>
-        </nav>
-    </header>
-    <div id="layout-content">
-        <section class="home-title">
-            <div class="aside">
-                {% block sidebar %}
+                    {% import _self as macros %}
+                    <div class="navi">
+                        <ul class="main-menu">
+                            {{ macros.menu_categories(categories_tree) }}
+                        </ul>
+                    </div>
                 {% endblock %}
+                </div>
+                <ul class="my_cart">
+                    <li>
+                        <a class="cart" href="/cart"><img src="/theme/assets/img/cart1.png" alt="">
+                            <span>( {{ amount_in_cart }} )</span>
+                            <span>{% if total > 0 %} {{ total }} грн {% endif %}</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="contain">
+        </div>
+        <div class="content">
+            <div class="container">
                 {% block content %}
                 {% endblock %}
             </div>
-        </section>
-    </div>
-    <script src="/theme/assets/js/vendor/jquery.min.js"></script>
+        </div>
+
+        <script>
+            $(function() { // для выпадающего каталога
+                $(".menuToggle").on("click", function() {
+                    $(".main-menu").slideToggle(300, function() {
+                        if($(this).css("display") === "none") {
+                            $(this).removeAttr("style");
+                        }
+                    });
+                });
+            });
+        </script>
+
     <script src="/theme/assets/js/flat-ui.min.js"></script>
 </body>
 

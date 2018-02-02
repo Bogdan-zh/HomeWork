@@ -1,4 +1,5 @@
 {% extends "index.html" %}
+{% block title %}Ошибка 404{% endblock %}
 
 
 {% block content %}
@@ -6,44 +7,4 @@
     <h1 style="font-size: 15rem;">404</h1>
     <h2>Страница не найдена</h2>
     
-{% endblock %}
-
-
-{% block sidebar %}
-
-{% macro menu_categories(categories_tree) %}
-{% import _self as macros %}
-    {% for category in categories_tree %}
-        {% if category.visible %}
-            <li>
-                <a href="/catalog/{{ category.url }}">{{ category.name }}</a>
-                {% if category.visible %}
-                    {% if category.subcategories %}
-                        <ul>
-                            {{ macros.menu_categories(category.subcategories) }}
-                        </ul>
-                    {% endif %}
-                {% endif %}
-            </li>
-        {% endif %}
-    {% endfor %}
-{% endmacro %}
-
-{% import _self as macros %}
-
-<ul class="main-menu">
-    {{ macros.menu_categories(categories_tree) }}
-</ul>
-
-<!-- <ul>
-	{% for category in categories %}
-	{% if category.visible == 1 %}
-	<li>
-		<a href="/catalog/{{ category.url }}" class="">
-			<span>{{ category.name }}</span>
-		</a>
-	</li>
-	{% endif %}
-	{% endfor %}
-</ul> -->
 {% endblock %}

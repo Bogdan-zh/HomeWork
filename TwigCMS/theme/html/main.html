@@ -1,92 +1,43 @@
 {% extends "index.html" %}
 
-
-
-{% block pages %}
-    {% for page in pages %}
-        {% if page.visible == 1 %}
-        <li>
-            <a href="/{{ page.url }}" class="">
-                <span>{{ page.name }}</span>
-            </a>
-        </li>
-        {% endif %}
-    {% endfor %}
-{% endblock %}
-
-
+{% block title %}Twig Shop{% endblock %}
 
 {% block content %}
-    <h1>{{ name }}</h1>
-    <h3>Хиты продаж</h3>
+
+    <!-- <h1>{{ name }}</h1> -->
+    <h2>Хиты продаж</h2>
 
     <div class="bestsellers">
         {% for product in products %}
-            {% if product.visible == 1 and product.bestseller == 1 and product.amount > 0 and i < 6 %}
-                <a class="box" href="products/{{ product.url }}">
-                    <img class="bestseller_img" src="theme/assets/img/hit.png" alt="">
-                    <div class="box_avatar">
-                        {% if product.image == 'noimage.png' or product.image is not defined %}
-                        <img src="/admin/theme/assets/img/noimage.png" alt="">
-                        {% else %}
-                        <img src="/uploads/products/{{ product.image }}" alt="">
-                        {% endif %}
+            {% if product.visible == 1 and product.bestseller == 1 and product.amount > 0 and i < 4 %}
+                <div class="box">
+                    <a href="products/{{ product.url }}">
+                        <img class="bestseller_img" src="theme/assets/img/hit.png" alt="">
+                        <div class="box_avatar">
+                            {% if product.image == 'noimage.png' or product.image is not defined %}
+                            <img src="/admin/theme/assets/img/noimage.png" alt="">
+                            {% else %}
+                            <img src="/uploads/products/{{ product.image }}" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="box_name">
+                            {{ product.name }}
+                        </div>
+                    </a>
+                    <div class="bottom_in_box">
+                        <div class="box_price">
+                            {{ product.price }} грн
+                        </div>
+                        <form method="post">
+                            <input type="hidden" name="id" value="{{ product.id }}">
+                            <input type="hidden" name="amount" value="1">
+                            <input class="to_cart" name="to_cart" type="submit" value="В корзину">
+                        </form>
                     </div>
-                    <div class="box_name">
-                        {{ product.name }}
-                    </div>
-                    <div class="box_price">
-                        {{ product.price }} грн
-                    </div>
-                </a>
+                </div>
                 {% set i = i + 1 %}
             {% endif %}
         {% endfor %}
     </div>
-    
 
 {% endblock %}
-
-
-{% block sidebar %}
-
-{% macro menu_categories(categories_tree) %}
-{% import _self as macros %}
-    {% for category in categories_tree %}
-        {% if category.visible %}
-            <li>
-                <a href="/catalog/{{ category.url }}">{{ category.name }}</a>
-                {% if category.visible %}
-                    {% if category.subcategories %}
-                        <ul>
-                            {{ macros.menu_categories(category.subcategories) }}
-                        </ul>
-                    {% endif %}
-                {% endif %}
-            </li>
-        {% endif %}
-    {% endfor %}
-{% endmacro %}
-
-{% import _self as macros %}
-
-<ul class="main-menu">
-    {{ macros.menu_categories(categories_tree) }}
-</ul>
-
-    <!-- <ul>
-        {% for category in categories %}
-            {% if category.visible == 1 %}
-            <li>
-                <a href="/catalog/{{ category.url }}" class="">
-                    <span>{{ category.name }}</span>
-                </a>
-            </li>
-            {% endif %}
-        {% endfor %}
-    </ul> -->
-    
-
-{% endblock %}
-
-

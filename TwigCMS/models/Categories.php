@@ -62,7 +62,6 @@ class Categories extends Database
     {
         $results=array();
         $categories = $this->getCategories();
-//        print_r($categories);
         if ($categories) {
             foreach ($categories as $category) {
                 if ($category['parent_id'] == $parent_id && $category['visible']) {
@@ -76,11 +75,33 @@ class Categories extends Database
                 }
             }
         }
+        return $results;
+    }
+
+
+    //id категории в products
+    public function GetCategoriesId($id)
+    {
+        $results=array();
+        $results[]=$id;
+        $categories = $this->getCategories();
+        if ($categories) {
+            foreach ($categories as $category) {
+                if ($category['parent_id'] == $id) {
+                    $results[] = $category['id'];
+                    $id = $category['id'];
+                }
+            }
+        }
 //        print_r($results);
         return $results;
     }
 
 
+
 }
+
+
+
 
 

@@ -160,3 +160,7 @@
 /*------------*/
 
 
+
+.description {
+    max-width: 220px;
+}

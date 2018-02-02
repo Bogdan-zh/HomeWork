@@ -5,7 +5,6 @@ class Product extends Core
     {
         $categories = new Categories();
         $all_categories = $categories->getCategories();
-
         $categories_catalog_tree = $categories->GetCategoriesTree();
 
         $pages = new Pages();
@@ -13,18 +12,30 @@ class Product extends Core
 
         $products = new Products();
 
+        $carts = new Carts();
+        $request = new Request();
+
         $uri = parse_url($_SERVER['REQUEST_URI']);
         $parts = explode('/', $uri['path']);
 
         if(isset($parts[2])) {
-            $product = $products->getProduct($parts[2], 'url');
+            $product = $products->getProduct($parts[2], 'url'); // получаем текущий товар
         }
+
+        if($request->post('to_cart')) {
+            $carts->addToCart('cart'); // добавить товар в корзину
+        }
+
+        $amount_in_cart = $carts->cart_count();
+        $total = $carts->cart_total();
 
         $array_vars = array(
             'categories' => $all_categories,
             'pages' => $all_pages,
             'product' => $product,
             'categories_tree' => $categories_catalog_tree,
+            'amount_in_cart' => $amount_in_cart,
+            'total' => $total,
         );
 
         if($product) {
