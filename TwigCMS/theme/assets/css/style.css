@@ -1,4 +1,4 @@
-
+﻿
 /*----------------------МЕНЮ КАТЕГОРИЙ--------------------------*/
 
 a {
@@ -35,6 +35,10 @@ header .container {
     background-color: grey;
     display: flex;
     justify-content: flex-end;
+}
+
+.reg_log a {
+    font-size: 15px;
 }
 
 a:hover, a:focus {
