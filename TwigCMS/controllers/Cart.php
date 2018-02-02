@@ -30,7 +30,15 @@ class Cart extends Core
         }
 
         if($request->post('update_cart')) {
-            $carts->updateCart(); // обновляем изменения в корзине
+            //$carts->updateCart(); // обновляем изменения в корзине
+            foreach ($_POST['cart_item'] as $id => $amount) {
+                if (!empty($id) && !empty($amount)) {
+                    $id = trim(strip_tags($id));
+                    $amount = trim(strip_tags($amount));
+                    $update_cart[$id] = $amount;
+                }
+            }
+            setcookie('cart', serialize($update_cart), time() + 86400*30);
             header("Location:".$_SERVER['HTTP_REFERER']);
         }
 
@@ -43,7 +51,7 @@ class Cart extends Core
 
         // echo "<pre>";
         // print_r($_POST);
-        // print_r(unserialize($request->cookie('cart')));
+        // //print_r(unserialize($request->cookie('cart')));
         // echo "</pre>";
 
         $amount_in_cart = $cart['amount'];

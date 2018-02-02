@@ -46,17 +46,17 @@ class Carts
     //     }
     // }
 
-    public function updateCart()
-    {
-        foreach ($_POST['cart_item'] as $id => $amount) {
-            if (!empty($id) && !empty($amount)) {
-                $id = trim(strip_tags($id));
-                $amount = trim(strip_tags($amount));
-                $update_cart[$id] = $amount;
-            }
-        }
-        setcookie('cart', serialize($update_cart), time() + 86400*30);
-    }
+    // public function updateCart()
+    // {
+    //     foreach ($_POST['cart_item'] as $id => $amount) {
+    //         if (!empty($id) && !empty($amount)) {
+    //             $id = trim(strip_tags($id));
+    //             $amount = trim(strip_tags($amount));
+    //             $update_cart[$id] = $amount;
+    //         }
+    //     }
+    //     setcookie('cart', serialize($update_cart), time() + 86400*30);
+    // }
 
     public function delete($id)
     {

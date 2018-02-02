@@ -35,7 +35,7 @@ class __TwigTemplate_b65a75f99c1dd74c6a5875f42b58d53b extends Twig_Template
     public function block_content($context, array $blocks = array())
     {
         // line 6
-        echo "
+        echo "    <script src=\"/theme/assets/js/vendor/jquery.min.js\"></script>
     <!-- <h1>";
         // line 7
         echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : null), "html", null, true);
@@ -112,6 +112,18 @@ class __TwigTemplate_b65a75f99c1dd74c6a5875f42b58d53b extends Twig_Template
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
         // line 41
         echo "    </div>
+
+    <script>
+
+        \$(window).on('load', function () {
+
+            \$('.to_cart').on('click', function () {
+                location.reload();
+            });
+
+        });
+        
+    </script>
 
 ";
     }

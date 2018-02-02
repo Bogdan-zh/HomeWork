@@ -3,7 +3,7 @@
 {% block title %}Twig Shop{% endblock %}
 
 {% block content %}
-
+    <script src="/theme/assets/js/vendor/jquery.min.js"></script>
     <!-- <h1>{{ name }}</h1> -->
     <h2>Хиты продаж</h2>
 
@@ -39,5 +39,17 @@
             {% endif %}
         {% endfor %}
     </div>
+
+    <!-- <script>
+
+        $(window).on('load', function () {
+
+            $('.to_cart').on('click', function () {
+                location.reload();
+            });
+
+        });
+        
+    </script> -->
 
 {% endblock %}
