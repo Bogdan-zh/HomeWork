@@ -3,9 +3,10 @@
 
 
 {% block content %}
+<div class="cart_container">
     <h1>Корзина</h1>
     {% if cart.amount > 0 %}
-    <div class="cart_container">
+    
         <form method="post">
             <div>
                 <table class="table table-condensed">
@@ -75,9 +76,9 @@
             
             
         </form>
-    </div>  
+      
     {% else %}
     <p>Корзина пуста</p>
     {% endif %}
-
+</div>
 {% endblock %}
