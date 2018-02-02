@@ -23,8 +23,9 @@ class Page extends Core
             $page = $pages->getPage($parts[1], 'url');
         }
 
-        $amount_in_cart = $carts->cart_count();
-        $total = $carts->cart_total();
+        $cart = $carts->getCart();
+        $amount_in_cart = $cart['amount'];
+        $total = $cart['total'];
 
         $array_vars = array(
             'page' => $page,

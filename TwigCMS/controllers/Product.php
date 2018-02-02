@@ -1,7 +1,7 @@
 <?php
 class Product extends Core
 {
-    public function fetch() // НЕ РАБОТАЕТ
+    public function fetch()
     {
         $categories = new Categories();
         $all_categories = $categories->getCategories();
@@ -23,11 +23,16 @@ class Product extends Core
         }
 
         if($request->post('to_cart')) {
-            $carts->addToCart('cart'); // добавить товар в корзину
+            $id = $request->post('id', 'integer');
+            $amount = $request->post('amount', 'integer');
+
+            $carts->addToCart($id, $amount); // добавление товара в корзину с главной страницы
+            header("Location:".$_SERVER['HTTP_REFERER']);
         }
 
-        $amount_in_cart = $carts->cart_count();
-        $total = $carts->cart_total();
+        $cart = $carts->getCart();
+        $amount_in_cart = $cart['amount'];
+        $total = $cart['total'];
 
         $array_vars = array(
             'categories' => $all_categories,

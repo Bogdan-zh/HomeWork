@@ -25,11 +25,16 @@ class Catalog extends Core
         $category_id = $categories->GetCategoriesId($catalog['id']);
 
         if($request->post('to_cart')) {
-            $carts->addToCart('cart'); // добавление товара в корзину со страницы каталога
+            $id = $request->post('id', 'integer');
+            $amount = 1;
+
+            $carts->addToCart($id, $amount); // добавление товара в корзину с главной страницы
+            header("Location:".$_SERVER['HTTP_REFERER']);
         }
 
-        $amount_in_cart = $carts->cart_count();
-        $total = $carts->cart_total();
+        $cart = $carts->getCart();
+        $amount_in_cart = $cart['amount'];
+        $total = $cart['total'];
 
         $array_vars = array(
             'catalog' => $catalog,

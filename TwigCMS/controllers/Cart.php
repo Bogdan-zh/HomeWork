@@ -26,24 +26,28 @@ class Cart extends Core
 
         if($request->post('clear_cart') || $cart['amount'] < 1) {
             $carts->clearCart(); // очищаем всю корзину(удаляем куку)
+            header("Location:".$_SERVER['HTTP_REFERER']);
         }
 
         if($request->post('update_cart')) {
             $carts->updateCart(); // обновляем изменения в корзине
+            header("Location:".$_SERVER['HTTP_REFERER']);
         }
 
         if($request->post('delete')) {
-            $carts->delete(); // обновляем изменения в корзине
+            $id = $request->post('delete');
+            $carts->delete($id);
+            header("Location:".$_SERVER['HTTP_REFERER']);
         }
 
 
         // echo "<pre>";
-        // //print_r($_POST);
+        // print_r($_POST);
         // print_r(unserialize($request->cookie('cart')));
         // echo "</pre>";
 
-        $amount_in_cart = $carts->cart_count();
-        $total = $carts->cart_total();
+        $amount_in_cart = $cart['amount'];
+        $total = $cart['total'];
 
         $array_vars = array(
             'categories' => $all_categories,
