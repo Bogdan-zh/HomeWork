@@ -56,10 +56,9 @@ class Carts
                 $update_cart[$id] = $amount;
             }
         }
-        if(isset($update_cart)) {
-            setcookie('cart', serialize($update_cart), time() + 86400*30);
-            header("Location:".$_SERVER['HTTP_REFERER']);
-        }
+        setcookie('cart', serialize($update_cart), time() + 86400*30);
+        header("Location:".$_SERVER['HTTP_REFERER']);
+        
         
     }
 
