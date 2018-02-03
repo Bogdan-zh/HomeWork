@@ -39,13 +39,13 @@
                         </td>
                         <td>{{ item.price }}</td>
                         <td><input 
-                            onchange="$('#update').click(); return false;" 
+                            onmouseout="$('#update').click(); return false;" 
                             class="amount_in_cart" 
                             type="number" 
                             min="1"
                             name="cart_item[{{ item.id }}]" 
-                            value="{{ item.amount }}">
-                        </td>
+                            value="{{ item.amount }}"> 
+                        </td> <!-- onblur, onchange -->
                         <td>{{ item.price * item.amount }}</td>
                         <td>
                             <label class="label_for_hidden_del">X
