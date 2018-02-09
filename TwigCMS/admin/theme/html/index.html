@@ -23,65 +23,11 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-left menu">
-                            <a class="navbar-brand" href="/admin/">TwigCMS</a>
-                            <li class="go_to_site">
-                                <a href="/">Перейти на сайт</a>
-                            </li>
-                            
-                        </ul>
-                        
-                        <!-- <ul class="nav navbar-nav navbar-right menu">
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                                    Pages
-                                    <span class="caret"></span>
-                                </a>
-                                <span class="dropdown-arrow"></span>
-                                <ul class="dropdown-menu">
-                                    <li class=" ">
-                                        <a href="http://october/about" class="">
-                                            About Us
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="http://october/contact" class="">
-                                            Contact Us
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="http://october/pricing-table" class="">
-                                            Pricing Table
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="http://october/services" class="">
-                                            Services
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="http://october/signin" class="">
-                                            Sign In
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="http://october/register" class="">
-                                            Register
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="http://october/error" class="">
-                                            Error Page
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="http://october/404" class="">
-                                            404 Page
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul> -->
+                    <ul class="nav navbar-nav navbar-left menu">
+                        <a class="navbar-brand" href="/admin/">TwigCMS</a>
+                        <li class="go_to_site">
+                            <a href="/">Перейти на сайт</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -89,39 +35,43 @@
         </nav>
     </header>
 
-
-        
-        <div id="layout-content">
-            <section class="home-title">
-                <div class="aside">
-                    <ul>
-                        <li class=" ">
-                            <a href="/admin/products" class="">
-                                <span>Товары</span>
-                                <img src="/theme/assets/img/cart.png" alt="" width="28" height="28">
-                            </a>
-                        </li>
-                        <li class=" ">
-                            <a href="/admin/categories" class="">
-                                <span>Категории</span>
-                                <img src="/theme/assets/img/categories.png" alt="" width="28" height="28">
-                            </a>
-                        </li>
-                        <li class=" ">
-                            <a href="/admin/pages" class="">
-                                <span>Страницы</span>
-                                <img src="/theme/assets/img/pages.png" alt="" width="25" height="28">
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </div>
-                <div class="contain">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-            </section>
-        </div>
+    <div id="layout-content">
+        <section class="home-title">
+            <div class="aside">
+                <ul>
+                    <li>
+                        <a href="/admin/products" class="">
+                            <span>Товары</span>
+                            <img src="/admin/theme/assets/img/cart.png" alt="" width="28" height="28">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/categories" class="">
+                            <span>Категории</span>
+                            <img src="/admin/theme/assets/img/categories.png" alt="" width="28" height="28">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/pages" class="">
+                            <span>Страницы</span>
+                            <img src="/admin/theme/assets/img/pages.png" alt="" width="25" height="28">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/orders" class="">
+                            <span>Заказы</span>
+                            <img src="/admin/theme/assets/img/orders.png" alt="" width="25" height="28">
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="contain">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </section>
+    </div>
 
 
     </body>

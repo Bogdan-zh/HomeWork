@@ -37,32 +37,33 @@ class Carts
         }
     }
 
-    // public function clearCart()
-    // {
-    //     if(isset($_COOKIE['cart'])){
-    //         setcookie('cart' , '');
-    //     } else {
-    //         return false;
-    //     }
-    // }
+    public function clearCart()
+    {
+        if(isset($_COOKIE['cart'])){
+            setcookie('cart' , '', time() - 86400*30);
+            header("Location:".$_SERVER['HTTP_REFERER']); // если делать перезагрузку не тут, то пойдут ошибки 
+        } else {
+            return false;
+        }
+    }
 
-    // public function updateCart()
-    // {
-    //     foreach ($_POST['cart_item'] as $id => $amount) {
-    //         if (!empty($id) && !empty($amount)) {
-    //             $id = trim(strip_tags($id));
-    //             $amount = trim(strip_tags($amount));
-    //             $update_cart[$id] = $amount;
-    //         }
-    //     }
-    //     setcookie('cart', serialize($update_cart), time() + 86400*30);
-    // }
+    public function updateCart($cart_item)
+    {
+        foreach ($cart_item as $id => $amount) {
+            if (!empty($id) && !empty($amount)) {
+                $id = trim(strip_tags($id));
+                $amount = trim(strip_tags($amount));
+                $update_cart[$id] = $amount;
+            }
+        }
+        setcookie('cart', serialize($update_cart), time() + 86400*30);
+    }
 
     public function delete($id)
     {
-        $refresh = unserialize($_COOKIE['cart']);
-        unset($refresh[$id]);
-        setcookie('cart', serialize($refresh), time() + 86400*30);
+        $cart = unserialize($_COOKIE['cart']);
+        unset($cart[$id]);
+        setcookie('cart', serialize($cart), time() + 86400*30);
     }
 
 

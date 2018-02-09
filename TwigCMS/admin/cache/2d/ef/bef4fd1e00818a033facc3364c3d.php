@@ -46,65 +46,11 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
                 </div>
 
                 <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
-                        <ul class=\"nav navbar-nav navbar-left menu\">
-                            <a class=\"navbar-brand\" href=\"/admin/\">TwigCMS</a>
-                            <li class=\"go_to_site\">
-                                <a href=\"/\">Перейти на сайт</a>
-                            </li>
-                            
-                        </ul>
-                        
-                        <!-- <ul class=\"nav navbar-nav navbar-right menu\">
-                            <li class=\"dropdown\">
-                                <a href=\"#\" data-toggle=\"dropdown\" class=\"dropdown-toggle\">
-                                    Pages
-                                    <span class=\"caret\"></span>
-                                </a>
-                                <span class=\"dropdown-arrow\"></span>
-                                <ul class=\"dropdown-menu\">
-                                    <li class=\" \">
-                                        <a href=\"http://october/about\" class=\"\">
-                                            About Us
-                                        </a>
-                                    </li>
-                                    <li class=\" \">
-                                        <a href=\"http://october/contact\" class=\"\">
-                                            Contact Us
-                                        </a>
-                                    </li>
-                                    <li class=\" \">
-                                        <a href=\"http://october/pricing-table\" class=\"\">
-                                            Pricing Table
-                                        </a>
-                                    </li>
-                                    <li class=\" \">
-                                        <a href=\"http://october/services\" class=\"\">
-                                            Services
-                                        </a>
-                                    </li>
-                                    <li class=\" \">
-                                        <a href=\"http://october/signin\" class=\"\">
-                                            Sign In
-                                        </a>
-                                    </li>
-                                    <li class=\" \">
-                                        <a href=\"http://october/register\" class=\"\">
-                                            Register
-                                        </a>
-                                    </li>
-                                    <li class=\" \">
-                                        <a href=\"http://october/error\" class=\"\">
-                                            Error Page
-                                        </a>
-                                    </li>
-                                    <li class=\" \">
-                                        <a href=\"http://october/404\" class=\"\">
-                                            404 Page
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul> -->
+                    <ul class=\"nav navbar-nav navbar-left menu\">
+                        <a class=\"navbar-brand\" href=\"/admin/\">TwigCMS</a>
+                        <li class=\"go_to_site\">
+                            <a href=\"/\">Перейти на сайт</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -112,41 +58,45 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
         </nav>
     </header>
 
-
-        
-        <div id=\"layout-content\">
-            <section class=\"home-title\">
-                <div class=\"aside\">
-                    <ul>
-                        <li class=\" \">
-                            <a href=\"/admin/products\" class=\"\">
-                                <span>Товары</span>
-                                <img src=\"/theme/assets/img/cart.png\" alt=\"\" width=\"28\" height=\"28\">
-                            </a>
-                        </li>
-                        <li class=\" \">
-                            <a href=\"/admin/categories\" class=\"\">
-                                <span>Категории</span>
-                                <img src=\"/theme/assets/img/categories.png\" alt=\"\" width=\"28\" height=\"28\">
-                            </a>
-                        </li>
-                        <li class=\" \">
-                            <a href=\"/admin/pages\" class=\"\">
-                                <span>Страницы</span>
-                                <img src=\"/theme/assets/img/pages.png\" alt=\"\" width=\"25\" height=\"28\">
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </div>
-                <div class=\"contain\">
-                    ";
-        // line 120
+    <div id=\"layout-content\">
+        <section class=\"home-title\">
+            <div class=\"aside\">
+                <ul>
+                    <li>
+                        <a href=\"/admin/products\" class=\"\">
+                            <span>Товары</span>
+                            <img src=\"/admin/theme/assets/img/cart.png\" alt=\"\" width=\"28\" height=\"28\">
+                        </a>
+                    </li>
+                    <li>
+                        <a href=\"/admin/categories\" class=\"\">
+                            <span>Категории</span>
+                            <img src=\"/admin/theme/assets/img/categories.png\" alt=\"\" width=\"28\" height=\"28\">
+                        </a>
+                    </li>
+                    <li>
+                        <a href=\"/admin/pages\" class=\"\">
+                            <span>Страницы</span>
+                            <img src=\"/admin/theme/assets/img/pages.png\" alt=\"\" width=\"25\" height=\"28\">
+                        </a>
+                    </li>
+                    <li>
+                        <a href=\"/admin/orders\" class=\"\">
+                            <span>Заказы</span>
+                            <img src=\"/admin/theme/assets/img/orders.png\" alt=\"\" width=\"25\" height=\"28\">
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class=\"contain\">
+                ";
+        // line 70
         $this->displayBlock('content', $context, $blocks);
-        // line 122
-        echo "                </div>
-            </section>
-        </div>
+        // line 72
+        echo "            </div>
+        </section>
+    </div>
 
 
     </body>
@@ -161,11 +111,11 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
     {
     }
 
-    // line 120
+    // line 70
     public function block_content($context, array $blocks = array())
     {
-        // line 121
-        echo "                    ";
+        // line 71
+        echo "                ";
     }
 
     public function getTemplateName()
@@ -175,6 +125,6 @@ class __TwigTemplate_2defbef4fd1e00818a033facc3364c3d extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  168 => 121,  165 => 120,  160 => 4,  147 => 122,  145 => 120,  26 => 4,  21 => 1,);
+        return array (  118 => 71,  115 => 70,  110 => 4,  97 => 72,  95 => 70,  26 => 4,  21 => 1,  154 => 57,  149 => 55,  144 => 53,  139 => 51,  128 => 43,  123 => 40,  112 => 35,  106 => 32,  102 => 31,  96 => 30,  90 => 29,  85 => 28,  82 => 27,  77 => 26,  75 => 25,  63 => 15,  48 => 13,  44 => 12,  34 => 5,  31 => 4,  28 => 3,);
     }
 }

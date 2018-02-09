@@ -39,20 +39,20 @@
             <input class="btn btn-lg btn-danger" style="margin-top: 10px;" type="submit" name="del" value="Удалить картинку">
         </div>
         <div class="form-group">
-            <label>Категория: </label>
+            <label>Родительская категория: </label>
             <select name="parent_id">
                 <option {% if category.parent_id == 0 %} selected {% endif %} value="0">Корневая категория</option>
-                {% for cat in categories %}
-                    {% if cat.parent_id == 0 %}
-                    <option 
-                        {% if category.parent_id == cat.id %} 
+                {% for cat in categories %} 
+                    {% if cat.parent_id == 0 %} <!-- ДЛЯ КОРНЕВЫХ КАТЕГОРИЙ -->
+                        <option 
+                            {% if category.parent_id == cat.id %} 
                             selected 
                             {% elseif category.id == cat.id %}
                             disabled
                             {% endif %} 
-                        value="{{ cat.id }}">{{ cat.name }}
-                    </option>
-                    {% else %}
+                            value="{{ cat.id }}">{{ cat.name }}
+                        </option>
+                    {% else %} <!-- ДЛЯ ПОДКАТЕГОРИЙ -->
                         <option 
                             {% if category.parent_id == cat.id %} 
                             selected 

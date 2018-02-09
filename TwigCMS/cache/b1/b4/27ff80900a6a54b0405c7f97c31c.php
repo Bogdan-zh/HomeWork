@@ -100,18 +100,38 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
                 <ul class=\"my_cart\">
                     <li>
                         <a class=\"cart\" href=\"/cart\"><img src=\"/theme/assets/img/cart1.png\" alt=\"\">
-                            <span>( ";
-        // line 81
-        echo twig_escape_filter($this->env, (isset($context["amount_in_cart"]) ? $context["amount_in_cart"] : null), "html", null, true);
-        echo " )</span>
-                            <span>";
+                            <span class=\"amount_in_cart1\">
+                                ";
         // line 82
-        if (((isset($context["total"]) ? $context["total"] : null) > 0)) {
-            echo " ";
-            echo twig_escape_filter($this->env, (isset($context["total"]) ? $context["total"] : null), "html", null, true);
-            echo " грн ";
+        if (((isset($context["amount_in_cart"]) ? $context["amount_in_cart"] : null) > 0)) {
+            echo " 
+                                   ";
+            // line 83
+            echo twig_escape_filter($this->env, (isset($context["amount_in_cart"]) ? $context["amount_in_cart"] : null), "html", null, true);
+            echo " 
+                                ";
+        } else {
+            // line 85
+            echo "                                    ";
+            echo 0;
+            echo "
+                                ";
         }
-        echo "</span>
+        // line 87
+        echo "                            </span>
+                            <span>
+                                ";
+        // line 89
+        if (((isset($context["total"]) ? $context["total"] : null) > 0)) {
+            echo " 
+                                    ";
+            // line 90
+            echo twig_escape_filter($this->env, (isset($context["total"]) ? $context["total"] : null), "html", null, true);
+            echo " грн 
+                                ";
+        }
+        // line 92
+        echo "                            </span>
                         </a>
                     </li>
                 </ul>
@@ -120,9 +140,9 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
         <div class=\"content\">
             <div class=\"container\">
                 ";
-        // line 90
+        // line 100
         $this->displayBlock('content', $context, $blocks);
-        // line 92
+        // line 102
         echo "            </div>
         </div>
 
@@ -171,10 +191,10 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
                 ";
     }
 
-    // line 90
+    // line 100
     public function block_content($context, array $blocks = array())
     {
-        // line 91
+        // line 101
         echo "                ";
     }
 
@@ -259,6 +279,6 @@ class __TwigTemplate_b1b427ff80900a6a54b0405c7f97c31c extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  240 => 68,  234 => 67,  230 => 65,  227 => 64,  221 => 61,  218 => 60,  215 => 59,  213 => 58,  207 => 57,  204 => 56,  201 => 55,  196 => 54,  193 => 53,  182 => 52,  178 => 91,  175 => 90,  167 => 73,  163 => 71,  161 => 70,  158 => 69,  156 => 52,  153 => 51,  148 => 4,  126 => 92,  124 => 90,  109 => 82,  99 => 77,  97 => 51,  86 => 42,  73 => 37,  69 => 36,  63 => 34,  59 => 33,  27 => 4,  22 => 1,  114 => 41,  108 => 40,  105 => 81,  103 => 38,  94 => 32,  88 => 29,  80 => 41,  76 => 22,  70 => 20,  66 => 35,  64 => 17,  58 => 14,  55 => 13,  52 => 12,  48 => 11,  41 => 7,  38 => 6,  35 => 5,  29 => 3,);
+        return array (  260 => 68,  254 => 67,  250 => 65,  247 => 64,  241 => 61,  238 => 60,  235 => 59,  233 => 58,  227 => 57,  224 => 56,  221 => 55,  216 => 54,  213 => 53,  202 => 52,  198 => 101,  195 => 100,  187 => 73,  183 => 71,  181 => 70,  178 => 69,  176 => 52,  173 => 51,  168 => 4,  146 => 102,  144 => 100,  134 => 92,  129 => 90,  125 => 89,  121 => 87,  115 => 85,  110 => 83,  106 => 82,  99 => 77,  97 => 51,  86 => 42,  80 => 41,  73 => 37,  69 => 36,  66 => 35,  63 => 34,  59 => 33,  27 => 4,  22 => 1,);
     }
 }

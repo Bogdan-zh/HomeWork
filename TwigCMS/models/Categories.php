@@ -1,11 +1,6 @@
 <?php
 class Categories extends Database
 {
-    /*public function __construct()
-    {
-        parent::__construct();
-    }*/
-
     public function addCategory($category)
     {
         if(empty($category)) {
@@ -56,7 +51,6 @@ class Categories extends Database
     }
 
 
-
     //Дерево категорий
     public function GetCategoriesTree($parent_id=0)
     {
@@ -78,12 +72,11 @@ class Categories extends Database
         return $results;
     }
 
-
     //id категории в products
     public function GetCategoriesId($id)
     {
-        $results=array();
-        $results[]=$id;
+        $results = array();
+        $results[] = $id;
         $categories = $this->getCategories();
         if ($categories) {
             foreach ($categories as $category) {
@@ -93,9 +86,20 @@ class Categories extends Database
                 }
             }
         }
-//        print_r($results);
         return $results;
     }
+
+
+    
+    // public function getChildren($category_id = 0)
+    // {
+    //     $results = array();
+    //     if(!empty($category_id)) {
+    //         $query = "SELECT id, parent_id FROM categories WHERE parent_id = $category_id";
+    //         $this->query($query);
+    //     }
+    //     return $results;
+    // }
 
 
 

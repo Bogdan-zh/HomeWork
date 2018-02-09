@@ -3,8 +3,6 @@
 {% block title %}Twig Shop{% endblock %}
 
 {% block content %}
-    <script src="/theme/assets/js/vendor/jquery.min.js"></script>
-    <!-- <h1>{{ name }}</h1> -->
     <h2>Хиты продаж</h2>
 
     <div class="bestsellers">
@@ -17,7 +15,7 @@
                             {% if product.image == 'noimage.png' or product.image is not defined %}
                             <img src="/admin/theme/assets/img/noimage.png" alt="">
                             {% else %}
-                            <img src="/uploads/products/{{ product.image }}" alt="">
+                            <img class="prod_img" src="/uploads/products/{{ product.image }}" alt="">
                             {% endif %}
                         </div>
                         <div class="box_name">
@@ -39,17 +37,5 @@
             {% endif %}
         {% endfor %}
     </div>
-
-    <!-- <script>
-
-        $(window).on('load', function () {
-
-            $('.to_cart').on('click', function () {
-                location.reload();
-            });
-
-        });
-        
-    </script> -->
 
 {% endblock %}

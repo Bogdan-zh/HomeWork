@@ -16,6 +16,8 @@ class Route
             '/admin/page' => 'PageAdmin',
             '/admin/categories' => 'CategoriesAdmin',
             '/admin/category' => 'CategoryAdmin',
+            '/admin/orders' => 'OrdersAdmin',
+            '/admin/order' => 'OrderAdmin',
         );
         if( array_key_exists($uri['path'], $uri_array)) {
 

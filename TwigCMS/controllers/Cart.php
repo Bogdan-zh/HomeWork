@@ -2,9 +2,14 @@
 class Cart extends Core
 {
     public function fetch()
-    {
+    {   
         $request = new Request();
         $carts = new Carts();
+        $orders = new Orders();
+        $purchases = new Purchases();
+        $mail = new Mail();
+
+        $order = new StdClass();
 
         $categories = new Categories();
         $all_categories = $categories->getCategories();
@@ -24,37 +29,56 @@ class Cart extends Core
             //print_r($cart);
         } 
 
-        if($request->post('clear_cart') || $cart['amount'] < 1) {
-            $carts->clearCart(); // очищаем всю корзину(удаляем куку)
-            header("Location:".$_SERVER['HTTP_REFERER']);
+        // очищаем всю корзину(удаляем куку)
+        if($cart['amount'] < 1) {
+            $carts->clearCart();
         }
 
+        // обновляем изменения в корзине
         if($request->post('update_cart')) {
-            //$carts->updateCart(); // обновляем изменения в корзине
-            foreach ($_POST['cart_item'] as $id => $amount) {
-                if (!empty($id) && !empty($amount)) {
-                    $id = trim(strip_tags($id));
-                    $amount = trim(strip_tags($amount));
-                    $update_cart[$id] = $amount;
-                }
-            }
-            setcookie('cart', serialize($update_cart), time() + 86400*30);
+            $cart_item = $request->post('cart_item');
+            $carts->updateCart($cart_item); 
             header("Location:".$_SERVER['HTTP_REFERER']);
         }
 
+        // удаление конкретного товара из корзины
         if($request->post('delete')) {
             $id = $request->post('delete');
             $carts->delete($id);
             header("Location:".$_SERVER['HTTP_REFERER']);
         }
 
+        // оформление заказа
+        if($request->post('buy')) {
+            $order->total_cost = $request->post('total_cost');
+            $order->first_name = trim(strip_tags($request->post('first_name')));
+            $order->last_name = trim(strip_tags($request->post('last_name')));
+            $order->email = trim(strip_tags($request->post('email')));
+            $order->phone = trim(strip_tags($request->post('phone')));
+
+            $order_id = $orders->addOrder($order);
+            $purchase = $purchases->addPurchase($order_id, $cart['products']);
+
+            if($order->email) {
+                $mail->mailTo($order->email, $order->first_name, $order->last_name, $order->phone);
+            }
+
+            $message = 'Ваш заказ успешно оформлен! В ближайшее время наш менеджер свяжется с Вами.';
+            setcookie('message', $message, time() + 1);
+
+            // очищаем корзину
+            $carts->clearCart();
+
+        }
+
 
         // echo "<pre>";
-        // print_r($_POST);
-        // //print_r(unserialize($request->cookie('cart')));
+        // print_r($request->cookie('order'));
+        //print_r(unserialize($request->cookie('cart')));
         // echo "</pre>";
 
         $amount_in_cart = $cart['amount'];
+        // $amount_in_cart = count($cart['products']); // попробовать этот вариант отображения
         $total = $cart['total'];
 
         $array_vars = array(
@@ -66,6 +90,8 @@ class Cart extends Core
             'cart' => $cart,
             'cart_products' => $cart['products'],
             'total' => $total,
+            'message' => $request->cookie('message'),
+
         );
 
         if(true) {

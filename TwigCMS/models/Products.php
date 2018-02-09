@@ -1,11 +1,6 @@
 <?php
 class Products extends Database
 {
-    /*public function __construct()
-    {
-        parent::__construct();
-    }*/
-
     public function addProduct($product)
     {
         if(empty($product)) {
@@ -65,7 +60,6 @@ class Products extends Database
     {   
         $request = new Request();
         $category_id = $request->post('categories');
-        //$category_id = $_POST['categories'];
         
         if($choice == 'set') {
             $query = "INSERT INTO `products_categories`(product_id, category_id) VALUES ('$id', '$category_id')";

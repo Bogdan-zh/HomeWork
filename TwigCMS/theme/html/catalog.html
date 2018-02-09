@@ -23,7 +23,7 @@
                             {% if product.image == 'noimage.png' or product.image is not defined %}
                             <img src="/theme/assets/img/noimage.png" alt="">
                             {% else %}
-                            <img src="/uploads/products/{{ product.image }}" alt="">
+                            <img class="prod_img" src="/uploads/products/{{ product.image }}" alt="">
                             {% endif %}
                         </div>
                         <div class="box_name">

@@ -24,6 +24,8 @@ class Catalog extends Core
         }
         $category_id = $categories->GetCategoriesId($catalog['id']);
 
+
+
         if($request->post('to_cart')) {
             $id = $request->post('id', 'integer');
             $amount = 1;

@@ -9,9 +9,6 @@ class Route
         $uri = parse_url($_SERVER['REQUEST_URI']);
 
         $parts = explode('/', $uri['path']);
-        // echo "<pre>";
-        // print_r($parts);
-        // echo "</pre>";
 
         // служебные ссылки
         $uri_array = array(
@@ -34,34 +31,21 @@ class Route
 
                     if(method_exists($controller,'fetch')) {
                         print $controller->fetch();
-                    } else {
-                        Route::error404();
                     }
                 }
 
             } else {
                 if(file_exists($controllers_dir.'Page.php')) {
-                    require $controllers_dir.'Page.php'; //controllers/Main.php
-                    $controller = new Page(); // new Main();
+                    require $controllers_dir.'Page.php'; 
+                    $controller = new Page();
 
                     if(method_exists($controller,'fetch')) {
                         print $controller->fetch();
-                    } else {
-                        Route::error404();
                     }
                 }
             }
         }
+        
     }
 
-
-    public static function error404()
-    {
-        require 'controllers/Error404.php';
-        $controler = new Error404();
-        if (method_exists($controler, 'fetch'))
-        {
-            print $controler->fetch();
-        }
-    }
 }

@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<h1>Заказы</h1>
+
+<a {% if ind == 0 %} class="st" {% endif %} class="statuses" href="/admin/orders">Все</a>
+<a {% if ind == 1 %} class="st" {% endif %} class="statuses" href="/admin/orders?status=1">Новый</a>
+<a {% if ind == 2 %} class="st" {% endif %} class="statuses" href="/admin/orders?status=2">В обработке</a>
+<a {% if ind == 3 %} class="st" {% endif %} class="statuses" href="/admin/orders?status=3">Выполнен</a>
+<a {% if ind == 4 %} class="st" {% endif %} class="statuses" href="/admin/orders?status=4">Удален</a>
+
+<div class="obertka">
+
+    <form method="post">
+        <table class="table table-hover">
+
+            <tr>
+                <th>id</th>
+                <th>Номер заказа</th>
+                <th>Итого</th>
+            </tr>
+            
+            {% for order in orders %}
+            <tr>
+                <td style="width: 50px;">
+                    {{ order.id }}
+                </td>
+                <td style="width: 250px;">
+                    <a href="/admin/order?id={{ order.id }}">Заказ №{{ order.id }}</a>
+                </td>
+                <td>{{ order.total_cost }} грн</td>
+                <td style="width: 40px;">
+                    <label class="label_for_hidden_del">X
+                        <input class="hidden_del" type="submit" name="del" value="{{ order.id }}">
+                    </label>
+                </td>
+            </tr>
+            {% endfor %}
+
+
+        </table>
+    </form>
+
+</div>
+
+{% endblock %}

@@ -159,8 +159,70 @@
 
 /*------------*/
 
-
-
 .description {
     max-width: 220px;
+}
+
+/*------------*/
+
+.statuses {
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+
+.st {
+    border: 1px solid black;
+    padding: 5px 10px;
+    background-color: #D0D0D0;
+}
+
+
+
+.total {
+    text-align: right;
+    font-weight: bold;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.total span {
+    color: #3498DB;
+    font-size: 2.5rem;
+}
+
+.table {
+
+}
+
+.order_form {
+    display: flex;
+
+}
+
+.order70 {
+    flex-grow: 3;
+}
+
+.order30 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-grow: 1;
+    padding: 0 20px 10px;
+}
+
+.order30 input {
+    margin: 5px 0;
+    width: 100%;
+}
+
+
+.buttons_in_order {
+    display: flex;
+}
+
+.buttons_in_order .save {
+    flex-grow: 1;
+    margin: 0 5px;
 }

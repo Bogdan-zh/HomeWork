@@ -7,7 +7,6 @@ class Feed
         $products_catalog = $products->getProducts();
         
         $xml = new DOMDocument("1.0");
-        //$xml->formatOutput=true;
 
         $scheme = $_SERVER['REQUEST_SCHEME'];
         $host = $_SERVER['HTTP_HOST'];
@@ -45,7 +44,6 @@ class Feed
             $product->appendChild($url);
         }
 
-        //echo "<xmp>".$xml->saveXML()."</xmp>";
         $xml->save("../feed.xml");
     }
 }

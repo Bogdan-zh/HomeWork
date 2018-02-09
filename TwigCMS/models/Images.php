@@ -1,15 +1,6 @@
 <?php
 class Images extends Database
 {
-    // public static function getImages($id)
-    // {
-    //     $database = new Database();
-
-    //     $query = "SELECT filename FROM images WHERE product_id = $id";
-    //     $this->res = $database->query($query);
-    //     return $this->res;
-    // }
-
     public function delImages($id, $table) // удаляет физически картинку
     { 
         $query = "SELECT image FROM $table WHERE id='$id' LIMIT 1";

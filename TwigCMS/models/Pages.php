@@ -1,11 +1,6 @@
 <?php
 class Pages extends Database
 {
-    /*public function __construct()
-    {
-        parent::__construct();
-    }*/
-
     public function addPage($page)
     {
         if(empty($page)) {

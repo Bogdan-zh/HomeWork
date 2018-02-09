@@ -78,8 +78,18 @@
                 <ul class="my_cart">
                     <li>
                         <a class="cart" href="/cart"><img src="/theme/assets/img/cart1.png" alt="">
-                            <span>( {{ amount_in_cart }} )</span>
-                            <span>{% if total > 0 %} {{ total }} грн {% endif %}</span>
+                            <span class="amount_in_cart1">
+                                {% if amount_in_cart > 0 %} 
+                                   {{ amount_in_cart  }} 
+                                {% else %}
+                                    {{ ( 0 ) }}
+                                {% endif %}
+                            </span>
+                            <span>
+                                {% if total > 0 %} 
+                                    {{ total }} грн 
+                                {% endif %}
+                            </span>
                         </a>
                     </li>
                 </ul>
