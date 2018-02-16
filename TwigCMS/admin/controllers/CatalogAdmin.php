@@ -5,7 +5,6 @@ class CatalogAdmin extends CoreAdmin
     {
         $products = new Products();
         $lists = new Lists();
-        $feed = new Feed();
         $request = new Request();
 
         $lists->enDisDel('products');
@@ -42,21 +41,11 @@ class CatalogAdmin extends CoreAdmin
             $export = "Товары экспортированы в корень сайта!";
         }
 
-        ////////////////////////////// XML /////////////////////////////////
-
-        $feed_link = '';
-        if(isset($_POST['feed'])) {
-            $feed->createFeed();
-            $feed_link = "../feed.xml";
-        }
-
 
         $array_vars = array(
             'name' => 'Товары',
             'products' => $products_catalog,
             'export' => $export,
-            'feed' => $feed_link,
-
         );
 
         return $this->view->render('catalog.html',$array_vars);

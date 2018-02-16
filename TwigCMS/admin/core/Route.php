@@ -7,7 +7,6 @@ class Route
 
         $uri = parse_url($_SERVER['REQUEST_URI']);
 
-
         $uri_array = array(
             '/admin/' => 'MainAdmin',
             '/admin/products' => 'CatalogAdmin',
@@ -19,7 +18,7 @@ class Route
             '/admin/orders' => 'OrdersAdmin',
             '/admin/order' => 'OrderAdmin',
         );
-        if( array_key_exists($uri['path'], $uri_array)) {
+        if(array_key_exists($uri['path'], $uri_array)) {
 
             if(file_exists($controllers_dir.$uri_array[$uri['path']] . '.php')) {
                 require $controllers_dir.$uri_array[$uri['path']] . '.php'; //controllers/Main.php
@@ -33,7 +32,6 @@ class Route
             } else {
                 header("Location: /admin");
             }
-
         } else {
             header("Location: /admin");
         }

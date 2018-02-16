@@ -127,11 +127,12 @@
     width: 20px;
     height: 20px;
     text-align: center;
-    line-height: 20px;
+    line-height: 30px;
     font-size: 20px;
     color: grey;
     font-weight: bold;
 }
+
 
 .label_for_hidden_del:hover {
     color: red;
@@ -196,11 +197,15 @@
 
 .order_form {
     display: flex;
+}
 
+.order_form table.table tr td {
+    vertical-align: middle;
 }
 
 .order70 {
-    flex-grow: 3;
+    flex-grow: 4;
+    position: relative;
 }
 
 .order30 {
@@ -217,7 +222,6 @@
     width: 100%;
 }
 
-
 .buttons_in_order {
     display: flex;
 }
@@ -225,4 +229,33 @@
 .buttons_in_order .save {
     flex-grow: 1;
     margin: 0 5px;
+}
+
+.add_product_in_order {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.add_product_in_order input[type='number'] {
+    width: 55px;
+    height: 25px;
+}
+
+.pagination1 {
+    display: inline-block;
+}
+
+.pagination1 a {
+    padding: 3px 15px;
+    border: 1px solid black;
+}
+
+.pagination1 b {
+    padding: 3px 10px;
+}
+
+.pag {
+    display: flex;
+    justify-content: center;
 }

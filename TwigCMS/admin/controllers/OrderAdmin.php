@@ -3,14 +3,13 @@ class OrderAdmin extends CoreAdmin
 {
     public function fetch()
     {
-        ob_start();
         $orders = new Orders();
         $purchases = new Purchases();
         $request = new Request();
         $products = new Products();
         
         $id = $request->get('id'); // id ЗАКАЗА
-        $order = $orders->getOrder($id); // тут данные заказа
+        $order = $orders->getOrder((int)$id); // тут данные заказа
         $purchase = $purchases->getPurchase($id); // тут товары в заказе
         $statuses = $orders->getStatuses(); // тут все статусы
 
@@ -19,6 +18,7 @@ class OrderAdmin extends CoreAdmin
 
         // товары в заказе
         $total = 0;
+        $product = array();
         if($purchase) { 
             foreach($purchase as $item) {
                 $total += $item['price'] * $item['amount'];
@@ -26,47 +26,43 @@ class OrderAdmin extends CoreAdmin
             }
         }
 
-        // сохранение изменения данных в заказе (в админке работает автоматически)
+        // сохранение изменения данных в заказе
         if($request->post('save')) {
             $order_upd = new stdClass();
             $order_upd->first_name = $request->post('first_name');
             $order_upd->last_name = $request->post('last_name');
             $order_upd->email = $request->post('email');
             $order_upd->phone = $request->post('phone');
+            $order_upd->total_cost = $total;
 
             $orders->updateOrder($id, $order_upd);
 
-            // сложные манипуляции для обновления и сохранения товаров в админке заказа
-            $array_amount = [];
-            $array_amount[] = $request->post('amount');
-            $arr_amount = [];
-            foreach($array_amount as $arr_amount) {
-                $arr_amount[] = $arr_amount;
+            // обновлениe и сохранениe товаров в админке заказа
+            if(!empty($purchase)) {
+                $array_amount = [];
+                $array_amount[] = $request->post('amount');
+                $arr_amount = [];
+                foreach($array_amount as $arr_amount) {
+                    $arr_amount[] = $arr_amount;
+                }
+                $arr_amount = array_pop($arr_amount);
+
+                $arr_id = [];
+                foreach($purchase as $item) {
+                    $arr_id[] = $item['id'];
+                }
+
+                $res = array_combine($arr_id, $arr_amount);
+
+                foreach($res as $k => $v) {
+                    $purchases->updatePurchase($k, $v);
+                }
             }
-            $arr_amount = array_pop($arr_amount);
-
-            $arr_id = [];
-            foreach($purchase as $item) {
-                $arr_id[] = $item['id'];
-            };
-
-            $res = array_combine($arr_id, $arr_amount);
-
-            foreach($res as $k => $v) {
-                $purchases->updatePurchase($k, $v);
-            }
-            //----------------------------------------
 
             // обновление статуса заказа
             $orders->updateStatus($id, $status_id);
 
             header("Location:".$_SERVER['HTTP_REFERER']);
-        }
-
-        // удаление заказа
-        if($request->post('del')) { 
-            $orders->deleteOrder($request->get('id'));
-            header("Location: /admin/orders");
         }
 
         // удаление товара из заказа
@@ -75,26 +71,36 @@ class OrderAdmin extends CoreAdmin
             header("Location:".$_SERVER['HTTP_REFERER']);
         }
 
-        // удаление заказа, если товаров в заказе не осталось
-        if(count($purchase) < 1) {
-            $orders->deleteOrder($request->get('id'));
-            header("Location: /admin/orders");
+        // добавление товара в заказ
+        $all_products = $products->getProducts();
+
+        if($request->post('add_product_in_order')) {
+            if($request->post('product_for_order') > 0) {
+                $new_product_id = $request->post('product_for_order');
+                $new_product = $products->getProduct($new_product_id);
+                $amount = $request->post('amount_new_product');
+
+                $a = true;
+                foreach($purchase as $pur) {
+                    if($pur['product_id'] == $new_product['id']) {
+                        $a = false;
+                        break;
+                    }
+                }
+                if($a) {
+                    $purchases->addProductInOrder($id, $new_product, $amount);
+                }
+            }
+            header("Location:".$_SERVER['HTTP_REFERER']);
         }
 
-        ob_flush();
-
-
-
-        // echo "<pre>"; 
-        // print_r($purchase);
-        // //print_r($_POST['delete']);
-        // echo "</pre>";
-        
         $array_vars = array(
             'order' => $order,
+            'id' => $id,
             'purchase' => $purchase,
             'total' => $total,
             'product' => $product,
+            'products' => $all_products,
             'statuses' => $statuses,
             'current_status' => $current_status,
         );

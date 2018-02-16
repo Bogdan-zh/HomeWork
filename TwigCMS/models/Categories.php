@@ -54,7 +54,7 @@ class Categories extends Database
     //Дерево категорий
     public function GetCategoriesTree($parent_id=0)
     {
-        $results=array();
+        $results = array();
         $categories = $this->getCategories();
         if ($categories) {
             foreach ($categories as $category) {
@@ -71,37 +71,17 @@ class Categories extends Database
         }
         return $results;
     }
-
-    //id категории в products
-    public function GetCategoriesId($id)
+    
+    public function getChildren($category_id = 0)
     {
         $results = array();
-        $results[] = $id;
-        $categories = $this->getCategories();
-        if ($categories) {
-            foreach ($categories as $category) {
-                if ($category['parent_id'] == $id) {
-                    $results[] = $category['id'];
-                    $id = $category['id'];
-                }
-            }
+        if(!empty($category_id)) {
+            $query = "SELECT id, parent_id FROM categories WHERE parent_id = $category_id";
+            $this->query($query);
+            $results = $this->results();
         }
         return $results;
     }
-
-
-    
-    // public function getChildren($category_id = 0)
-    // {
-    //     $results = array();
-    //     if(!empty($category_id)) {
-    //         $query = "SELECT id, parent_id FROM categories WHERE parent_id = $category_id";
-    //         $this->query($query);
-    //     }
-    //     return $results;
-    // }
-
-
 
 }
 

@@ -3,15 +3,37 @@
 
 
 {% block content %}
+
+<style>
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+.counter {
+    display: flex;
+}
+.but {
+    background-color: white;
+    border: 1px solid #dddddd;
+    width: 35px;
+}
+
+</style>
 <div class="cart_container">
     <h1>Корзина</h1>
+    
     {% if cart.amount > 0 %}
     
-        <form method="post">
-            <div>
+        <form class="flex_form" method="post">
+            <div class="products_id_form">
                 <table class="table table-condensed">
                     <tr>
-                        <th>#</th>
                         <th>Название товара</th>
                         <th>Цена</th>
                         <th>Кол-во</th>
@@ -21,7 +43,6 @@
                     {% if cart_products is defined %}
                         {% for item in cart_products %}
                         <tr>
-                            <td> {% set i = i + 1 %}{{ i }}</td>
                             <td>
                                 <a href="/products/{{ item.url }}">
                                     {% if item.image == 'noimage.png' or item.image is not defined %}
@@ -32,47 +53,124 @@
                                     {{ item.name }}
                                 </a>
                             </td>
-                            <td>{{ item.price }}</td>
-                            <td><input 
-                                onchange="$('#update').click(); return false;"
-                                class="amount_in_cart" 
-                                type="number" 
-                                min="1"
-                                name="cart_item[{{ item.id }}]" 
-                                value="{{ item.amount }}"> 
+                            <td>{{ item.price }} грн</td>
+                            <td><!-- <input onchange="$('#update').click(); return false;" class="amount_in_cart fn_amount_change" data-id="{{ item.id }}" data-price={{item.price}}  type="number" min="1" name="cart_item[{{ item.id }}]" value="{{ item.amount }}"> --> 
+
+                                <div class="counter">
+                                    <button type="button" class="but counterBut dec">-</button>
+                                    <input onchange="$('#update').click(); return false;" class="field fieldCount amount_in_cart fn_amount_change" data-id="{{ item.id }}" data-price={{item.price}}  type="number" min="1" data-min="1" max="100" data-max="100" name="cart_item[{{ item.id }}]" value="{{ item.amount }}">
+                                    <button type="button" class="but counterBut inc">+</button>
+                                </div>
+
                             </td>
-                            <td>{{ item.price * item.amount }}</td>
+                            <td class="fn_summ">{{ item.price * item.amount }} грн</td>
                             <td>
-                                <label class="label_for_hidden_del">X
-                                    <input class="hidden_del" type="submit" name="delete" value="{{ item.id }}">
-                                </label>
+                                <a class="del" href="/cart?del={{ item.id }}">X</a>
                             </td>
                         </tr>
                         {% endfor %}
                     {% endif %}
                     <tr>
                         <td colspan="5">
-                            <p class="total" ">Итого: <span>{{ total }}</span></p>
+                            <p class="total" ">Итого: <span class="fn_total">{{ total }} грн</span></p>
                             <input type="hidden" name="total_cost" value="{{ total }}">
                         </td>
                     </tr>
                 </table>
-                <input style="display: none;" class="btn btn-lg btn-info" id="update" type="submit" name="update_cart" value="Обновить корзину">
+                <input class="btn btn-lg btn-block btn-info" id="update" type="submit" name="update_cart" value="Пересчитать корзину">
             </div>
-            <h5>Контактные данные</h5>
-            <div class="order_list">
-                <input type="text" name="first_name" placeholder=" Имя">
-                <input type="text" name="last_name" placeholder=" Фамилия">
-                <input type="text" name="email" placeholder=" Email">
-                <input type="text" name="phone" placeholder=" Телефон">
-                <input class="btn btn-lg btn-success" type="submit" name="buy" value="Оформить заказ">
+            <div class="contacts_in_form">
+                <h5>Контактные данные</h5>
+
+                <div class="order_list">
+                    <input type="text" name="first_name" placeholder=" Имя" value="{{ order.first_name }}">
+                    {% if order.first_name is empty %}
+                        <p class="message_under_order" ">{{ message }}</p>
+                    {% endif %}
+
+                    <input type="text" name="last_name" placeholder=" Фамилия" value="{{ order.last_name }}">
+                    {% if order.last_name is empty %}
+                        <p class="message_under_order" ">{{ message }}</p>
+                    {% endif %}
+
+                    <input type="email" name="email" placeholder=" Email" value="{{ order.email }}">
+                    {% if order.email is empty %}
+                        <p class="message_under_order" ">{{ message }}</p>
+                    {% endif %}
+
+                    <input type="number" name="phone" placeholder=" Телефон" value="{{ order.phone }}">
+                    {% if order.phone is empty %}
+                        <p class="message_under_order" ">{{ message }}</p>
+                    {% endif %}
+
+                    <input class="btn btn-lg btn-success" type="submit" name="buy" value="Оформить заказ">
+                </div>
             </div>
         </form>
      
-    {% elseif message is not empty %}
-        {{ message }}
     {% else %}
         <p>Ваша корзина пуста. Для оформления заказа сначала выберете интересующие Вас товары.</p>
     {% endif %}
 </div> 
+
+
+<script>
+    function catalogItemCounter(field){
+            
+            var fieldCount = function(el) {
+
+                var 
+                    // Мин. значение
+                    min = el.data('min') || false,
+
+                    // Макс. значение
+                    max = el.data('max') || false, 
+
+                    // Кнопка уменьшения кол-ва
+                    dec = el.prev('.dec'), 
+
+                    // Кнопка увеличения кол-ва
+                    inc = el.next('.inc');
+
+                function init(el) {
+                    if(!el.attr('disabled')){
+                        dec.on('click', decrement);
+                        inc.on('click', increment);
+                    }
+
+                    // Уменьшим значение
+                    function decrement() {
+                        var value = parseInt(el[0].value);
+                        value--;
+
+                        if(!min || value >= min) {
+                            el[0].value = value;
+                        }
+                    };
+
+                    // Увеличим значение
+                    function increment() {
+                        var value = parseInt(el[0].value);
+                            
+                        value++;
+
+                        if(!max || value <= max) {
+                            el[0].value = value++;
+                        }
+                    };
+                    
+                }
+
+                el.each(function() {
+                    init($(this));
+                });
+            };
+
+            $(field).each(function(){
+                fieldCount($(this));
+            });
+        }
+    
+catalogItemCounter('.fieldCount');
+</script>
 {% endblock %}

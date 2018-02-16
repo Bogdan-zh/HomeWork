@@ -126,7 +126,6 @@ a:hover, a:focus {
     display: flex;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
-            justify-content: center;
 }
 
 .catalog {
@@ -138,11 +137,11 @@ a:hover, a:focus {
 }
 
 .catalog .box {
-    width: 220px;
+    width: 250px;
 }
 
 .catalog .box_avatar img {
-    height: 220px;
+    height: 250px;
 }
 
 
@@ -373,32 +372,39 @@ ul, li {
     margin-bottom: 5px;
 }
 
-.cart_container table tr th:nth-child(1) {
-    width: 40px;
-}
-
-.cart_container table tr th:nth-child(2) {
-    min-width: 50%;
-}
-
-.cart_container table tr th:nth-child(3) {
-    width: 100px;
-}
-
-.cart_container table tr th:nth-child(4) {
-    width: 5%;
-}
-
-.cart_container table tr th:nth-child(5) {
-    width: 90px;
+.cart_container table tr th {
+    border-top: none;
 }
 
 .cart_container table tr td {
-    font-size: 2rem;
+    vertical-align: middle;
+    padding: 5px;
+}
+
+.cart_container table tr th:nth-child(1) {
+    width: 53%;
+}
+
+.cart_container table tr th:nth-child(2) {
+    width: 55px;
+}
+
+.cart_container table tr td:nth-child(3) {
+    max-width: 135px;
+}
+
+.cart_container table tr th:nth-child(4) {
+    min-width: 90px;
+}
+
+
+.cart_container table tr td {
+    font-size: 1.7rem;
 }
 
 .cart_container h5 {
     margin: 0;
+    font-size: 2rem;
 }
 
 .avatars {
@@ -407,7 +413,10 @@ ul, li {
 }
 
 .amount_in_cart {
-    width: 70px;
+    /*background-color: #F7F7F7;*/
+    border: 1px solid #dddddd;
+    text-align: center;
+    width: 45px;
 }
 
 .delete_cart {
@@ -415,37 +424,40 @@ ul, li {
     border: none;
 }
 
-.hidden_del {
-    display: none;
+.cart_container table tr td:last-child {
+    position: relative;
 }
 
-.label_for_hidden_del {
+.del {
     position: absolute;
-    margin-top: 8px;
+    top: 9px;
+    left: -10px;
+    /*margin-top: 7px;*/
     width: 20px;
     height: 20px;
     text-align: center;
     line-height: 20px;
-    font-size: 15px;
+    font-size: 14px;
     color: grey;
     font-weight: 400;
 }
 
-.label_for_hidden_del:hover {
+a.del:hover {
     color: red;
+    text-decoration: none;
 }
 
 .order_list {
-    padding: 10px 15px 10px 0;
+    padding: 10px 0 10px 0;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
 
 .order_list input {
-    flex-basis: 45%;
+    width: 100%;
     flex-grow: 1;
-    margin: 5px 10px 5px 0;
+    margin: 5px;
 }
 
 .total {
@@ -460,4 +472,32 @@ ul, li {
 }
 
 
+.order_name {
+    font-weight: bold;
+}
 
+
+.flex_form {
+    display: flex;
+}
+
+.products_id_form {
+    padding: 0 10px 0;
+    flex-grow: 1;
+    border: 1px solid #dddddd;
+    background-color: #FBFBFB;
+}
+
+.contacts_in_form {
+    background-color: #FBFBFB;
+    margin-left: 10px;
+    padding: 10px;
+    width: 26%;
+    border: 1px solid #dddddd;
+}
+
+.message_under_order {
+    color: red;
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}

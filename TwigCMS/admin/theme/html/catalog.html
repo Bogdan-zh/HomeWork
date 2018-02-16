@@ -3,13 +3,13 @@
 
 {% block content %}
 
-<h1>{{ name }}</h1>
+<h2>{{ name }}</h2>
 
 <a class="btn btn-primary btn-lg add_something" href="/admin/product">Добавить товар</a>
 
 <form method="post" style="display: inline-block; margin: 0;">
     <button type="submit" name="export_products" class="btn btn-lg btn-info" value="1">Экспорт товаров в CSV</button>
-    <a class="btn btn-lg btn-info" href="/feed2.php">ФИД XML</a>
+    <a class="btn btn-lg btn-info" href="/feed.php">ФИД XML</a>
 </form>
 
 {% if export is not empty %}
@@ -19,15 +19,6 @@
         <a download href="/products.csv">products.csv</a>
     </p>
 {% endif %}
-
-{% if feed is not empty %}
-    <p>
-        Фид создан в корне сайта. 
-        Ссылка на скачивание: 
-        <a download href="{{ feed }}">feed.xml</a>
-    </p>
-{% endif %}
-
 
 <div class="obertka">
     <form method="post">

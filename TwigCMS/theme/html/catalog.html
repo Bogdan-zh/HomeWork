@@ -10,8 +10,6 @@
     {% set flag = 0 %}
     <div class="catalog">
         {% for product in products %}
-        
-            {% if product.category_id in category %}
                 {% if product.visible == 1 %}
                 {% set flag = 1 %}
                 <div class="box">
@@ -41,7 +39,6 @@
                         </form>
                     </div>
                 </div>
-                {% endif %}
             {% endif %}
         
         {% endfor %}

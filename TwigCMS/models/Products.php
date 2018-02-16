@@ -15,7 +15,6 @@ class Products extends Database
         $val_sql = implode(',',$values);
 
         $query = "INSERT INTO products ($colum_sql) VALUES ($val_sql)";
-        //echo $query;
         $this->query($query);
         return $this->resId();
     }
@@ -29,10 +28,16 @@ class Products extends Database
         $this->query($query);
         return $this->result();
     }
-    public function getProducts()
+    public function getProducts($filter = 0)
     {
+        $filt = '';
+        if(!empty($filter)) {
+            $in = implode(',', $filter['cat_id']);
+            $filt = "IN ($in)";
+        }
+        
+        $query = "SELECT p.id, p.name, p.price, p.amount, p.description, p.url, p.visible, p.bestseller, p.image FROM products p INNER JOIN products_categories pc ON p.id = pc.product_id AND category_id $filt";
 
-        $query = "SELECT id, name, price, amount, description, url, visible, bestseller, image FROM products ORDER BY id DESC";
         $this->query($query);
         return $this->results();
     }
@@ -50,11 +55,6 @@ class Products extends Database
         $this->query($query);
         return $id;
     }
-
-    ///////////////////////////////////////////////////////////////////
-
-    // replace into - insert и update в одном
-    // between - диапазон
 
     public function productsCategories($id, $choice)
     {   
@@ -90,18 +90,4 @@ class Products extends Database
         return $this->results();
     }
 
-
-
-    public function getCategoriesForCatalog()
-    {
-        $query = "SELECT p.id, p.name, p.price, p.amount, p.description, p.url, p.visible, p.bestseller, p.created_at, p.image, pc.category_id
-            FROM products p
-            LEFT JOIN products_categories pc
-            ON pc.product_id = p.id
-            ORDER BY pc.category_id";
-        $this->query($query);
-        return $this->results();
-    }
-
-    ///////////////////////////////////////////////////////////////////
 }

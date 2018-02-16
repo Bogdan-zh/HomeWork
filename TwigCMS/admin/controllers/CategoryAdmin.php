@@ -9,7 +9,7 @@ class CategoryAdmin extends CoreAdmin
 
         $categories = new Categories();
         $all_categories = $categories->getCategories();
-        ////////////////////////////
+        
         $category = new stdClass();
 
         if($request->method() == 'POST') {

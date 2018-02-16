@@ -35,6 +35,7 @@ class Database
     }
     public function results()
     {
+        $results = array();
         //print_r($this->mysqli);
         $this->mysqli->errno;
         $this->mysqli->error;

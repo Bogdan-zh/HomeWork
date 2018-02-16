@@ -29,16 +29,16 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
     {
         // line 5
         echo "
-<h1>";
+<h2>";
         // line 6
         echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : null), "html", null, true);
-        echo "</h1>
+        echo "</h2>
 
 <a class=\"btn btn-primary btn-lg add_something\" href=\"/admin/product\">Добавить товар</a>
 
 <form method=\"post\" style=\"display: inline-block; margin: 0;\">
     <button type=\"submit\" name=\"export_products\" class=\"btn btn-lg btn-info\" value=\"1\">Экспорт товаров в CSV</button>
-    <a class=\"btn btn-lg btn-info\" href=\"/feed2.php\">ФИД XML</a>
+    <a class=\"btn btn-lg btn-info\" href=\"/feed.php\">ФИД XML</a>
 </form>
 
 ";
@@ -57,23 +57,6 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
         }
         // line 22
         echo "
-";
-        // line 23
-        if ((!twig_test_empty((isset($context["feed"]) ? $context["feed"] : null)))) {
-            // line 24
-            echo "    <p>
-        Фид создан в корне сайта. 
-        Ссылка на скачивание: 
-        <a download href=\"";
-            // line 27
-            echo twig_escape_filter($this->env, (isset($context["feed"]) ? $context["feed"] : null), "html", null, true);
-            echo "\">feed.xml</a>
-    </p>
-";
-        }
-        // line 30
-        echo "
-
 <div class=\"obertka\">
     <form method=\"post\">
         <table class=\"table table-condensed table-hover\">
@@ -91,94 +74,94 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
             </tr>
 
             ";
-        // line 48
+        // line 39
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["products"]) ? $context["products"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
-            // line 49
+            // line 40
             echo "            <tr class=\"products\">
                 <td>
                     <input class=\"checkbox\" type=\"checkbox\" name=\"check[]\" value=\"";
-            // line 51
+            // line 42
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "id"), "html", null, true);
             echo "\">
                 </td>
                 <td>
                     ";
-            // line 54
+            // line 45
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "id"), "html", null, true);
             echo "
                     <input type=\"hidden\" name=\"id\" value=\"";
-            // line 55
+            // line 46
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "id"), "html", null, true);
             echo "\">
                 </td>
                 <td>
                     <a href=\"/admin/product?id=";
-            // line 58
+            // line 49
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "id"), "html", null, true);
             echo "\">
 
                         ";
-            // line 60
+            // line 51
             if ((($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image") == "noimage.png") || (!$this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image", array(), "any", true, true)))) {
-                // line 61
+                // line 52
                 echo "                        <img class=\"avatars\" src=\"/admin/theme/assets/img/noimage.png\" alt=\"\">
                         ";
             } else {
-                // line 63
+                // line 54
                 echo "                        <img class=\"avatars\" src=\"/uploads/products/";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "image"), "html", null, true);
                 echo "\" alt=\"\">
                         ";
             }
-            // line 65
+            // line 56
             echo "
                         ";
-            // line 66
+            // line 57
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "name"), "html", null, true);
             echo "
                     </a>
                 </td>
                 <td>";
-            // line 69
+            // line 60
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "price"), "html", null, true);
             echo "</td>
                 <td>";
-            // line 70
+            // line 61
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "amount"), "html", null, true);
             echo " шт.</td>
                 <td class=\"description\">";
-            // line 71
+            // line 62
             echo twig_escape_filter($this->env, twig_slice($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "description"), 0, 50), "html", null, true);
             echo "</td>
                 <td>
                     ";
-            // line 73
+            // line 64
             if (($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "visible") == 1)) {
-                // line 74
+                // line 65
                 echo "                    <input disabled data-toggle=\"toggle\" type=\"checkbox\" value=\"1\" name=\"visible\" checked>
                     ";
             } else {
-                // line 76
+                // line 67
                 echo "                    <input disabled data-toggle=\"toggle\" type=\"checkbox\" value=\"1\" name=\"visible\">
                     ";
             }
-            // line 78
+            // line 69
             echo "                </td>
                 <td>
                     ";
-            // line 80
+            // line 71
             if (($this->getAttribute((isset($context["product"]) ? $context["product"] : null), "bestseller") == 1)) {
-                // line 81
+                // line 72
                 echo "                    <img src=\"/admin/theme/assets/img/hit.png\" alt=\"\" width=\"40\">
                     ";
             }
-            // line 83
+            // line 74
             echo "                </td>
                 <td>
                     <a class=\"view_on_site\" href=\"/products/";
-            // line 85
+            // line 76
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "url"), "html", null, true);
             echo "\" title=\"Посмотреть на сайте\">
                         <svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 460 460\" width=\"30px\" height=\"30px\">
@@ -189,7 +172,7 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
                 <td>
                     <label class=\"label_for_hidden_del\">X
                         <input class=\"hidden_del\" type=\"submit\" name=\"del[]\" value=\"";
-            // line 93
+            // line 84
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : null), "id"), "html", null, true);
             echo "\">
                     </label>
@@ -200,7 +183,7 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['product'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 98
+        // line 89
         echo "        </table>
         <div class=\"select\">
             <select name=\"select\">
@@ -228,6 +211,6 @@ class __TwigTemplate_455b85361e7786f9fd6dd6d64cb930f9 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  204 => 98,  193 => 93,  182 => 85,  178 => 83,  174 => 81,  172 => 80,  168 => 78,  164 => 76,  160 => 74,  158 => 73,  153 => 71,  149 => 70,  145 => 69,  139 => 66,  136 => 65,  130 => 63,  126 => 61,  124 => 60,  119 => 58,  113 => 55,  109 => 54,  103 => 51,  99 => 49,  95 => 48,  75 => 30,  69 => 27,  64 => 24,  62 => 23,  59 => 22,  51 => 17,  48 => 16,  46 => 15,  34 => 6,  31 => 5,  28 => 4,);
+        return array (  187 => 89,  176 => 84,  165 => 76,  161 => 74,  157 => 72,  155 => 71,  151 => 69,  147 => 67,  143 => 65,  141 => 64,  136 => 62,  132 => 61,  128 => 60,  122 => 57,  119 => 56,  113 => 54,  109 => 52,  107 => 51,  102 => 49,  96 => 46,  92 => 45,  86 => 42,  82 => 40,  78 => 39,  59 => 22,  51 => 17,  48 => 16,  46 => 15,  34 => 6,  31 => 5,  28 => 4,);
     }
 }

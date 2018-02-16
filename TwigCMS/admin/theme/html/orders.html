@@ -2,13 +2,14 @@
 
 {% block content %}
 
-<h1>Заказы</h1>
+<h2>Заказы</h2>
 
-<a {% if ind == 0 %} class="st" {% endif %} class="statuses" href="/admin/orders">Все</a>
-<a {% if ind == 1 %} class="st" {% endif %} class="statuses" href="/admin/orders?status=1">Новый</a>
-<a {% if ind == 2 %} class="st" {% endif %} class="statuses" href="/admin/orders?status=2">В обработке</a>
-<a {% if ind == 3 %} class="st" {% endif %} class="statuses" href="/admin/orders?status=3">Выполнен</a>
-<a {% if ind == 4 %} class="st" {% endif %} class="statuses" href="/admin/orders?status=4">Удален</a>
+<a {% if ind == 0 %} class="st" {% endif %} class="statuses" href="/admin/orders?page=1">Все</a>
+{% set i = 0 %}
+{% for status in statuses %}
+    {% set i = i + 1 %}
+    <a {% if ind == i %} class="st" {% endif %} class="statuses" href="/admin/orders?page={{ page }}&status={{ i }}">{{ status.name }}</a>
+{% endfor %}
 
 <div class="obertka">
 
@@ -18,6 +19,7 @@
             <tr>
                 <th>id</th>
                 <th>Номер заказа</th>
+                <th>Время заказа</th>
                 <th>Итого</th>
             </tr>
             
@@ -29,6 +31,7 @@
                 <td style="width: 250px;">
                     <a href="/admin/order?id={{ order.id }}">Заказ №{{ order.id }}</a>
                 </td>
+                <td>{{ order.order_time }}</td>
                 <td>{{ order.total_cost }} грн</td>
                 <td style="width: 40px;">
                     <label class="label_for_hidden_del">X
@@ -38,10 +41,33 @@
             </tr>
             {% endfor %}
 
-
         </table>
     </form>
-
+    <div class="pag">
+        <div class="pagination1">
+            {% if page != 1 %}
+                <a class="to_start" href="/admin/orders?page=1&status={{ status }}"><<</a> <a href="/admin/orders?page={{ page - 1 }}&status={{ status }}"><</a>
+            {% endif %}
+            {% if page - 2 > 0 %}
+                <a href="/admin/orders?page={{ page - 2 }}&status={{ status }}">{{ page - 2 }}</a>
+            {% endif %}
+            {% if page - 1 > 0 %}
+                <a href="/admin/orders?page={{ page - 1 }}&status={{ status }}">{{ page - 1 }}</a>
+            {% endif %}
+            {% if total > 1 %}
+                <b>{{ page }}</b>
+            {% endif %}
+            {% if page + 1 <= total %}
+                <a href="/admin/orders?page={{ page + 1 }}&status={{ status }}">{{ page + 1 }}</a>
+            {% endif %}
+            {% if page + 2 <= total %}
+                <a href="/admin/orders?page={{ page + 2 }}&status={{ status }}">{{ page + 2 }}</a>
+            {% endif %}
+            {% if page != total %}
+                <a class="to_end" href="/admin/orders?page={{ page + 1 }}&status={{ status }}">></a> <a href="/admin/orders?page={{ total }}&status={{ status }}">>></a>
+            {% endif %}
+        </div>
+    </div>
 </div>
 
 {% endblock %}

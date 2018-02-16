@@ -7,20 +7,18 @@
         <link href="/theme/assets/css/flat-ui.min.css" rel="stylesheet">
         <link href="/theme/assets/css/style.css" rel="stylesheet">
         <script src="/theme/assets/js/vendor/jquery.min.js"></script>
-        
     </head>
     <body>
-        
         <div class="top_header">
             <div class="container">
                 <ul class="go_to_admin">
                     <li><a href="/admin/products">Перейти в админку</a></li>
                 </ul>
-                <ul class="reg_log">
+                <!-- <ul class="reg_log">
                     <li><a href="#">Логин</a></li>
                     <li>&nbsp;/&nbsp;</li>
                     <li><a href="#">Регистрация</a></li>
-                </ul>
+                </ul> -->
             </div>
         </div>
 
@@ -77,6 +75,11 @@
                 </div>
                 <ul class="my_cart">
                     <li>
+                        {% if amount_in_cart == 0 %} 
+                            <a style="cursor: default; pointer-events: none;" class="cart" href=""><img src="/theme/assets/img/cart1.png" alt="">
+                            <span class="amount_in_cart1">{{ ( 0 ) }}</span>
+                        </a>
+                        {% else %}
                         <a class="cart" href="/cart"><img src="/theme/assets/img/cart1.png" alt="">
                             <span class="amount_in_cart1">
                                 {% if amount_in_cart > 0 %} 
@@ -91,6 +94,7 @@
                                 {% endif %}
                             </span>
                         </a>
+                        {% endif %}
                     </li>
                 </ul>
             </div>
@@ -103,7 +107,8 @@
         </div>
 
         <script>
-            $(function() { // для выпадающего каталога
+            // для выпадающего каталога
+            $(function() { 
                 $(".menuToggle").on("click", function() {
                     $(".main-menu").slideToggle(300, function() {
                         if($(this).css("display") === "none") {

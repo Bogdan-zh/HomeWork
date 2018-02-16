@@ -17,13 +17,11 @@ class Route
             'products' => 'Product',
             'cart' => 'Cart',
             'order' => 'Order',
-            'contact' => 'Contact',
         );
 
         if(!empty($parts)) {
 
             if(isset($uri_array[$parts[1]])) {
-                // это служебная ссылка
 
                 if(file_exists($controllers_dir.$uri_array[$parts[1]] . '.php')) {
                     require $controllers_dir.$uri_array[$parts[1]] . '.php'; //controllers/Main.php
@@ -33,7 +31,7 @@ class Route
                         print $controller->fetch();
                     }
                 }
-
+                
             } else {
                 if(file_exists($controllers_dir.'Page.php')) {
                     require $controllers_dir.'Page.php'; 
@@ -45,7 +43,5 @@ class Route
                 }
             }
         }
-        
     }
-
 }

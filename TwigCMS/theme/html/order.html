@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+
+
+
+{% block content %}
+<h3>Ваш заказ успешно оформлен!</h3>
+
+<p>Дата заказа: {{ order.order_time }}</p>
+<p>Имя: {{ order.first_name }}</p>
+<p>Фамилия: {{ order.last_name }}</p>
+<p>Email: {{ order.email }}</p>
+<p>Phone: {{ order.phone }}</p>
+
+{% for purchase in order.purchases %}
+	<p><span class="order_name">{{ purchase.product_name }} </span><span>По цене: {{ purchase.price }} грн, в количестве {{ purchase.amount }} шт.</span></p>
+{% endfor %}
+<p style="font-weight: bold; font-size: 2.5rem; text-decoration: underline;">Итого: {{ order.total_cost }} грн</p>
+
+{% endblock %}

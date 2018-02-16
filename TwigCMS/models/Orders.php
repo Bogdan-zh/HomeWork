@@ -24,18 +24,33 @@ class Orders extends Database
         if(empty($id)) {
             return false;
         }
-        $query = "SELECT id, order_time, total_cost, user_id, first_name, last_name, email, phone, status_id FROM orders WHERE id = '$id' LIMIT 1";
+
+        if(is_integer($id)) {
+            $id = 'id = '.$id;
+        } elseif(is_string($id)) {
+            $id = "url = '$id'";
+        }
+
+        $query = "SELECT id, order_time, total_cost, user_id, first_name, last_name, email, phone, status_id, url FROM orders WHERE $id LIMIT 1";
         $this->query($query);
         return $this->result();
     }
 
-    public function getOrders($status = 0)
+    public function getOrders($status = 0, $start = 0, $num = 0)
     {
+        // вывод по статусу
         $filter = '';
         if(!empty($status)) {
             $filter = "WHERE status_id = $status";
         }
-        $query = "SELECT id, order_time, total_cost, user_id, first_name, last_name, email, phone, status_id FROM orders $filter ORDER BY id DESC";
+
+        // для пагинации
+        $limit = '';
+        if(!empty($start) || !empty($num)) {
+            $limit = "LIMIT $start, $num";
+        }
+
+        $query = "SELECT id, order_time, total_cost, user_id, first_name, last_name, email, phone, status_id, url FROM orders $filter ORDER BY id DESC $limit";
         $this->query($query);
         return $this->results();
     }
@@ -91,4 +106,5 @@ class Orders extends Database
         $query = "UPDATE orders SET status_id = $status_id WHERE id='$order_id'";
         $this->query($query);
     }
+
 }

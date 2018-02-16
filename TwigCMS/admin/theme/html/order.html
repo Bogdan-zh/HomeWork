@@ -2,17 +2,18 @@
 
 {% block content %}
 
-<h1>Заказ №{{ order.id }}</h1>
+<h3>Заказ №{{ id }}</h3>
 
 <form method="post">
-    <div class="order_form">
+    <div class="order_form well">
         <div class="order70">
-            Статус:
-            <select onchange="$('#update').click(); return false;" name="statuses">
+            Статус заказа:
+            <select name="statuses">
                 {% for status in statuses %}
                     <option {% if status.id == current_status.id %} selected {% endif %} value="{{ status.id }}">{{ status.name }}</option>
                 {% endfor %}
             </select>
+            
             <table class="table">
                 <tr>
                     <th>№</th>
@@ -26,10 +27,10 @@
                 {% for item in purchase %}
                 <tr>
                     <td>{% set i = i + 1 %}{{ i }}</td>
-                    <td><a href="/products/{{ product.url }}">{{ item.product_name }}</a></td>
-                    <td><input onchange="$('#update').click(); return false;" type="number" min="1" max="{{ product.amount }}" name="amount[]" value="{{ item.amount }}"></td>
-                    <td>{{ item.price }}</td>
-                    <td>{{ item.amount * item.price }}</td>
+                    <td><a href="/products/{{ item.product_url }}">{{ item.product_name }}</a></td>
+                    <td><input type="number" min="1" max="100" name="amount[]" value="{{ item.amount }}"></td>
+                    <td>{{ item.price }} грн</td>
+                    <td>{{ item.amount * item.price }} грн</td>
                     <td>
                         <label class="label_for_hidden_del">X
                             <input class="hidden_del" type="submit" name="delete" value="{{ item.id }}">
@@ -40,28 +41,40 @@
                 <tr>
                     <td colspan="6">
                         <p class="total">Итого: 
-                            <span>{{ total }}</span>
+                            <span>{{ total }} грн</span>
                         </p>
                     </td>
                 </tr>
             </table>
+            
+            <div class="add_product_in_order">
+                <span>Добавить товар:</span>
+                <select name="product_for_order">
+                    <option value="0"></option>
+                    {% for product in products %}
+                    <option value="{{ product.id }}">{{ product.name }}</option>
+                    {% endfor %}
+                </select>
+                <input type="number" name="amount_new_product" value="1" min="1"> шт.
+
+                <input type="submit" name="add_product_in_order" value="Добавить товар">
+            </div>
+
         </div>
         <div class="order30">
             Имя:
-            <input onchange="$('#update').click(); return false;" type="text" name="first_name" value="{{ order.first_name }}">
+            <input type="text" name="first_name" value="{{ order.first_name }}">
             Фамилия:
-            <input onchange="$('#update').click(); return false;" type="text" name="last_name" value="{{ order.last_name }}">
+            <input type="text" name="last_name" value="{{ order.last_name }}">
             Email:
-            <input onchange="$('#update').click(); return false;" type="text" name="email" value="{{ order.email }}">
+            <input type="text" name="email" value="{{ order.email }}">
             Телефон:
-            <input onchange="$('#update').click(); return false;" type="text" name="phone" value="{{ order.phone }}">
+            <input type="text" name="phone" value="{{ order.phone }}">
         </div>
     </div>
     <div class="buttons_in_order">
-        <input style="display: none;" id="update" class="btn btn-lg btn-primary save" type="submit" name="save" value="Сохранить">
-        <input style="margin-top: 40px;" class="btn btn-lg btn-danger" type="submit" name="del" value="Удалить заказ">
+        <input style="margin-top: 40px;" class="btn btn-lg btn-primary save" type="submit" name="save" value="Сохранить">
     </div>
-    
 
 </form>
 

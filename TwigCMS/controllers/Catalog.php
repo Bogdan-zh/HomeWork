@@ -14,7 +14,6 @@ class Catalog extends Core
         $all_pages = $pages->getPages();
 
         $products = new Products();
-        $products_catalog = $products->getCategoriesForCatalog();
 
         $uri = parse_url($_SERVER['REQUEST_URI']);
         $parts = explode('/', $uri['path']);
@@ -22,8 +21,17 @@ class Catalog extends Core
         if (isset($parts[2])) {
             $catalog = $categories->getCategory($parts[2], 'url');
         }
-        $category_id = $categories->GetCategoriesId($catalog['id']);
 
+        $children = $categories->getChildren($catalog['id']);
+        $cat_filter = array();
+        $cat_filter[] = $catalog['id'];
+
+        foreach ($children  as $value) {
+            $cat_filter[] = $value['id'];
+        }
+
+        $filter['cat_id'] = $cat_filter;
+        $products = $products->getProducts($filter);
 
 
         if($request->post('to_cart')) {
@@ -38,13 +46,13 @@ class Catalog extends Core
         $amount_in_cart = $cart['amount'];
         $total = $cart['total'];
 
+
         $array_vars = array(
             'catalog' => $catalog,
             'categories' => $all_categories,
             'categories_tree' => $categories_catalog_tree,
             'pages' => $all_pages,
-            'products' => $products_catalog,
-            'category' => $category_id,
+            'products' => $products,
             'amount_in_cart' => $amount_in_cart,
             'total' => $total,
         );
